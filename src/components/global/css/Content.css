@@ -1,0 +1,18 @@
+.Content {
+  margin: 20px 20px;
+  width: 100%;
+}
+
+.TituloFondo {
+  background: linear-gradient(to bottom,#ffffff82 0%, #ffffff80 100%), url('../images/pedidos.jpg') no-repeat;
+  background-attachment: fixed;
+  background-position: initial;
+  background-size: cover;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  color: black;
+}

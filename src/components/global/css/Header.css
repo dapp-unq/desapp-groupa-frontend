@@ -1,0 +1,19 @@
+
+.Header {
+  background: url('../images/ricoysaludable.png') no-repeat;
+  background-color: #282c34;
+  background-position: center;
+  background-size: cover;
+  background-attachment: inherit;
+  min-height: 170px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  color: white;
+}
+.Logo img {
+  height: 90px;
+}
