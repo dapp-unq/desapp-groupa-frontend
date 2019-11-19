@@ -115,11 +115,11 @@ const Content = props => {
     <div>
 		<div className="Content">
       	<h1> {t(props.header)} </h1>
-      	<p> Los restaurantes mejor calificados para tu deleite.</p>
+      	<p> {t(props.description)}</p>
 			</div>
 			
 			<div className= "TituloFondo">
-				<h2>Nuestros proveedores:</h2>
+				<h2> {t(props.provTitle)}</h2>
 			</div>
 			
 			<div className="Content">
@@ -128,7 +128,7 @@ const Content = props => {
 			</div>
 			
 			<div className= "TituloFondo">
-				<h2>Menus vigentes:</h2>
+				<h2> {t(props.menuTitle)}</h2>
 			</div>
 			
 			<div className="Content">

@@ -8,6 +8,9 @@
         "main-title" : "Welcome to Vianda Ya!"
     },
     "div" :{
-        "title" : "Order your delivery online NOW!"
+        "body-title" : "Order your delivery online NOW!",
+        "descrip-text" : "The best rated restaurants for your delight",
+        "prov-title" : "Our providers:",
+        "menuC-title" : "Current menus:"
     }
 }

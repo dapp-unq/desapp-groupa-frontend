@@ -13,7 +13,7 @@ function getLayout(lang){
       <div>          
         <div className="App">
           <Header welcome="main-title"/>
-          <Content header= "title"/>
+          <Content header= "body-title" description= "descrip-text" provTitle = "prov-title" menuTitle = "menuC-title"/>
           <hr/>
           <div>
             <ButtonTs name="login"/>
