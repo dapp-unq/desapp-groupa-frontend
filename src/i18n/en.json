@@ -1,0 +1,13 @@
+{
+    "locale"     : "en-us",
+    "buttons"     : {
+        "login" : "Log in",
+        "create_account" : "Create Account"
+    },
+    "header" : {
+        "main-title" : "Welcome to Vianda Ya!"
+    },
+    "div" :{
+        "title" : "Order your delivery online NOW!"
+    }
+}

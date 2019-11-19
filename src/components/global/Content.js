@@ -1,4 +1,5 @@
 import React from 'react';
+import { translate } from "react-translate";
 import './css/Content.css';
 
 import TableProviders from './TableProviders'
@@ -108,11 +109,12 @@ const NewProvider = () => {
 }
 
 
-const Content = () => {
+const Content = props => {
+	const {t} = props
   return (
     <div>
-			<div className="Content">
-      	<h1> ¡Pedi YA tu delivery online! </h1>
+		<div className="Content">
+      	<h1> {t(props.header)} </h1>
       	<p> Los restaurantes mejor calificados para tu deleite.</p>
 			</div>
 			
@@ -141,4 +143,5 @@ const Content = () => {
   );
 }
 
-export default Content;
+export default translate('div')(Content);
+//export default Content;
