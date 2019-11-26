@@ -7,6 +7,9 @@ const Header = props => {
   const {t} = props
   return (
     <div className="Header">
+      <div className="Language">
+        <p> Español </p>
+      </div> 
       <header className="Logo">
         <img src={logo} alt="logo" />
         <h2> {t(props.welcome)}
