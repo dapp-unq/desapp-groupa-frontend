@@ -8,6 +8,8 @@ import Header from './global/Header'
 import Content from './global/Content'
 import Footer from './global/Footer'
 
+let url  = window.location.href;
+
 function getLayout(lang){
   return (<TranslatorProvider translations={require('../i18n/'+lang+'.json')}>
       <div>          

@@ -3,12 +3,18 @@ import { translate } from "react-translate";
 import logo from './images/viandaya-logo.png';
 import './css/Header.css';
 
+const ChangeLanguage = () => {
+
+}
+
 const Header = props => {
   const {t} = props
   return (
     <div className="Header">
       <div className="Language">
-        <p> Español </p>
+        <p> Idioma: </p>
+        <button onClick={() => ChangeLanguage('/en')}> English </button>
+        <button onClick={() => ChangeLanguage('/es')}> Español </button>
       </div> 
       <header className="Logo">
         <img src={logo} alt="logo" />
