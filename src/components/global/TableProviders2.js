@@ -1,6 +1,7 @@
 import React from 'react';
 import store from '../../store';
 import { generate } from 'shortid';
+import {removeFromProviders, addToProviders} from '../../actionCreators';
 
 class ListProviders extends React.Component {
     constructor(){
@@ -46,10 +47,7 @@ class ListProviders extends React.Component {
     }
 
     removeProvider(provider) {
-        store.dispatch({
-            type: "REMOVE_FROM_PROVIDERS",
-            provider: provider,
-        })
+        store.dispatch(removeFromProviders(provider))
 
     }
 
@@ -59,10 +57,7 @@ class ListProviders extends React.Component {
 
 
     addToProviders(provider) {
-	store.dispatch ({
-		type: "ADD_TO_PROVIDERS",
-		provider: provider,
-    });
+	store.dispatch (addToProviders(provider));
     }
 }
 
