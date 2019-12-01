@@ -1,25 +1,14 @@
 import React from 'react';
-import store from '../../store';
 import { generate } from 'shortid';
 import {removeFromProviders, addToProviders} from '../../actionCreators';
+import { connect } from 'react-redux';
 
-class ListProviders extends React.Component {
-    constructor(){
-        super();
+const ListProviders = props =>
+{
+    const proveedorNuevo = { name: 'Nuevo Proveedor',
+    city: 'Ciudad Perdida',
+    direction: 'Calle Falsa 123'};
 
-        this.state = {
-            providers: []
-        };
-
-        store.subscribe(() => {
-            this.setState({
-                providers: store.getState().providers
-            })
-        })
-    }
-
-    render ()
-    {
     return (
         <div className="TableProviders">
             <table>
@@ -31,7 +20,7 @@ class ListProviders extends React.Component {
                     </tr>
                 </thead>
                 <tbody>
-                    { this.state.providers.map(provider => 
+                    { props.providers.map(provider => 
                         <tr key={generate()}>
                             <td>{provider.name}</td>
                             <td>{provider.city}</td>
@@ -40,25 +29,27 @@ class ListProviders extends React.Component {
                     )}
                 </tbody>
             </table>
-            <button onClick={() => this.addToProviders(this.proveedorNuevo)}>Agregar Proveedor</button>
-            <button onClick={() => this.removeProvider(this.proveedorNuevo)}>Eliminar Proveedor</button>
+            <button onClick={() => props.addToProviders(proveedorNuevo)}>Agregar Proveedor</button>
+            <button onClick={() => props.removeFromProviders(proveedorNuevo)}>Eliminar Proveedor</button>
         </div>
     )
-    }
+}
 
-    removeProvider(provider) {
-        store.dispatch(removeFromProviders(provider))
+const mapStateToProps = state => {
+    return {
+        providers: state.providers
+    };
+}
 
-    }
-
-    proveedorNuevo = { name: 'Nuevo Proveedor',
-    city: 'Ciudad Perdida',
-    direction: 'Calle Falsa 123'}
-
-
-    addToProviders(provider) {
-	store.dispatch (addToProviders(provider));
+const mapDispatchToProps = dispatch => {
+    return {
+        removeFromProviders(provider) {
+            dispatch (removeFromProviders(provider))
+        },
+        addToProviders(provider) {
+            dispatch (addToProviders(provider))
+        }
     }
 }
 
-export default ListProviders;
+export default connect(mapStateToProps, mapDispatchToProps) (ListProviders);

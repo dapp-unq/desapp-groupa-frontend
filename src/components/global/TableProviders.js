@@ -4,8 +4,9 @@ import { generate } from 'shortid';
 
 import Datos from './Content'
 
-const TableHeader = () => 
+const TableHeader = props => 
 {
+		const {t} = props
     return (
     	<thead>
     	    <tr>

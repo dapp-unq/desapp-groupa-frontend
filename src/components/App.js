@@ -7,6 +7,7 @@ import ButtonTs from './global/ButtonTs'
 import Header from './global/Header'
 import Content from './global/Content'
 import Footer from './global/Footer'
+import { connect } from 'react-redux';
 
 let url  = window.location.href;
 
