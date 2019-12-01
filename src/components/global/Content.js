@@ -5,7 +5,9 @@ import './css/Content.css';
 import TableProviders from './TableProviders';
 import TableMenus from './TableMenus';
 import Datos from './Datos';
+import ListProviders from './TableProviders2';
 import { generate } from 'shortid';
+import store from '../../store';
 
 const ListaProveedores = {
 		providers:[
@@ -80,7 +82,7 @@ const ListaMenus = {
 	menus: ListaProveedores.providers.map(proveedor => proveedor.menu)
 }
 
-const ListProviders = props => {
+//const ListProviders = props => {
 		// return (
 		// <div>
 		// 	{//props.datosProveedores.providers.map(provider => <h2>Proveedor: {provider.name}</h2>)
@@ -90,7 +92,7 @@ const ListProviders = props => {
 		// 		//ListaDatos.setState({providers: [props.datosProveedores.providers[0]] })}
 		// 		}}>Achicar</button>
 		// </div>
-}
+//}
 
 
 const NewProvider = () => {
@@ -133,7 +135,7 @@ const Content = props => {
 			</div>
 			
 			<div className="Content">
-				<TableProviders providerData = {ListaProveedores} />
+				<TableProviders providerData = {ListaProveedores} title = ""/>
 				<NewProvider/>
 			</div>
 			
@@ -147,7 +149,10 @@ const Content = props => {
 			<hr/>
 			<div className="Content">
 				<h2> Espacio de prueba de código: </h2>
-				<Datos/>
+			</div>
+			<hr/>
+			<div className="Content">
+				<ListProviders></ListProviders>
 			</div>
 		</div>
   );
