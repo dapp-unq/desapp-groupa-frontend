@@ -31,6 +31,7 @@ const ListProviders = props =>
             </table>
             <button onClick={() => props.addToProviders(proveedorNuevo)}>Agregar Proveedor</button>
             <button onClick={() => props.removeFromProviders(proveedorNuevo)}>Eliminar Proveedor</button>
+            <button onClick={() => props.getProviders()}>Cargar proveedores</button>
         </div>
     )
 }
@@ -48,6 +49,9 @@ const mapDispatchToProps = dispatch => {
         },
         addToProviders(provider) {
             dispatch (addToProviders(provider))
+        },
+        getProviders() {
+            dispatch (getProviders())
         }
     }
 }
