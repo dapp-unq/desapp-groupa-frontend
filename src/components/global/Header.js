@@ -17,7 +17,9 @@ const Header = props => {
         <button onClick={() => ChangeLanguage('/es')}> Español </button>
       </div> 
       <header className="Logo">
-        <img src={logo} alt="logo" />
+        <div className="LogoImg">
+          <img src={logo} alt="logo" />
+        </div>
         <h2> {t(props.welcome)}
         </h2>
       </header>

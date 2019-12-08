@@ -3,10 +3,9 @@
   background: url('../images/ricoysaludable.png') no-repeat;
   background-color: #282c34;
   background-position: center;
-  background-size: cover;
+  background-size: 100%;
   background-attachment: inherit;
-  min-height: 170px;
-  padding: 20px;
+  padding: 2%;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -28,10 +27,25 @@
   font-weight: bold;
 }
 
-.Logo img {
-  height: 90px;
+.Logo {
+  padding-inline-end: 15%;
+  padding-inline-start: 15%;
+}
+
+.LogoImg{
+  padding-inline-end: 10%;
+  padding-inline-start: 10%;
+  max-height: inherit;
+}
+
+.LogoImg img {
+  width: 100%;
+  max-width: 90vh;
 }
 
 .Logo h2 {
   align-items: center;
+  margin-block-start: 1%;
+  margin-block-end: 1%;
+  font-size: calc(2vw + 2vh / 2);
 }

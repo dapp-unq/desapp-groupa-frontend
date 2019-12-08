@@ -4,11 +4,9 @@ import './css/Content.css';
 
 import TableProviders from './TableProviders';
 import TableMenus from './TableMenus';
-import Datos from './Datos';
 import ListProviders from './TableProviders2';
 import ListUsers from './TableUser';
 import { generate } from 'shortid';
-import store from '../../store';
 
 const ListaProveedores = {
 		providers:[
