@@ -1,5 +1,5 @@
 import React from 'react';
-import { generate } from 'shortid';
+import axios from 'axios';
 
 const addToProviders = provider => {
     return {
@@ -15,32 +15,16 @@ const removeFromProviders = provider => {
     }
 }
 
-const getProviders = () => {
-
-    const provsFalsos = {
-        providers: [{
-            key: generate(),
-            name: 'Liza Chambi',
-            city: 'Luis Guillón',
-            direction: 'Vidal 1015',
-            },{
-            key: generate(),
-            name: 'Melody Orellana',
-            city: 'Monte Grande',
-            direction: 'Boulevar 1020',
-            },{
-            key: generate(),
-            name: 'Nahuel Benitez',
-            city: 'Quilmes',
-            direction: 'Agote 2743',
-            },
-        ],
-    }
-
-    return {
-        type: "GET_PROVIDERS",
-        provider = provsFalsos
+const getProvider = () => {
+    return dispatch => {
+        axios.get('https://viandasya-c1a.herokuapp.com/rest/provider/sarasa@gmail.com')
+        .then(response =>{
+            dispatch({
+                type: "GET_PROVIDER",
+                provider: response.data
+            })
+        })
     }
 }
 
-export {removeFromProviders, addToProviders};
+export {removeFromProviders, addToProviders, getProvider};

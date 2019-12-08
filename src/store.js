@@ -1,4 +1,5 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 const reducer = (state, action) => {
 
@@ -18,7 +19,7 @@ const reducer = (state, action) => {
         }
         else
         {
-            if (action.type ===  "GET_PROVIDERS"){
+            if (action.type ===  "GET_PROVIDER"){
                 return {
                     ...state,
                     providers: action.provider
@@ -29,4 +30,11 @@ const reducer = (state, action) => {
     return state;
 }
 
-export default createStore(reducer, {providers: []});
+const logger = store => next => action => {
+    console.log('dispatching', action)
+    let result = next(action);
+    console.log('next state', store.getState())
+    return result
+}
+
+export default createStore(reducer, {providers: []}, applyMiddleware(logger, thunk));
