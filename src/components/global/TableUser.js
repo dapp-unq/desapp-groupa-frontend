@@ -3,36 +3,31 @@ import { generate } from 'shortid';
 import {removeFromProviders, addToProviders, getProvider, getUser} from '../../actionCreators';
 import { connect } from 'react-redux';
 
-const ListProviders = props =>
+const ListUsers = props =>
 {
-    const proveedorNuevo = { name: 'Nuevo Proveedor',
-    city: 'Ciudad Perdida',
-    location: 'Calle Falsa 123'};
-
     return (
-        <div className="TableProviders">
+        <div className="TableUsers">
             <table>
                 <thead>
                     <tr>
                         <th>Nombre</th>
-                        <th>Localidad</th>
+                        <th>Apellido</th>
                         <th>Direccion</th>
+                        <th>Telefono</th>
                     </tr>
                 </thead>
                 <tbody>
-                    { props.providers.map(provider => 
+                    { props.user.map(user => 
                         <tr key={generate()}>
-                            <td>{provider.name}</td>
-                            <td>{provider.city}</td>
-                            <td>{provider.location}</td>
+                            <td>{user.name}</td>
+                            <td>{user.surname}</td>
+                            <td>{user.location}</td>
+                            <td>{user.phoneNumber}</td>
                         </tr>
                     )}
                 </tbody>
             </table>
-            <button onClick={() => props.addToProviders(proveedorNuevo)}>Agregar Proveedor</button>
-            <button onClick={() => props.removeFromProviders(proveedorNuevo)}>Eliminar Proveedor</button>
-            <button onClick={() => props.getProvider()}>Cargar proveedores</button>
-        </div>
+            </div>
     )
 }
 
@@ -60,4 +55,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps) (ListProviders);
+export default connect(mapStateToProps, mapDispatchToProps) (ListUsers);

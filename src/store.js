@@ -3,31 +3,36 @@ import thunk from 'redux-thunk';
 
 const reducer = (state, action) => {
 
-    if (action.type === "ADD_TO_PROVIDERS") {
-        return {
-            ...state,
-            providers: state.providers.concat(action.provider)
-        };
-    }
-    else 
+    switch (action.type)
     {
-        if (action.type === "REMOVE_FROM_PROVIDERS"){
+        case "ADD_TO_PROVIDERS":
+            return {
+                ...state,
+                providers: state.providers.concat(action.provider)
+            }
+
+        case "REMOVE_FROM_PROVIDERS":
             return {
                 ...state,
                 providers: state.providers.filter(provider => provider.name !== action.provider.name)
-            };
-        }
-        else
-        {
-            if (action.type ===  "GET_PROVIDER"){
-                return {
-                    ...state,
-                    providers: action.provider
-                }
             }
-        }
+
+        case "GET_PROVIDER":
+            return {
+                ...state,
+                providers: action.provider
+            }
+
+        case "GET_USER":
+            return {
+                ...state,
+                user: action.user
+            }
+
+        default: 
+            return state
     }
-    return state;
+
 }
 
 const logger = store => next => action => {
@@ -37,4 +42,4 @@ const logger = store => next => action => {
     return result
 }
 
-export default createStore(reducer, {providers: []}, applyMiddleware(logger, thunk));
+export default createStore(reducer, {providers: [], user:[]}, applyMiddleware(logger, thunk));

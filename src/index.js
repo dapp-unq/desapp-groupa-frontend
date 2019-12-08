@@ -5,10 +5,11 @@ import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import store from './store';
 import { Provider } from 'react-redux';
-import {getProvider} from './actionCreators';
+import {getProvider, getUser} from './actionCreators';
 
 // DESCOMENTAR ESTA LINEA CUANDO QUIERA QUE AL INICIAR LA PAGINA YA ME CARGUE LOS PROVEEDORES
 //store.dispatch (getProvider());
+store.dispatch (getUser());
 
 ReactDOM.render(
 <Provider store={store}>

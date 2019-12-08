@@ -15,6 +15,18 @@ const removeFromProviders = provider => {
     }
 }
 
+const getUser = () => {
+    return (dispatch) => {
+        axios.get('http://localhost:8080/rest/user/beniteznahueloscar@gmail.com')
+        .then(response =>{
+            dispatch({
+                type: "GET_USER",
+                user: [response.data]
+            })
+        })
+    }
+}
+
 const getProvider = () => {
     return (dispatch) => {
         
@@ -40,4 +52,4 @@ const getProvider = () => {
     }
 }
 
-export {removeFromProviders, addToProviders, getProvider};
+export {removeFromProviders, addToProviders, getProvider, getUser};
