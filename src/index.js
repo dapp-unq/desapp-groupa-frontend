@@ -7,7 +7,8 @@ import store from './store';
 import { Provider } from 'react-redux';
 import {getProvider} from './actionCreators';
 
-store.dispatch (getProvider());
+// DESCOMENTAR ESTA LINEA CUANDO QUIERA QUE AL INICIAR LA PAGINA YA ME CARGUE LOS PROVEEDORES
+//store.dispatch (getProvider());
 
 ReactDOM.render(
 <Provider store={store}>

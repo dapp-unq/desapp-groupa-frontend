@@ -16,14 +16,27 @@ const removeFromProviders = provider => {
 }
 
 const getProvider = () => {
-    return dispatch => {
-        axios.get('https://viandasya-c1a.herokuapp.com/rest/provider/sarasa@gmail.com')
+    return (dispatch) => {
+        
+        axios.get('http://localhost:8080/rest/provider/sarasa@gmail.com')
         .then(response =>{
             dispatch({
                 type: "GET_PROVIDER",
-                provider: response.data
+                provider: [response.data]
             })
         })
+        // fetch('http://viandasya-c1a.herokuapp.com/rest/provider/sarasa@gmail.com',
+        //     {
+        //       method: 'GET',
+        //       headers: { Access: 'https://viandasya-c1a.herokuapp.com'}
+        //     }
+        //   ).then(res => res.json())
+        //  .then(res => {
+        //      dispatch({
+        //          type: "GET_PROVIDER",
+        //          provider: res.data
+        //      })
+        //  })
     }
 }
 

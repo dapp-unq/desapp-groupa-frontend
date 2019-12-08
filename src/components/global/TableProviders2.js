@@ -7,7 +7,7 @@ const ListProviders = props =>
 {
     const proveedorNuevo = { name: 'Nuevo Proveedor',
     city: 'Ciudad Perdida',
-    direction: 'Calle Falsa 123'};
+    location: 'Calle Falsa 123'};
 
     return (
         <div className="TableProviders">
@@ -24,7 +24,7 @@ const ListProviders = props =>
                         <tr key={generate()}>
                             <td>{provider.name}</td>
                             <td>{provider.city}</td>
-                            <td>{provider.direction}</td>
+                            <td>{provider.location}</td>
                         </tr>
                     )}
                 </tbody>
