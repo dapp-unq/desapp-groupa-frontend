@@ -1,0 +1,16 @@
+{
+    "locale"     : "en-mx",
+    "buttons"     : {
+        "login" : "Iniciar Sesión",
+        "create_account" : "Registrate"
+    },
+    "header" : {
+        "main-title" : "Bienvenidos a Vianda Ya!"
+    },
+    "div" :{
+        "body-title" : "¡Pedi YA tu delivery online!",
+        "descrip-text" : "Los restaurantes mejor calificados para tu deleite",
+        "prov-title" : "Nuestros proveedores:",
+        "menuC-title" : "Menás vigentes:"
+    }
+}

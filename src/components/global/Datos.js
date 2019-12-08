@@ -1,4 +1,5 @@
 import React from 'react';
+import { generate } from 'shortid'
 
 class Datos extends React.Component 
 {
@@ -9,18 +10,22 @@ class Datos extends React.Component
         this.state = 
         {
 			providers: [{
+                key: generate(),
                 name: 'Liza Chambi',
                 city: 'Luis Guillón',
 		        direction: 'Vidal 1015',
 			    },{
+                key: generate(),
                 name: 'Melody Orellana',
                 city: 'Monte Grande',
                 direction: 'Boulevar 1020',
 				},{
+                key: generate(),
                 name: 'Nahuel Benitez',
                 city: 'Quilmes',
                 direction: 'Agote 2743',
 				},{
+                key: generate(),
                 name: 'Elisa Nova',
                 city: 'Avellaneda',
                 direction: 'Av. San Martín 2001',

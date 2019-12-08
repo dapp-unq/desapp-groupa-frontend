@@ -1,10 +1,12 @@
 import React from 'react';
 // import './css/TableProviders.css';
+import { generate } from 'shortid';
 
 import Datos from './Content'
 
-const TableHeader = () => 
+const TableHeader = props => 
 {
+		const {t} = props
     return (
     	<thead>
     	    <tr>
@@ -20,7 +22,7 @@ const TableBody = props =>
 {   
     const rows = props.providerData.providers.map(provider => {
     	return (
-    		<tr key={provider}>
+    		<tr key={generate()}>
     		<td>{provider.name}</td>
     		<td>{provider.city}</td>
         <td>{provider.direction}</td>

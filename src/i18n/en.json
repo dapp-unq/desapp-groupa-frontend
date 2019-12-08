@@ -1,0 +1,16 @@
+{
+    "locale"     : "en-us",
+    "buttons"     : {
+        "login" : "Log in",
+        "create_account" : "Create Account"
+    },
+    "header" : {
+        "main-title" : "Welcome to Vianda Ya!"
+    },
+    "div" :{
+        "body-title" : "Order your delivery online NOW!",
+        "descrip-text" : "The best rated restaurants for your delight",
+        "prov-title" : "Our providers:",
+        "menuC-title" : "Current menus:"
+    }
+}
