@@ -1,0 +1,13 @@
+.CardsMenu {
+    display: flex;
+    flex-direction: unset;
+    flex-wrap: wrap;
+}
+
+.Card
+{
+    margin-inline-end: 1%;
+    margin-inline-start: 1%; 
+    margin-block-end: 1%; 
+    margin-block-start: 1%;
+}

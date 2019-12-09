@@ -1,7 +1,7 @@
 import React from 'react';
 import { generate } from 'shortid';
-import {removeFromProviders, addToProviders, getProvider, getUser} from '../../actionCreators';
 import { connect } from 'react-redux';
+import { mapStateToProps, mapDispatchToProps} from '../../mapMethods';
 
 const ListUsers = props =>
 {
@@ -31,28 +31,5 @@ const ListUsers = props =>
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        providers: state.providers,
-        user: state.user
-    };
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        removeFromProviders(provider) {
-            dispatch (removeFromProviders(provider))
-        },
-        addToProviders(provider) {
-            dispatch (addToProviders(provider))
-        },
-        getProvider() {
-            dispatch (getProvider())
-        },
-        getuser() {
-            dispatch(getUser())
-        }
-    }
-}
 
 export default connect(mapStateToProps, mapDispatchToProps) (ListUsers);

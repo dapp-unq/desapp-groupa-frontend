@@ -1,7 +1,6 @@
 import React from 'react';
 import { TranslatorProvider } from "react-translate";
-
-//import './css/App.css';
+import './global/css/App.css';
 
 import ButtonTs from './global/ButtonTs'
 import Header from './global/Header'

@@ -6,7 +6,9 @@ import TableProviders from './TableProviders';
 import TableMenus from './TableMenus';
 import ListProviders from './TableProviders2';
 import ListUsers from './TableUser';
+import MenuCards from './ListMenus';
 import { generate } from 'shortid';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ListaProveedores = {
 		providers:[
@@ -125,10 +127,11 @@ const Content = props => {
   return (
     <div>
 		<div className="Content">
-      	<h1> {t(props.header)} </h1>
-      	<p> {t(props.description)}</p>
-			</div>
-			
+      		<h1> {t(props.header)} </h1>
+      		<p> {t(props.description)}</p>
+			<MenuCards/>
+		</div>
+
 			<div className= "TituloFondo">
 				<h2> {t(props.provTitle)}</h2>
 			</div>
