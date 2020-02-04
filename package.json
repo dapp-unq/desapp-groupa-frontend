@@ -24,6 +24,7 @@
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
     "shortid": "^2.2.15",
+    "@auth0/auth0-spa-js": "1.6.3",
     "typescript": "^3.7.5"
   },
   "scripts": {
