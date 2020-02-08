@@ -146,7 +146,6 @@ const Content = props => {
 			</div>
 			
 			<div className="Content">
-				<TableMenus menuData = {ListaMenus} />
 			</div>
 			<hr/>
 			<div className="Content">

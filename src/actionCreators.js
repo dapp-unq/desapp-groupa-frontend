@@ -29,7 +29,7 @@ const getUser = () => {
 const getProvider = () => {
     return (dispatch) => {
         
-        axios.get('http://localhost:8080/rest/provider/sarasa@gmail.com')
+        axios.get('http://localhost:8080/rest/provider/liza.chambi@gmail.com')
         .then(response =>{
             dispatch({
                 type: "GET_PROVIDER",
