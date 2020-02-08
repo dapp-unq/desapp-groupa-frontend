@@ -13,18 +13,26 @@
   color: white;
 }
 
-.Language {
+.Register {
   text-align: right;
   color: black;
 }
 
-.Language p {
+.Register p {
   display: block;
   margin-block-start: 0px;
   margin-block-end: 0px;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   font-weight: bold;
+}
+
+.Register ul {
+  padding-left: 0%;
+}
+
+.Register li {
+  display: inline-block;
 }
 
 .Logo {

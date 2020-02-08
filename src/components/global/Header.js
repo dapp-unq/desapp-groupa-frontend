@@ -11,18 +11,19 @@ const Header = props => {
   const {t} = props
   return (
     <div className="Header">
-      <div className="Language">
-        <p> Idioma: </p>
+      <div className="Register">
         <ul>
-          <li key= {generate()}> <Link to='/es/users'> Español </Link></li>
-          <li key= {generate()}> <Link to='/en/users'> English </Link></li>
+          <li key= {generate()}> <Link to='/users'> Registrarse </Link></li> 
+          <li> | </li>
+          <li key= {generate()}> <Link to='/en/users'> Ingresar </Link></li>
         </ul>
       </div> 
       <header className="Logo">
         <div className="LogoImg">
           <img src={logo} alt="logo" />
         </div>
-        <h2> <I18n t="mainTitle" />
+        <h2> 
+          <I18n t="mainTitle" />
         </h2>
       </header>
     </div>
