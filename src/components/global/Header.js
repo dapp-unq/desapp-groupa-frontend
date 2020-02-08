@@ -14,7 +14,7 @@ const Header = props => {
       <div className="Register">
         <ul>
           <li key= {generate()}> <Link to='/users'> Registrarse </Link></li> 
-          <li> | </li>
+          <li> | </li> 
           <li key= {generate()}> <Link to='/en/users'> Ingresar </Link></li>
         </ul>
       </div> 

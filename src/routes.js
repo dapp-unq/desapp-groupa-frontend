@@ -1,5 +1,6 @@
 import React from 'react'
 import {Route,Switch} from 'react-router-dom'
+import { Auth0Provider } from './contexts/auth0-context';
 
 import App from './components/App'
 import Content from './components/global/Content'
@@ -10,13 +11,15 @@ const base = '/:locale(en|es)?';
 
 const AppRoutes = () => {
     return(
-    <App>
-        <Switch>
-            <Route exact path={base} component = {Content} />
-            <Route exact path={`${base}/users`} component = {Users} />
-            <Route component = {Page404} />
-        </Switch>
-    </App>)
+    <Auth0Provider>
+        <App>
+            <Switch>
+                <Route exact path={base} component = {Content} />
+                <Route exact path={`${base}/users`} component = {Users} />
+                <Route component = {Page404} />
+            </Switch>
+        </App>
+    </Auth0Provider>)
 }
 
 export default AppRoutes;
