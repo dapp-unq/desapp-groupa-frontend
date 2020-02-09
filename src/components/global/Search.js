@@ -2,6 +2,7 @@ import React, {useState, useContext } from 'react' // <-- updated
 
 import I18n from '../I18n'
 import './css/Search.css'
+import { Form } from 'react-bootstrap';
 
 const Search = () => {
     

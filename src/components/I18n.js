@@ -13,6 +13,9 @@ const translations = {
     mainSubtitle: 'Los proveedores de viandas mejor calificados para tu deleite.',
     mainMenuTitle: 'Nuestras viandas más pedidas',
     searchTitle: 'Resultado de búsqueda:',
+    userName:'Nombre y apellido',
+    userNamePlaceholder:'Ingrese un nombre...',
+    userEmailPlaceholder:'Ingrese un email...',
   },
   en: {
     userRegiter: 'User register',
@@ -21,6 +24,9 @@ const translations = {
     mainSubtitle: 'The best rated restaurants for your delight',
     mainMenuTitle: 'Our most requested food',
     searchTitle: 'Search result',
+    userName:'Name and surname',
+    userNamePlaceholder:'Imput a name...',
+    userEmailPlaceholder:'Enter email...',
   }
 }
 

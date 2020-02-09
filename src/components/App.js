@@ -28,6 +28,7 @@ function getLayout(lang, child){
             <ButtonTs name="login"/>
             <ButtonTs name="create_account"/>
           </div>
+          <hr/>
           <Footer />
         </div>
       </div>
