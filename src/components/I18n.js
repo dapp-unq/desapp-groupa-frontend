@@ -9,13 +9,16 @@ const translations = {
   es: {
     userRegiter: 'Registro de usuario',
     headerTitle: 'Bienvenidos a Vianda Ya!',
-    mainSubtitle: 'Los restaurantes mejor calificados para tu deleite'
+    mainTitle : '¡Pedi YA tu delivery online!',
+    mainSubtitle: 'Los proveedores de viandas mejor calificados para tu deleite.',
+    mainMenuTitle: 'Nuestras viandas más pedidas',
   },
   en: {
     userRegiter: 'User register',
     headerTitle : 'Welcome to Vianda Ya!',
-    mainTitle : '',
-    mainSubtitle: 'The best rated restaurants for your delight'
+    mainTitle : 'Order your delivery online NOW!',
+    mainSubtitle: 'The best rated restaurants for your delight',
+    mainMenuTitle: 'Our most requested food',
   }
 }
 
