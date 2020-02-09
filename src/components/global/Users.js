@@ -6,10 +6,15 @@ import './css/Users.css'
 
 const Users = () => {
     const auth0 = useContext(Auth0Context); // <-- new
+    
     return (
         <div className= 'Users'>
-            <h1> <I18n t="userRegiter" /> </h1>
-            {auth0.message}
+            <h1> 
+                <I18n t="userRegiter" /> 
+            </h1>
+            <button onClick={auth0.loginWithRedirect} className="button is-danger">
+                Login
+            </button>
         </div>
     );
 }

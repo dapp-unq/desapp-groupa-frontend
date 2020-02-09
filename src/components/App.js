@@ -37,6 +37,7 @@ function getLayout(lang, child){
 
 const App = props => 
   {
+
     const propTypes = {
       children : PropTypes.object.isRequired
     }
