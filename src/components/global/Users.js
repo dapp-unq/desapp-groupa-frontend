@@ -31,6 +31,26 @@ const Users = () => {
                     </Form.Text>
                 </Form.Group>
 
+                <Form.Group controlId="formBasicEmail">
+                    <Form.Label><I18n t="userPhone"/></Form.Label>
+                    <Form.Control type="email" placeholder="Enter phone" />
+                </Form.Group>
+
+                <Form.Row>
+                    <Form.Group controlId="formGridState">
+                    <Form.Label><I18n t="userCity"/></Form.Label>
+                    <Form.Control as="select">
+                        <option>Choose...</option>
+                        <option>...</option>
+                    </Form.Control>
+                    </Form.Group>
+
+                    <Form.Group controlId="formGridCity">
+                    <Form.Label><I18n t="userDirection"/></Form.Label>
+                    <Form.Control />
+                    </Form.Group>
+                </Form.Row>
+
                 <Form.Group controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" />
