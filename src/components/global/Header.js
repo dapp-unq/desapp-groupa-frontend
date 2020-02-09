@@ -23,9 +23,14 @@ const Header = props => {
           <img src={logo} alt="logo" />
         </div>
         <h2> 
-          <I18n t="mainTitle" />
+          <I18n t="headerTitle" />
         </h2>
       </header>
+      <div className= "PrincipalMenu">
+          <ul>
+            <li key= {generate()}> <Link to='/main'>ViandaYa </Link></li>
+          </ul>
+        </div>
     </div>
   );
 }

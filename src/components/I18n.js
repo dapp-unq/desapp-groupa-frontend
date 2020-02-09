@@ -2,17 +2,20 @@ import { createI18n } from 'react-router-i18n';
 
 // Array of supported locales
 // The first in the array is treated as the default locale
-const locales = ['en', 'es'];
+const locales = ['es', 'en'];
 
 // Dictionary of translations
 const translations = {
-  en: {
-    userRegiter: 'User register',
-    mainTitle : 'Welcome to Vianda Ya!',
-  },
   es: {
     userRegiter: 'Registro de usuario',
-    mainTitle: 'Bienvenidos a Vianda Ya!',
+    headerTitle: 'Bienvenidos a Vianda Ya!',
+    mainSubtitle: 'Los restaurantes mejor calificados para tu deleite'
+  },
+  en: {
+    userRegiter: 'User register',
+    headerTitle : 'Welcome to Vianda Ya!',
+    mainTitle : '',
+    mainSubtitle: 'The best rated restaurants for your delight'
   }
 }
 

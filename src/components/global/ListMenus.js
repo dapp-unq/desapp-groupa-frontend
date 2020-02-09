@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { mapStateToProps, mapDispatchToProps} from '../../mapMethods';
 
 const MenuCards = props => {
-
+    // ESTA CONTANTE "" SOLO ES DE PRUEBA, AHORA SE USA LAS LLAMADAS AL SERVIDOR, SE PUEDE BORRAR
     const Menus = {
         menus: [
         {
@@ -53,7 +53,7 @@ const MenuCards = props => {
         <div className= "CardsMenu">
         { props.providers.map(provider => provider.currentMenus.map ( menu =>
                 <Card className= "Card" style={{ width: '15rem'}}>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top" src={menu.image} />
                 <Card.Body style= {{padding: '0.7rem'}}>
                     <Card.Title>{menu.name}</Card.Title>
                     <Card.Text> {menu.description}</Card.Text>

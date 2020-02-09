@@ -58,3 +58,17 @@
   margin-block-end: 1%;
   font-size: calc(2vw + 2vh / 2);
 }
+
+.PrincipalMenu {
+  text-align: right;
+  color: black;
+}
+
+.PrincipalMenu ul {
+  padding-left: 0%;
+}
+
+.PrincipalMenu li {
+  display: inline-block;
+  margin-right: 1%;
+}
