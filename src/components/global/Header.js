@@ -29,8 +29,9 @@ const Header = props => {
       <div className= "PrincipalMenu">
           <ul>
             <li key= {generate()}> <Link to='/main'>ViandaYa </Link></li>
+            <li key= {generate()}> <Link to='/search'>Busqueda </Link></li>
           </ul>
-        </div>
+      </div>
     </div>
   );
 }

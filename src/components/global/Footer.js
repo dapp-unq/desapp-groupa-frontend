@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, NavLink, Redirect } from 'react-router-i18n'
+import { Link } from 'react-router-i18n'
 import { generate } from 'shortid'
 
 import './css/Footer.css'
@@ -13,7 +13,7 @@ const Footer = () => {
         <ul>
           <li key= {generate()}> <Link to='/es/users'> Español </Link></li> 
           <li>-</li> 
-          <li key= {generate()}> <Link to='/en/users'> Inglés </Link></li>
+          <li key= {generate()}> <Link to='/en/users' > Inglés </Link></li>
         </ul>
       </div>
     </div>

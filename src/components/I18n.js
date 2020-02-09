@@ -12,6 +12,7 @@ const translations = {
     mainTitle : '¡Pedi YA tu delivery online!',
     mainSubtitle: 'Los proveedores de viandas mejor calificados para tu deleite.',
     mainMenuTitle: 'Nuestras viandas más pedidas',
+    searchTitle: 'Resultado de búsqueda:',
   },
   en: {
     userRegiter: 'User register',
@@ -19,6 +20,7 @@ const translations = {
     mainTitle : 'Order your delivery online NOW!',
     mainSubtitle: 'The best rated restaurants for your delight',
     mainMenuTitle: 'Our most requested food',
+    searchTitle: 'Search result',
   }
 }
 

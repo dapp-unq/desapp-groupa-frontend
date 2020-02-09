@@ -1,4 +1,5 @@
 import React, {useState, useContext } from 'react' // <-- updated
+import {Route,Switch} from 'react-router-dom'
 import { Auth0Context } from '../../contexts/auth0-context'; // <-- new
 
 import I18n from '../I18n'
