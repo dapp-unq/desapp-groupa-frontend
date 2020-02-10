@@ -12,6 +12,20 @@ import store from './store';
 import {getProvider, getUser} from './actionCreators';
 import AppRoutes from './routes'
 
+import { Auth0Provider } from "./react-auth0-spa";
+import config from "./auth_config.json";
+import history from "./utils/history";
+
+// A function that routes the user to the right place
+// after login
+const onRedirectCallback = appState => {
+  history.push(
+    appState && appState.targetUrl
+      ? appState.targetUrl
+      : window.location.pathname
+  );
+};
+
 // DESCOMENTAR ESTA LINEA CUANDO QUIERA QUE AL INICIAR LA PAGINA YA ME CARGUE LOS PROVEEDORES
 store.dispatch (getProvider());
 store.dispatch (getUser());
@@ -19,7 +33,14 @@ store.dispatch (getUser());
 ReactDOM.render(
 <Provider store={store}>
     <Router>
-        <AppRoutes/>
+    <Auth0Provider
+  domain={config.domain}
+  client_id={config.clientId}
+  redirect_uri={window.location.origin}
+  onRedirectCallback={onRedirectCallback}
+>
+<AppRoutes/>
+        </Auth0Provider>
     </Router>
 </Provider>, document.getElementById('root'));
 
