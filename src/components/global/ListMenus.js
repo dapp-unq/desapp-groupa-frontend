@@ -48,9 +48,9 @@ const MenuCards = props => {
         }
     ]}
 
-    return (
-        <div className= "CardsMenu">
-        { props.providers.map(provider => provider.currentMenus.map ( menu =>
+    return ( <div className= "CardsMenu">
+        { 
+            props.providers.map(provider => provider.currentMenus.map ( menu =>
                 <Card className= "Card" style={{ width: '15rem'}}>
                 <Card.Img variant="top" src={menu.image} />
                 <Card.Body style= {{padding: '0.7rem'}}>
@@ -58,9 +58,10 @@ const MenuCards = props => {
                     <Card.Text> {menu.description}</Card.Text>
                     <Button variant="primary">Ver menú</Button>
                 </Card.Body>
-                </Card>
-     ) )}
-        </div>
+                </Card>) 
+            )
+        }
+    </div>
   )
 }
 

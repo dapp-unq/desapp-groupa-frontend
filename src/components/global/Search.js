@@ -1,5 +1,5 @@
 import React, {useState, useContext } from 'react' // <-- updated
-import { Card, Form, Nav, Navbar, NavDropdown, FormControl, Button, Container, Row, Col} from 'react-bootstrap';
+import { Pagination, Card, Form, Nav, Navbar, NavDropdown, FormControl, Button, Container, Row, Col} from 'react-bootstrap';
 import { generate } from 'shortid';
 
 import I18n from '../I18n'
@@ -55,12 +55,35 @@ const Search = () => {
                         <Col sm={10}> 
                             <h3> <I18n t="searchTitle" /> </h3>
                             <MenusParaVerComoQuedaLaBusqueda/>
+                            <Paginacion/>
                         </Col>
                     </Row>
                 </Container>
             </div>
         </div>
     );
+}
+
+const Paginacion = () => 
+{
+    let active = 2;
+    let items = [];
+    let maxPag = 4;
+    for (let number = 1; number <= maxPag; number++) {
+    items.push(
+        <Pagination.Item key={number} active={number === active}>
+        {number}
+        </Pagination.Item>,
+    );
+    }
+
+    const paginationBasic = (
+    <div>
+        <Pagination>{items}</Pagination>
+    </div>
+    );
+
+    return (paginationBasic);
 }
 
 const MenusParaVerComoQuedaLaBusqueda= () => {
@@ -112,7 +135,7 @@ const MenusParaVerComoQuedaLaBusqueda= () => {
                     <Card.Body style= {{padding: '0.7rem'}}>
                         <Card.Title>{menu.name}</Card.Title>
                         <Card.Text> {menu.description}</Card.Text>
-                        <Button variant="primary">Ver menú</Button>
+                        <Button variant="primary" > Ver menú</Button>
                     </Card.Body>
                     </Card>
         )}
