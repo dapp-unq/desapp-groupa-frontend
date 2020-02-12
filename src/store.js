@@ -35,6 +35,12 @@ const reducer = (state, action) => {
                 language: action.language
             }
 
+        case "SELECT_MENU":
+        return {
+            ...state,
+            selectedMenu: action.selectedMenu
+        }
+
         default: 
             return state
     }
@@ -48,4 +54,4 @@ const logger = store => next => action => {
     return result
 }
 
-export default createStore(reducer, {providers: [], user:[], language:"en"}, applyMiddleware(logger, thunk));
+export default createStore(reducer, {providers: [], user:[], language:"en", selectedMenu:undefined }, applyMiddleware(logger, thunk));

@@ -2,6 +2,7 @@ import React, {useState, useContext } from 'react' // <-- updated
 import { Pagination, Card, Form, Nav, Navbar, NavDropdown, FormControl, Button, Container, Row, Col} from 'react-bootstrap';
 import { generate } from 'shortid';
 
+import ListMenus from './ListMenus'
 import I18n from '../I18n'
 import './css/Search.css'
 
@@ -54,7 +55,7 @@ const Search = () => {
                         </Col>
                         <Col sm={10}> 
                             <h3> <I18n t="searchTitle" /> </h3>
-                            <MenusParaVerComoQuedaLaBusqueda/>
+                            <ListMenus/>
                             <Paginacion/>
                         </Col>
                     </Row>
@@ -85,64 +86,5 @@ const Paginacion = () =>
 
     return (paginationBasic);
 }
-
-const MenusParaVerComoQuedaLaBusqueda= () => {
-       const menusPrueba = {
-            menus: [
-            {
-                key: generate(),
-                name: 'Pizza Olivo',
-                description: 'Pizza de mozzarella cubierta de aceitunas.',
-                price: '120',
-                amountDaily: '200',
-                date1: '10/5/2019',
-                date2:'10/5/2020',
-            },
-            {
-                key: generate(),
-                name: 'Picante de pollo',
-                description: 'Pollo con salsa picante con guarnición de arroz.',
-                price: '150',
-                amountDaily: '150',
-                date1: '1/3/2019',
-                date2:'4/8/2020',
-            },
-            {
-                key: generate(),
-                name: 'Pique',
-                description: 'Salteado de verduras, huevo y carne asada.',
-                price: '150',
-                amountDaily: '150',
-                date1: '1/3/2019',
-                date2:'4/8/2020',
-            },
-            {
-                key: generate(),
-                name: 'Api morado',
-                description: 'Bebida de maiz morado con limón.',
-                price: '150',
-                amountDaily: '150',
-                date1: '1/3/2019',
-                date2:'4/8/2020',
-            }
-        ]}
-
-    return (
-        <div className= "CardsMenu">
-            { menusPrueba.menus.map(menu =>
-                    <Card className= "Card" style={{ width: '15rem'}}>
-                    <Card.Img variant="top" src={menu.image} />
-                    <Card.Body style= {{padding: '0.7rem'}}>
-                        <Card.Title>{menu.name}</Card.Title>
-                        <Card.Text> {menu.description}</Card.Text>
-                        <Button variant="primary" > Ver menú</Button>
-                    </Card.Body>
-                    </Card>
-        )}
-        </div>
-  )
-}
-
-
 
 export default Search;

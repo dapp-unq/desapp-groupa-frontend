@@ -14,6 +14,13 @@ const removeFromProviders = provider => {
     }
 }
 
+const selectMenu = menu => {
+    return {
+		type: "SELECT_MENU",
+		selectedMenu: menu
+    }
+}
+
 const setLanguage = language => {
     return {
         type: "SET_LANGUAGE",
@@ -58,4 +65,4 @@ const getProvider = () => {
     }
 }
 
-export {removeFromProviders, addToProviders, getProvider, getUser, setLanguage};
+export {removeFromProviders, addToProviders, getProvider, getUser, setLanguage, selectMenu};

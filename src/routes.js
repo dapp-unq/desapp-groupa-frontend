@@ -10,6 +10,8 @@ import Page404 from './components/global/Page404'
 import Users from './components/global/Users'
 import Main from './components/global/Main'
 import Search from './components/global/Search'
+import Menu from './components/global/Menu'
+
 import './components/I18n';
 
 const base = '/:locale(es|en)?';
@@ -23,6 +25,7 @@ const AppRoutes = props => {
                 <Route exact path={`${base}/users`} component = {Users} />
                 <Route exact path= {`${base}/main`} component = {Main}/>
                 <Route exact path={`${base}/searchMenus`} component = {Search}/>
+                <Route exact path= {`${base}/menuDescription`} component = {Menu}/>
                 <Route component = {Page404} />
             </Switch>
         </App>

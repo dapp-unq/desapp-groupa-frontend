@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
-import './css/ListMenus.css';
+import { Link, NavLink, Redirect } from 'react-router-i18n';
 import { generate } from 'shortid';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Card, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
+
+import './css/ListMenus.css';
 import { mapStateToProps, mapDispatchToProps} from '../../mapMethods';
 
 const MenuCards = props => {
-    // ESTA CONTANTE "" SOLO ES DE PRUEBA, AHORA SE USA LAS LLAMADAS AL SERVIDOR, SE PUEDE BORRAR
+    // ESTA CONTANTE "" SOLO ES DE PRUEBA, LUEGO SE USARÁ LAS LLAMADAS AL SERVIDOR
     const Menus = {
         menus: [
         {
@@ -47,7 +49,7 @@ const MenuCards = props => {
             date2:'4/8/2020',
         }
     ]}
-
+    /* NO BORRAR!!! ESTE ES EL CÓDIGO QUE LLAMA AL SERVIDOR COMO CORRESPONDE
     return ( <div className= "CardsMenu">
         { 
             props.providers.map(provider => provider.currentMenus.map ( menu =>
@@ -56,13 +58,29 @@ const MenuCards = props => {
                 <Card.Body style= {{padding: '0.7rem'}}>
                     <Card.Title>{menu.name}</Card.Title>
                     <Card.Text> {menu.description}</Card.Text>
-                    <Button variant="primary">Ver menú</Button>
+                    <Button variant="warning" onClick={()=> props.selectMenu(menu)}> <Link to='menuDescription'> Ver menú </Link></Button>
                 </Card.Body>
                 </Card>) 
             )
         }
     </div>
   )
+  */
+
+    return (
+        <div className= "CardsMenu">
+            { Menus.menus.map(menu =>
+                <Card className= "Card" style={{ width: '15rem'}}>
+                    <Card.Img variant="top" src={menu.image} />
+                    <Card.Body style= {{padding: '0.7rem'}}>
+                        <Card.Title>{menu.name}</Card.Title>
+                        <Card.Text> {menu.description}</Card.Text>
+                        <Button variant="warning" onClick={()=> props.selectMenu(menu)}> <Link to='menuDescription'> Ver menú </Link></Button>
+                    </Card.Body>
+                </Card>)
+            }
+        </div>
+    )
 }
 
 //export default translate('div')(MenuCards); 

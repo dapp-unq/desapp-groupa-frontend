@@ -1,10 +1,11 @@
-import {removeFromProviders, addToProviders, getProvider, getUser, setLanguage} from './actionCreators';
+import {removeFromProviders, addToProviders, getProvider, getUser, setLanguage, selectMenu} from './actionCreators';
 
 export const mapStateToProps = state => {
     return {
         providers: state.providers,
         user: state.user,
-        language: state.language
+        language: state.language,
+        selectedMenu: state.selectedMenu,
     };
 }
 
@@ -24,6 +25,9 @@ export const mapDispatchToProps = dispatch => {
         },
         setLanguage(language){
             dispatch(setLanguage(language))
+        },
+        selectMenu(menu){
+            dispatch(selectMenu(menu))
         },
     }
 }
