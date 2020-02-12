@@ -1,21 +1,21 @@
 import React from 'react';
-import { translate } from "react-translate";
 import { Link, NavLink, Redirect } from 'react-router-i18n';
 import logo from './images/viandaya-logo.png';
 import './css/Header.css';
 import { generate } from 'shortid';
+import { connect } from 'react-redux'
+import { mapStateToProps, mapDispatchToProps} from '../../mapMethods'
 
 import I18n from '../I18n';
 
 const Header = props => {
-  const {t} = props
   return (
     <div className="Header">
       <div className="Register">
         <ul>
-          <li key= {generate()}> <Link to='/users'> Registrarse </Link></li> 
+          <li key= {generate()}> <Link to='users'> <I18n t="headerRegister" />  </Link></li> 
           <li> | </li> 
-          <li key= {generate()}> <Link to='/en/users'> Ingresar </Link></li>
+          <li key= {generate()}> <Link to='users'> <I18n t="headerLogIn" /> </Link></li>
         </ul>
       </div> 
       <header className="Logo">
@@ -28,13 +28,12 @@ const Header = props => {
       </header>
       <div className= "PrincipalMenu">
           <ul>
-            <li key= {generate()}> <Link to='/main'>ViandaYa </Link></li>
-            <li key= {generate()}> <Link to='/search'>Busqueda </Link></li>
+            <li key= {generate()}> <Link to='main'> ViandaYa </Link></li>
+            <li key= {generate()}> <Link to='searchMenus'> Busqueda </Link></li>
           </ul>
       </div>
     </div>
   );
 }
 
-export default translate('header')(Header);
-//export default Header;
+export default connect(mapStateToProps, mapDispatchToProps) (Header);

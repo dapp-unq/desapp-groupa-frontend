@@ -1,9 +1,10 @@
-import {removeFromProviders, addToProviders, getProvider, getUser} from './actionCreators';
+import {removeFromProviders, addToProviders, getProvider, getUser, setLanguage} from './actionCreators';
 
 export const mapStateToProps = state => {
     return {
         providers: state.providers,
-        user: state.user
+        user: state.user,
+        language: state.language
     };
 }
 
@@ -20,6 +21,9 @@ export const mapDispatchToProps = dispatch => {
         },
         getuser() {
             dispatch(getUser())
-        }
+        },
+        setLanguage(language){
+            dispatch(setLanguage(language))
+        },
     }
 }

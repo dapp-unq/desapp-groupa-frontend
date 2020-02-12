@@ -14,6 +14,13 @@ const removeFromProviders = provider => {
     }
 }
 
+const setLanguage = language => {
+    return {
+        type: "SET_LANGUAGE",
+        language
+    }
+}
+
 const getUser = () => {
     return (dispatch) => {
         axios.get('http://localhost:8080/rest/user/beniteznahueloscar@gmail.com')
@@ -51,4 +58,4 @@ const getProvider = () => {
     }
 }
 
-export {removeFromProviders, addToProviders, getProvider, getUser};
+export {removeFromProviders, addToProviders, getProvider, getUser, setLanguage};

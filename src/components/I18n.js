@@ -9,6 +9,8 @@ const translations = {
   es: {
     userRegiter: 'Registro de usuario',
     headerTitle: 'Bienvenidos a Vianda Ya!',
+    headerRegister: 'Registrarse',
+    headerLogIn: 'Iniciar sesión',
     mainTitle : '¡Pedi YA tu delivery online!',
     mainSubtitle: 'Los proveedores de viandas mejor calificados para tu deleite.',
     mainMenuTitle: 'Nuestras viandas más pedidas',
@@ -19,10 +21,16 @@ const translations = {
     userPhone:'Teléfono:',
     userDirection:'Dirección y altura:',
     userCity:'Localidad:',
+    userChooseCity:'Elegir localidad...',
+    footerLanguage:'Idioma:',
+    footerLanguageSpanish:'Español',
+    footerLanguageEnglish:'Inglés',
   },
   en: {
     userRegiter: 'User register',
     headerTitle : 'Welcome to Vianda Ya!',
+    headerRegister: 'Register',
+    headerLogIn: 'Log In',
     mainTitle : 'Order your delivery online NOW!',
     mainSubtitle: 'The best rated restaurants for your delight',
     mainMenuTitle: 'Our most requested food',
@@ -33,6 +41,10 @@ const translations = {
     userPhone:'Phone:',
     userDirection:'Location:',
     userCity:'City:',
+    userChooseCity: 'Choose..',
+    footerLanguage:'Language:',
+    footerLanguageSpanish:'Spanish',
+    footerLanguageEnglish:'English',
   }
 }
 

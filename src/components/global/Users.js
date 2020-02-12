@@ -19,7 +19,6 @@ const Users = () => {
                     <Form.Label> <I18n t="userName"/> </Form.Label>
                     <Form.Control type="email" placeholder="Enter name" />
                     <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
                     </Form.Text>
                 </Form.Group>
 
@@ -40,7 +39,7 @@ const Users = () => {
                     <Form.Group controlId="formGridState">
                     <Form.Label><I18n t="userCity"/></Form.Label>
                     <Form.Control as="select">
-                        <option>Choose...</option>
+                        <option> <I18n t="userChooseCity"/> </option>
                         <option>...</option>
                     </Form.Control>
                     </Form.Group>
@@ -52,11 +51,11 @@ const Users = () => {
                 </Form.Row>
 
                 <Form.Group controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Label>Password</Form.Label>
+                        <Form.Control type="password" placeholder="Password" />
                 </Form.Group>
                 <Form.Group controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
+                    <Form.Check type="checkbox" label="Check me out" />
                 </Form.Group>
                 <Button variant="primary" type="submit">
                     Submit

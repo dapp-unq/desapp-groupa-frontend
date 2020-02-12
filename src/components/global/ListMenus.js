@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import { translate } from "react-translate";
 import './css/ListMenus.css';
 import { generate } from 'shortid';
 import 'bootstrap/dist/css/bootstrap.min.css';
