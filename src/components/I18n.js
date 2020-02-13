@@ -33,6 +33,15 @@ const translations = {
     footerLanguage:'Idioma:',
     footerLanguageSpanish:'Español',
     footerLanguageEnglish:'Inglés',
+    menuCantMin: 'Cantidad mínima',
+    provider: 'Proveedor',
+    menuMissingAmount:'Cantidad de ventas faltantes para llegar al próximo precio mínimo',
+    purchase:'Comprar',
+    orderAmount:'Cantidad',
+    typeDelivery: 'Forma de entrega',
+    dateDelivery: 'Fecha de entrega',
+    hourDelivery: 'Horario de entrega',
+    orderNow: 'Pedir ya!',
   },
   en: {
     userRegiter: 'User register',
@@ -61,6 +70,15 @@ const translations = {
     footerLanguage:'Language:',
     footerLanguageSpanish:'Spanish',
     footerLanguageEnglish:'English',
+    menuCantMin: 'Minimum amount',
+    provider: 'Provider',
+    menuMissingAmount:'Missing amount to reach the minimum',
+    purchase:'Purchase',
+    orderAmount:'Amount',
+    typeDelivery: 'Delivery method',
+    dateDelivery: 'Delivery date',
+    timeDelivery: 'Delivery time',
+    orderNow: 'Order now!',
   }
 }
 

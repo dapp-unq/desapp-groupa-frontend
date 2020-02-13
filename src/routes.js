@@ -11,6 +11,7 @@ import Users from './components/global/Users'
 import Main from './components/global/Main'
 import Search from './components/global/Search'
 import Menu from './components/global/Menu'
+import Order from './components/global/Order'
 
 import './components/I18n';
 
@@ -26,6 +27,7 @@ const AppRoutes = props => {
                 <Route exact path= {`${base}/main`} component = {Main}/>
                 <Route exact path={`${base}/searchMenus`} component = {Search}/>
                 <Route exact path= {`${base}/menuDescription`} component = {Menu}/>
+                <Route exact path= {`${base}/order`} component = {Order}/>
                 <Route component = {Page404} />
             </Switch>
         </App>
