@@ -11,6 +11,12 @@ const reducer = (state, action) => {
                 providers: state.providers.concat(action.provider)
             }
 
+        case "ADD_USER":
+            return {
+                ...state,
+                user: action.user
+            }
+
         case "REMOVE_FROM_PROVIDERS":
             return {
                 ...state,
@@ -54,4 +60,4 @@ const logger = store => next => action => {
     return result
 }
 
-export default createStore(reducer, {providers: [], user:[], language:"en", selectedMenu:undefined }, applyMiddleware(logger, thunk));
+export default createStore(reducer, {providers: [], user:'', language:"en", selectedMenu:undefined }, applyMiddleware(logger, thunk));

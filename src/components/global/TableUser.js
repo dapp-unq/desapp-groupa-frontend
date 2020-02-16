@@ -17,14 +17,12 @@ const ListUsers = props =>
                     </tr>
                 </thead>
                 <tbody>
-                    { props.user.map(user => 
                         <tr key={generate()}>
-                            <td>{user.name}</td>
-                            <td>{user.surname}</td>
-                            <td>{user.location}</td>
-                            <td>{user.phoneNumber}</td>
+                            <td>{props.user.name}</td>
+                            <td>{props.user.surname}</td>
+                            <td>{props.user.location}</td>
+                            <td>{props.user.phoneNumber}</td>
                         </tr>
-                    )}
                 </tbody>
             </table>
             </div>

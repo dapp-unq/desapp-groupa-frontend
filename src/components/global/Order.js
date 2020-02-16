@@ -1,5 +1,5 @@
 import React, {useState, useContext } from 'react' // <-- updated
-import { Image, ButtonToolbar, Form, Nav, Navbar, NavDropdown, Modal, Button, Container, Row, Col} from 'react-bootstrap';
+import { Image, ButtonToolbar, Form, View, Navbar, NavDropdown, Modal, Button, Container, Row, Col} from 'react-bootstrap';
 import { generate } from 'shortid';
 import { connect } from 'react-redux';
 
@@ -56,14 +56,12 @@ const MyVerticallyCenteredModal = props => {
         >
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">
-              Ya confirmamos su compra
+              <h2>Ya confirmamos su compra</h2>
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <h4>¡Gracias por su pedido!</h4>
-            <p>
-              Tiempo de entrega estimada: 30 min.
-            </p>
+            <p> Tiempo de entrega estimada: 30 min.</p>
             <p> Recuerde que puede revisar los detalles de su pedido en el historial de su cuenta.</p>
           </Modal.Body>
           <Modal.Footer>
@@ -78,7 +76,7 @@ const ButtonModal= () => {
     return (
       <ButtonToolbar>
         <Button variant="success" onClick={() => setModalShow(true)}>
-            <I18n t="orderNow"/> (modal)
+          <b><i><I18n t="orderNow"/></i></b>
         </Button>
   
         <MyVerticallyCenteredModal

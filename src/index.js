@@ -14,7 +14,7 @@ import AppRoutes from './routes'
 
 // DESCOMENTAR ESTA LINEA CUANDO QUIERA QUE AL INICIAR LA PAGINA YA ME CARGUE LOS PROVEEDORES
 store.dispatch (getProvider());
-store.dispatch (getUser());
+//store.dispatch (getUser());
 
 ReactDOM.render(
     <Provider store={store}>

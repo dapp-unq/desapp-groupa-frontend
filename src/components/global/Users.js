@@ -1,23 +1,43 @@
 import React, {useState, useContext } from 'react' // <-- updated
 import {Route,Switch} from 'react-router-dom'
+import { Link, NavLink, Redirect } from 'react-router-i18n';
 import { Auth0Context } from '../../contexts/auth0-context'; // <-- new
 import {Form, Button } from 'react-bootstrap';
+import { connect } from 'react-redux';
 
 import I18n from '../I18n'
 import './css/Users.css'
+import { mapStateToProps, mapDispatchToProps} from '../../mapMethods';
 
-const Users = () => {
+const Users = props => {
     const auth0 = useContext(Auth0Context); // <-- new
-    
+    const newUser = {
+        name: '',
+        surname:'',
+        //email:'',
+        //phoneNumber:'',
+        //location: '',
+    };
+
+    const updateName = event => {
+        newUser.name = event.target.value
+    };
     return (
         <div className= 'Users'>
             <h1> 
                 <I18n t="userRegiter" /> 
             </h1>
             <Form>
-                <Form.Group controlId="formBasicEmail">
+                    <Form.Group controlId="formBasicEmail">
                     <Form.Label> <I18n t="userName"/> </Form.Label>
-                    <Form.Control type="email" placeholder="Enter name" />
+                    <Form.Control type="text" placeholder= "First name" />
+                    <Form.Text className="text-muted" value={newUser.name} onChange={updateName.bind(this)}>
+                    </Form.Text>
+                </Form.Group>
+
+                <Form.Group controlId="formBasicEmail">
+                    <Form.Label> <I18n t="userSurname"/> </Form.Label>
+                    <Form.Control type="text" placeholder="Last name" />
                     <Form.Text className="text-muted">
                     </Form.Text>
                 </Form.Group>
@@ -57,8 +77,8 @@ const Users = () => {
                 <Form.Group controlId="formBasicCheckbox">
                     <Form.Check type="checkbox" label="Check me out" />
                 </Form.Group>
-                <Button variant="primary" type="submit">
-                    Submit
+                <Button variant="primary" type="submit" onClick={props.addUser(newUser)}>
+                    <Link to='login'> Sign in </Link>
                 </Button>
             </Form>
             <p>
@@ -71,4 +91,4 @@ const Users = () => {
     );
 }
 
-export default Users
+export default connect(mapStateToProps, mapDispatchToProps) (Users);

@@ -6,7 +6,6 @@ const addToProviders = provider => {
 		provider
     }
 }
-
 const removeFromProviders = provider => {
     return {
         type: "REMOVE_FROM_PROVIDERS",
@@ -28,13 +27,20 @@ const setLanguage = language => {
     }
 }
 
+const addUser = user => {
+    return {
+		type: "ADD_USER",
+		user
+    }
+}
+
 const getUser = () => {
     return (dispatch) => {
         axios.get('http://localhost:8080/rest/user/beniteznahueloscar@gmail.com')
         .then(response =>{
             dispatch({
                 type: "GET_USER",
-                user: [response.data]
+                user: /*[response.data]*/ response.data
             })
         })
     }
@@ -65,4 +71,4 @@ const getProvider = () => {
     }
 }
 
-export {removeFromProviders, addToProviders, getProvider, getUser, setLanguage, selectMenu};
+export {removeFromProviders, addToProviders, getProvider, addUser, getUser, setLanguage, selectMenu};
