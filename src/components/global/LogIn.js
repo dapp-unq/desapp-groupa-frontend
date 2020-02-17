@@ -15,8 +15,8 @@ const LogIn = props => {
         <div className= 'LogIn'>
             <h1> <I18n t="logInHello"/> </h1>
             <h2> {props.user.surname}, {props.user.name} </h2>
-            <h3> {props.user.email} </h3>
-            <h3> {props.user.phoneNumber} </h3>
+            <h4> {props.user.email} </h4>
+            <h4> {props.user.phoneNumber} </h4>
             <hr/>
             <h3> <I18n t="logInOrderHistory"/>: </h3>
             <hr/>

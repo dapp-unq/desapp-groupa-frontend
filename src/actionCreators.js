@@ -21,14 +21,15 @@ const selectMenu = menu => {
 }
 
 const addUser = user => {
-    return (dispatch) => {
-        axios.post('http://localhost:8080/rest/user', user)
-        .then(response => {
-            console.log(response.status) // 201 si es correcto
-            dispatch({
-                type: "ADD_USER",
-                user
-            })
+    console.log("JSON enviado:")
+    console.log(user)
+    return async (dispatch) => {
+        const res = axios.post('http://localhost:8080/rest/user', user)
+        const responseData = res.data;
+        // const responseStatus = res.status;// 201 si es correcto
+        dispatch({
+            type: "ADD_USER",
+            user
         })
     }
 }
