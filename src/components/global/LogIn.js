@@ -24,11 +24,11 @@ const LogIn = props => {
             <div>
                {props.user.orderHistory && props.user.orderHistory.map(order => (
                 <ListGroup className="my-2" key={generate()}>
-                    <p><I18n t="logInOrderMenu"/>: order.menu.name </p>
-                    <p><I18n t="logInOrderDateAndHour"/>: order.orderDateAndHour</p>
-                    <p><I18n t="logInOrderStatus"/>: order.status</p>
-                    <p><I18n t="searchRank"/>: order.ranking</p>
-                    <p><I18n t="searchPrice"/>: order.value</p>
+                    <p><I18n t="logInOrderMenu"/>: {order.menu.name} </p>
+                    <p><I18n t="logInOrderDateAndHour"/>: {order.orderDateAndHour}</p>
+                    <p><I18n t="logInOrderStatus"/>: {order.status}</p>
+                    <p><I18n t="searchRank"/>: {order.ranking}</p>
+                    <p><I18n t="searchPrice"/>: {order.value}</p>
                 </ListGroup>
                 ))}
             </div>

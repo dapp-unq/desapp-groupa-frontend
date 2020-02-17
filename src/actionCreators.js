@@ -33,29 +33,32 @@ const addUser = user => {
     }
 }
 
-const getUser = async email => {
-    console.log(email)
-    return (dispatch) => {
-        await axios.get('http://localhost:8080/rest/user/'+ email) // beniteznahueloscar@gmail.com
-        .then(response =>{
-            console.log(response.data)
-            dispatch({
-                type: "GET_USER",
-                user: /*[response.data]*/ response.data
-            })
-        })
+const getUser = email => {
+    return async (dispatch) => {
+        const res = await axios.get('http://localhost:8080/rest/user/'+ email) // beniteznahueloscar@gmail.com
+        const responseData = res.data;
+        dispatch({
+            type: "GET_USER",
+            user: /*[response.data]*/ responseData
+        });
+
+        // .then(response =>{
+        //     console.log(response.data)
+        //     dispatch({
+        //         type: "GET_USER",
+        //         user: /*[response.data]*/ response.data
+        //     })
+        // })
     }
 }
 
 const getProvider = () => {
-    return (dispatch) => {
-        
-        axios.get('http://localhost:8080/rest/provider/liza.chambi@gmail.com')
-        .then(response =>{
-            dispatch({
-                type: "GET_PROVIDER",
-                provider: [response.data]
-            })
+    return async (dispatch) => {
+        const res = await axios.get('http://localhost:8080/rest/provider/liza.chambi@gmail.com')
+        const responseData = res.data
+        dispatch({
+            type: "GET_PROVIDER",
+                provider: [responseData]
         })
         // fetch('http://viandasya-c1a.herokuapp.com/rest/provider/sarasa@gmail.com',
         //     {

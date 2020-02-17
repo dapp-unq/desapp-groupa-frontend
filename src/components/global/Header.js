@@ -16,7 +16,7 @@ const Header = props => {
     <div className="Header">
       <div className="Register">
         <ul>
-          <li key= {generate()}> <Link to='users'> <I18n t="headerRegister" />  </Link></li> 
+          <li key= {generate()}> <Link to='users'> <I18n t="headerRegister"/></Link></li> 
           <li> | </li> 
           <li key= {generate()}> <ResponsiveDialog/> </li>
         </ul>

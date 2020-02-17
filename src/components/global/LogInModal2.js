@@ -42,8 +42,8 @@ const ResponsiveDialog = props => {
 
     return (
         <div>
-        <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-            Open responsive dialog
+        <Button variant="link" onClick={handleClickOpen}>
+            <I18n t="headerLogIn"/>
         </Button>
         <Dialog
             fullScreen={fullScreen}
