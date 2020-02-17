@@ -15,7 +15,7 @@ const Header = props => {
         <ul>
           <li key= {generate()}> <Link to='users'> <I18n t="headerRegister" />  </Link></li> 
           <li> | </li> 
-          <li key= {generate()}> <Link to='users'> <I18n t="headerLogIn" /> </Link></li>
+          <li key= {generate()}> <Link to='login'> <I18n t="headerLogIn" /> </Link></li>
         </ul>
       </div> 
       <header className="Logo">

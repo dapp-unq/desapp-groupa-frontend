@@ -12,16 +12,38 @@ import { mapStateToProps, mapDispatchToProps} from '../../mapMethods';
 const Users = props => {
     const auth0 = useContext(Auth0Context); // <-- new
     const newUser = {
-        name: '',
-        surname:'',
-        //email:'',
-        //phoneNumber:'',
-        //location: '',
+        name: "",
+        surname:"",
+        email:"",
+        phoneNumber:"",
+        location: "Quilmes Oeste"
+    };
+
+    const updateLocation = event => {
+        newUser.location = event.target.value
+    };
+
+    const updatePhone = event => {
+        newUser.phoneNumber = event.target.value
+    };
+
+    const updateEmail = event => {
+        newUser.email = event.target.value
     };
 
     const updateName = event => {
         newUser.name = event.target.value
     };
+
+    const updateSurname = event => {
+        newUser.surname = event.target.value
+    };
+
+    const register= () => {
+        props.addUser(newUser)
+        props.getUser(newUser.email)
+    };
+
     return (
         <div className= 'Users'>
             <h1> 
@@ -30,21 +52,21 @@ const Users = props => {
             <Form>
                     <Form.Group controlId="formBasicEmail">
                     <Form.Label> <I18n t="userName"/> </Form.Label>
-                    <Form.Control type="text" placeholder= "First name" />
-                    <Form.Text className="text-muted" value={newUser.name} onChange={updateName.bind(this)}>
+                    <Form.Control type="text" placeholder= "First name" onChange={updateName.bind(this)}/>
+                    <Form.Text className="text-muted" >
                     </Form.Text>
                 </Form.Group>
 
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label> <I18n t="userSurname"/> </Form.Label>
-                    <Form.Control type="text" placeholder="Last name" />
+                    <Form.Control type="text" placeholder="Last name" onChange={updateSurname.bind(this)}/>
                     <Form.Text className="text-muted">
                     </Form.Text>
                 </Form.Group>
 
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Control type="email" placeholder="Enter email" onChange={updateEmail.bind(this)}/>
                     <Form.Text className="text-muted">
                         We'll never share your email with anyone else.
                     </Form.Text>
@@ -52,7 +74,7 @@ const Users = props => {
 
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label><I18n t="userPhone"/></Form.Label>
-                    <Form.Control type="email" placeholder="Enter phone" />
+                    <Form.Control type="email" placeholder="Enter phone" onChange={updatePhone.bind(this)}/>
                 </Form.Group>
 
                 <Form.Row>
@@ -77,7 +99,7 @@ const Users = props => {
                 <Form.Group controlId="formBasicCheckbox">
                     <Form.Check type="checkbox" label="Check me out" />
                 </Form.Group>
-                <Button variant="primary" type="submit" onClick={props.addUser(newUser)}>
+                <Button variant="primary" type="submit" onClick={() => register()}>
                     <Link to='login'> Sign in </Link>
                 </Button>
             </Form>

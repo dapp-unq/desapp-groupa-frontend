@@ -20,23 +20,23 @@ const selectMenu = menu => {
     }
 }
 
-const setLanguage = language => {
-    return {
-        type: "SET_LANGUAGE",
-        language
-    }
-}
-
 const addUser = user => {
-    return {
-		type: "ADD_USER",
-		user
+    return (dispatch) => {
+        axios.post('http://localhost:8080/rest/user', user)
+        .then(response => {
+            console.log(response)
+            console.log(response.status) // 201 si es correcto
+            dispatch({
+                type: "ADD_USER",
+                user
+            })
+        })
     }
 }
 
-const getUser = () => {
+const getUser = email => {
     return (dispatch) => {
-        axios.get('http://localhost:8080/rest/user/beniteznahueloscar@gmail.com')
+        axios.get('http://localhost:8080/rest/user/', email) // beniteznahueloscar@gmail.com
         .then(response =>{
             dispatch({
                 type: "GET_USER",
@@ -71,4 +71,4 @@ const getProvider = () => {
     }
 }
 
-export {removeFromProviders, addToProviders, getProvider, addUser, getUser, setLanguage, selectMenu};
+export {removeFromProviders, addToProviders, getProvider, addUser, getUser, selectMenu};
