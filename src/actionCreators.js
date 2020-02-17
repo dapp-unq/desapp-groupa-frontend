@@ -24,7 +24,6 @@ const addUser = user => {
     return (dispatch) => {
         axios.post('http://localhost:8080/rest/user', user)
         .then(response => {
-            console.log(response)
             console.log(response.status) // 201 si es correcto
             dispatch({
                 type: "ADD_USER",
@@ -34,10 +33,12 @@ const addUser = user => {
     }
 }
 
-const getUser = email => {
+const getUser = async email => {
+    console.log(email)
     return (dispatch) => {
-        axios.get('http://localhost:8080/rest/user/', email) // beniteznahueloscar@gmail.com
+        await axios.get('http://localhost:8080/rest/user/'+ email) // beniteznahueloscar@gmail.com
         .then(response =>{
+            console.log(response.data)
             dispatch({
                 type: "GET_USER",
                 user: /*[response.data]*/ response.data

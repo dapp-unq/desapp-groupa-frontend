@@ -47,17 +47,17 @@ const Users = props => {
     return (
         <div className= 'Users'>
             <h1> 
-                <I18n t="userRegiter" /> 
+                <I18n t="userRegiter"/> 
             </h1>
             <Form>
-                    <Form.Group controlId="formBasicEmail">
+                <Form.Group controlId="formBasicName">
                     <Form.Label> <I18n t="userName"/> </Form.Label>
                     <Form.Control type="text" placeholder= "First name" onChange={updateName.bind(this)}/>
                     <Form.Text className="text-muted" >
                     </Form.Text>
                 </Form.Group>
 
-                <Form.Group controlId="formBasicEmail">
+                <Form.Group controlId="formBasicSurname">
                     <Form.Label> <I18n t="userSurname"/> </Form.Label>
                     <Form.Control type="text" placeholder="Last name" onChange={updateSurname.bind(this)}/>
                     <Form.Text className="text-muted">
@@ -68,11 +68,11 @@ const Users = props => {
                     <Form.Label>Email</Form.Label>
                     <Form.Control type="email" placeholder="Enter email" onChange={updateEmail.bind(this)}/>
                     <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
+                        <I18n t="userEmailNotification"/>
                     </Form.Text>
                 </Form.Group>
 
-                <Form.Group controlId="formBasicEmail">
+                <Form.Group controlId="formBasicPhone">
                     <Form.Label><I18n t="userPhone"/></Form.Label>
                     <Form.Control type="email" placeholder="Enter phone" onChange={updatePhone.bind(this)}/>
                 </Form.Group>

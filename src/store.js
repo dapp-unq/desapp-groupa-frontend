@@ -17,6 +17,12 @@ const reducer = (state, action) => {
                 user: action.user
             }
 
+        case "GET_USER":
+            return {
+                ...state,
+                user: action.user
+            }
+
         case "REMOVE_FROM_PROVIDERS":
             return {
                 ...state,
