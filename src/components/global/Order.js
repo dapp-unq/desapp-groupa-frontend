@@ -2,13 +2,31 @@ import React, {useState, useContext } from 'react' // <-- updated
 import { Image, ButtonToolbar, Form, View, Navbar, NavDropdown, Modal, Button, Container, Row, Col} from 'react-bootstrap';
 import { generate } from 'shortid';
 import { connect } from 'react-redux';
+import 'date-fns';
+import Grid from '@material-ui/core/Grid';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
 
 import { mapStateToProps, mapDispatchToProps} from '../../mapMethods';
 import I18n from '../I18n'
 import './css/Order.css'
 
 const Order = props => {
-    
+  const [selectedDate, updateDate] = React.useState(new Date());
+  const [selectedHour, updateHour] = React.useState(new Date());
+
+  const handleDateChange = date => {
+    updateDate(date);
+  };
+
+  const handleHourChange = hour => {
+    updateHour(hour);
+  };
+
     return (
         <div className= 'Order'>
             <h1>Página de pedido: </h1>
@@ -37,8 +55,30 @@ const Order = props => {
                 </Form>
                 <p> <I18n t="orderAmount"/>: (Agregar selector numerico) </p>
                 <p> <I18n t="typeDelivery"/>: (Agregar selector ) </p>
-                <p> <I18n t="dateDelivery"/>: (Agregar selector calendario) </p>
-                <p> <I18n t="hourDelivery"/>: (Agregar selector horario) </p>
+                <p> <I18n t="dateDelivery"/>: </p> 
+                <p>  <KeyboardDatePicker
+                      margin="normal"
+                      id="date-picker-dialog"
+                      format="MM/dd/yyyy"
+                      value={selectedDate}
+                      onChange={handleDateChange}
+                      KeyboardButtonProps={{
+                        'aria-label': 'change date',
+                      }}
+                    />
+                </p>
+                <p> <I18n t="hourDelivery"/>: </p>
+                <p> <Grid container>
+                <KeyboardTimePicker
+                      margin="normal"
+                      id="time-picker"
+                      value={selectedHour}
+                      onChange={handleHourChange}
+                      KeyboardButtonProps={{
+                        'aria-label': 'change time',
+                      }}
+                    />
+                  </Grid></p>
                 
                 <button variant="success"> <b><i> <I18n t="orderNow"/> </i></b> </button>
                 <ButtonModal/>

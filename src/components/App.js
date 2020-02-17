@@ -2,6 +2,8 @@ import React from 'react'
 import { TranslatorProvider } from "react-translate"
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
+import {MuiPickersUtilsProvider} from '@material-ui/pickers'
+import DateFnsUtils from '@date-io/date-fns';
 
 // Components
 import './global/css/App.css'
@@ -15,7 +17,7 @@ let url  = window.location.href;
 
 function getLayout(lang, child){
 
-  return (<TranslatorProvider translations={require('../i18n/'+lang+'.json')}>
+  return (<MuiPickersUtilsProvider utils={DateFnsUtils}> <TranslatorProvider translations={require('../i18n/'+lang+'.json')}>
       <div>          
         <div className="App">
           <Header welcome="main-title"/>
@@ -32,7 +34,7 @@ function getLayout(lang, child){
           <Footer />
         </div>
       </div>
-  </TranslatorProvider>)
+  </TranslatorProvider> </MuiPickersUtilsProvider>)
 }
 
 
