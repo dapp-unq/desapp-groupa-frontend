@@ -6,7 +6,6 @@ const addToProviders = provider => {
 		provider
     }
 }
-
 const removeFromProviders = provider => {
     return {
         type: "REMOVE_FROM_PROVIDERS",
@@ -14,27 +13,64 @@ const removeFromProviders = provider => {
     }
 }
 
-const getUser = () => {
-    return (dispatch) => {
-        axios.get('http://localhost:8080/rest/user/beniteznahueloscar@gmail.com')
-        .then(response =>{
-            dispatch({
-                type: "GET_USER",
-                user: [response.data]
-            })
+const selectMenu = menu => {
+     return {
+        type:"SELECT_MENU",
+        selectedMenu: menu
+    }
+}
+
+const addUser = user => {
+    console.log("JSON enviado:")
+    console.log(user)
+    return async (dispatch) => {
+        const res = await axios.post('http://viandasya-c1a.herokuapp.com/rest/user', user)
+        const responseData = res.data;
+        // const responseStatus = res.status;// 201 si es correcto
+        dispatch({
+            type: "ADD_USER",
+            user
         })
     }
 }
 
-const getProvider = () => {
-    return (dispatch) => {
-        
-        axios.get('http://localhost:8080/rest/provider/sarasa@gmail.com')
-        .then(response =>{
-            dispatch({
-                type: "GET_PROVIDER",
-                provider: [response.data]
-            })
+const getMenus = () => {
+    return async (dispatch) => {
+        const res = await axios.get('http://viandasya-c1a.herokuapp.com/rest/menu/rank?minRank=0&maxRank=5')
+        const responseData = res.data;
+        dispatch({
+            type: "GET_MENUS",
+            menus: responseData
+        });
+    }
+}
+
+const getUser = email => {
+    return async (dispatch) => {
+        const res = await axios.get('http://viandasya-c1a.herokuapp.com/rest/user/'+ email) // beniteznahueloscar@gmail.com
+        const responseData = res.data;
+        dispatch({
+            type: "GET_USER",
+            user: /*[response.data]*/ responseData
+        });
+
+        // .then(response =>{
+        //     console.log(response.data)
+        //     dispatch({
+        //         type: "GET_USER",
+        //         user: /*[response.data]*/ response.data
+        //     })
+        // })
+    }
+}
+
+const getProvider = email => {
+    return async (dispatch) => {
+        const res = await axios.get('http://viandasya-c1a.herokuapp.com/rest/provider/'+email)
+        const responseData = res.data
+        dispatch({
+            type: "GET_PROVIDER",
+            provider: responseData
         })
         // fetch('http://viandasya-c1a.herokuapp.com/rest/provider/sarasa@gmail.com',
         //     {
@@ -51,4 +87,4 @@ const getProvider = () => {
     }
 }
 
-export {removeFromProviders, addToProviders, getProvider, getUser};
+export {removeFromProviders, addToProviders, getProvider, addUser, getUser, selectMenu, getMenus};

@@ -1,8 +1,7 @@
 import React from 'react';
 import './css/TableMenus.css';
 import { generate } from 'shortid';
-
-import Datos from './Content'
+import { mapStateToProps, mapDispatchToProps} from '../../mapMethods';
 
 const TableHeader = () => 
 {

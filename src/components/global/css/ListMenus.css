@@ -1,0 +1,23 @@
+.CardsMenu {
+    display: flex;
+    flex-direction: unset;
+    flex-wrap: wrap;
+    padding: 0.5;
+}
+
+.CardsMenu a {
+    color: #343a40;
+}
+
+.Card
+{
+    margin-inline-end: 0.5%;
+    margin-inline-start: 0.5%; 
+    margin-block-end: 0.5%; 
+    margin-block-start: 0.5%;
+}
+
+.Card img
+{
+   padding: 5%;
+}

@@ -11,6 +11,18 @@ const reducer = (state, action) => {
                 providers: state.providers.concat(action.provider)
             }
 
+        case "ADD_USER":
+            return {
+                ...state,
+                user: action.user
+            }
+
+        case "GET_USER":
+            return {
+                ...state,
+                user: action.user
+            }
+
         case "REMOVE_FROM_PROVIDERS":
             return {
                 ...state,
@@ -20,14 +32,20 @@ const reducer = (state, action) => {
         case "GET_PROVIDER":
             return {
                 ...state,
-                providers: action.provider
+                provider: action.provider
             }
 
-        case "GET_USER":
+        case "GET_MENUS":
             return {
                 ...state,
-                user: action.user
+                menus: action.menus
             }
+
+        case "SELECT_MENU":
+        return {
+            ...state,
+            selectedMenu: action.selectedMenu
+        }
 
         default: 
             return state
@@ -42,4 +60,4 @@ const logger = store => next => action => {
     return result
 }
 
-export default createStore(reducer, {providers: [], user:[]}, applyMiddleware(logger, thunk));
+export default createStore(reducer, {provider: "", menus:[], user:'', selectedMenu:"" }, applyMiddleware(logger, thunk));
