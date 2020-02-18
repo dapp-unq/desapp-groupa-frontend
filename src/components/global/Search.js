@@ -162,7 +162,7 @@ const Search = props => {
     const [maxRank, updateMaxRank] = React.useState("");
     const [menusToShow, updateMenusToShow] = React.useState(props.menus);
 
-    const filterByName = (menu) => searchName === "" || menu.name.toLowerCase().includes(searchName.toLowerCase())
+    const filterByName = (menu) => menu.name.toLowerCase().includes(searchName.toLowerCase())
     const filterByCategory = (menu) => category === "" || menu.category.includes(category.toUpperCase())
     const filterByCity = (menu) => city === "" || menu.location === city.toUpperCase()
     const filterByMinRank = (menu) => minRank === "" || menu.ranking >= Number(minRank)
@@ -190,7 +190,7 @@ const Search = props => {
                 </Nav>
                     <Form inline>
                         <FormControl type="text" placeholder="Search" className="mr-sm-2" value={searchName} onChange={(event) => updateSearchName(event.target.value)}/>
-                        <Button variant="outline-success" onClick={() => updateMenusToShow(menusToShow.filter(filterByName))}>Search</Button>
+                        <Button variant="outline-success" onClick={() => updateMenusToShow(searchName === ""? filter(props.menus):filter(props.menus.filter(filterByName)))}>Search</Button>
                     </Form>
                 </Navbar.Collapse>
             </Navbar>
@@ -266,14 +266,14 @@ const Search = props => {
                                     </MaterialFormControl>
                                 </ul>
                                 <hr/>
-                                <Button variant="dark" type="submit" onClick={() => {updateMenusToShow(filter(menues))}}>
+                                <Button variant="dark" type="submit" onClick={() => {updateMenusToShow(filter(props.menus.filter(filterByName)))}}>
                                     <I18n t="filter"/>
                                 </Button>
                             </div> 
                         </Col>
                         <Col sm={10}> 
                             <h3> <I18n t="searchTitle" /> </h3>
-                            <ListMenus menues={menusToShow}/>
+                            <ListMenus menues={menusToShow} selectMenu={props.selectMenu}/>
                         </Col>
                     </Row>
                 </Container>

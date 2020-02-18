@@ -59,7 +59,7 @@ const MenuCards = props => {
                         <Card.Body style={{ padding: '0.7rem' }}>
                             <Card.Title>{menu.name}</Card.Title>
                             <Card.Text> {menu.description}</Card.Text>
-                            <Button variant="warning" onClick={() => props.selectMenu(menu)}> <Link to='/menuDescription'> Ver menú </Link></Button>
+                            <Button variant="warning" onClick={() => props.selectMenu(menu)}> <Link to='menuDescription'> Ver menú </Link></Button>
                         </Card.Body>
                     </Card>)
                 }
