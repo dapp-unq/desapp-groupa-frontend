@@ -4,8 +4,11 @@ import { Auth0Context } from '../../contexts/auth0-context'; // <-- new
 import MenuCards from './ListMenus';
 import I18n from '../I18n'
 import './css/Main.css'
+import { datePickerDefaultProps } from '@material-ui/pickers/constants/prop-types';
+import { connect } from 'react-redux';
+import { mapStateToProps, mapDispatchToProps } from '../../mapMethods';
 
-const Main = () => {
+const Main = props => {
     return (
     <div>
         <div className= 'Main'>
@@ -16,10 +19,10 @@ const Main = () => {
 			<h2> <I18n t="mainMenuTitle" /> </h2>
 		</div>
         <div className= 'Main'>
-            <MenuCards/>
+            <MenuCards menues = {props.menus}/>
         </div>
     </div>
     )
 }
 
-export default Main;
+export default connect(mapStateToProps, mapDispatchToProps) (Main);

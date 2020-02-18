@@ -23,7 +23,7 @@ const AppRoutes = props => {
     <Auth0Provider>
         <App>
             <Switch>
-                <Route exact path={base} component = {Content} />
+                <Route exact path={base} component = {Main} />
                 <Route exact path={`${base}/users`} component = {Users} />
                 <Route exact path={`${base}/login`} component = {LogIn} />
                 <Route exact path= {`${base}/main`} component = {Main}/>

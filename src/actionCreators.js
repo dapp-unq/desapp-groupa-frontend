@@ -34,6 +34,17 @@ const addUser = user => {
     }
 }
 
+const getMenus = () => {
+    return async (dispatch) => {
+        const res = await axios.get('http://localhost:8080/rest/menu/rank?minRank=0&maxRank=5')
+        const responseData = res.data;
+        dispatch({
+            type: "GET_MENUS",
+            menus: responseData
+        });
+    }
+}
+
 const getUser = email => {
     return async (dispatch) => {
         const res = await axios.get('http://localhost:8080/rest/user/'+ email) // beniteznahueloscar@gmail.com
@@ -76,4 +87,4 @@ const getProvider = () => {
     }
 }
 
-export {removeFromProviders, addToProviders, getProvider, addUser, getUser, selectMenu};
+export {removeFromProviders, addToProviders, getProvider, addUser, getUser, selectMenu, getMenus};

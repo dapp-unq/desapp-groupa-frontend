@@ -129,7 +129,7 @@ const Content = props => {
 		<div className="Content">
       		<h1> {t(props.header)} </h1>
       		<p> {t(props.description)}</p>
-			<MenuCards/>
+			<MenuCards menues= {props.menus}/>
 		</div>
 
 			<div className= "TituloFondo">

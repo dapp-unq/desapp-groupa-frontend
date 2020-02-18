@@ -35,6 +35,12 @@ const reducer = (state, action) => {
                 providers: action.provider
             }
 
+        case "GET_MENUS":
+            return {
+                ...state,
+                menus: action.menus
+            }
+
         case "SELECT_MENU":
         return {
             ...state,
@@ -54,4 +60,4 @@ const logger = store => next => action => {
     return result
 }
 
-export default createStore(reducer, {providers: [], user:'', selectedMenu:undefined }, applyMiddleware(logger, thunk));
+export default createStore(reducer, {providers: [], menus:[], user:'', selectedMenu:undefined }, applyMiddleware(logger, thunk));

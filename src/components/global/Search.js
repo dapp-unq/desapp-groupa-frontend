@@ -8,6 +8,8 @@ import I18n from '../I18n';
 import './css/Search.css';
 import ListMenus from './ListMenus';
 import MaterialFormControl from '@material-ui/core/FormControl';
+import { connect } from 'react-redux';
+import { mapStateToProps, mapDispatchToProps } from '../../mapMethods';
 
 const menues = [
     {
@@ -150,7 +152,7 @@ const menues = [
     }
 ]
 
-const Search = () => {
+const Search = props => {
     const [category, updateCategory] = React.useState("");
     const [searchName, updateSearchName] = React.useState("");
     const [city, updateCity] = React.useState("");
@@ -158,7 +160,7 @@ const Search = () => {
     const [maxPrice, updateMaxPrice] = React.useState("");
     const [minRank, updateMinRank] = React.useState("");
     const [maxRank, updateMaxRank] = React.useState("");
-    const [menusToShow, updateMenusToShow] = React.useState(menues);
+    const [menusToShow, updateMenusToShow] = React.useState(props.menus);
 
     const filterByName = (menu) => searchName === "" || menu.name.toLowerCase().includes(searchName.toLowerCase())
     const filterByCategory = (menu) => category === "" || menu.category.includes(category.toUpperCase())
@@ -280,4 +282,4 @@ const Search = () => {
     );
 }
 
-export default Search;
+export default connect(mapStateToProps, mapDispatchToProps) (Search);

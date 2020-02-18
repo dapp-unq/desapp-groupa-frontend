@@ -43,26 +43,6 @@ const MenuCards = props => {
     // const maxRank = "5"
     // const minPrice = "65"
     // const maxPrice = "100"
-    
-    // const filterByCategory = (menu) => category === "" || menu.category.includes(category.toUpperCase())
-    // const filterByCity = (menu) => city === "" || menu.location === city.toUpperCase()
-    // const filterByMinRank = (menu) => minRank === "" || menu.ranking >= Number(minRank)
-    // const filterByMaxRank = (menu) => maxRank === "" || menu.ranking <= Number(maxRank)
-    // const filterByMinPrice = (menu) => minPrice === "" || menu.price >= Number(minPrice)
-    // const filterByMaxPrice = (menu) => maxPrice === "" || menu.price <= Number(maxPrice)
-
-    // //estado de los menues
-    // const filterMenues = (menues) => 
-    //     menues
-    //         .filter(filterByCategory)
-    //         .filter(filterByCity)
-    //         .filter(filterByMinRank)
-    //         .filter(filterByMaxRank)
-    //         .filter(filterByMinPrice)
-    //         .filter(filterByMaxPrice)
-
-    // const notFilterMenues = (menues) => menues
-
     // Estados de la paginacion.
     const elementsPerPage = 20;
     const pageCount = Math.ceil(props.menues.length/elementsPerPage);
@@ -93,4 +73,4 @@ const MenuCards = props => {
 }
 
 //export default translate('div')(MenuCards); 
-export default connect(mapStateToProps, mapDispatchToProps)(MenuCards);
+export default MenuCards;
