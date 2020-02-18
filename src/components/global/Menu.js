@@ -9,7 +9,6 @@ import I18n from '../I18n'
 import './css/Menu.css'
 
 const Menu = props => {
-    
     return (
         <div className= 'Menu'>
             <h1>Página del menú: </h1>
@@ -24,10 +23,10 @@ const Menu = props => {
                             <p> {props.selectedMenu.description} </p>
                             <p> <I18n t="menuCantMin"/>1: {props.selectedMenu.offer1.quantity} <I18n t="searchPrice"/>: {props.selectedMenu.offer1.price} </p>
                             <p> <I18n t="menuCantMin"/>2: {props.selectedMenu.offer2.quantity} <I18n t="searchPrice"/>: {props.selectedMenu.offer2.price} </p>
-                            <p> <I18n t="searchRank"/>: Falta mostrar rank del menú </p>
-                            <p> <I18n t="userDirection"/>: Falta mostrar dirección del proveedor </p>
-                            <p> <I18n t="provider"/>: Falta mostrar nombre del proveedor </p>
-                            <p> <I18n t="menuMissingAmount"/>: Falta la cantidad necesaria para el próximo precio mínimo.</p>
+                            <p> <I18n t="searchRank"/>: 0 </p>
+                            <p> <I18n t="userDirection"/>: {props.provider.city + ', ' + props.provider.location} </p>
+                            <p> <I18n t="provider"/>: {props.provider.name} </p>
+                            {/* <p> <I18n t="menuMissingAmount"/>: Falta la cantidad necesaria para el próximo precio mínimo.</p> */}
                         </Col>
                     </Row>
                 </Container>

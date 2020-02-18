@@ -2,7 +2,7 @@ import {removeFromProviders, addToProviders, getProvider, getUser, selectMenu, g
 
 export const mapStateToProps = state => {
     return {
-        providers: state.providers,
+        provider: state.provider,
         user: state.user,
         menus: state.menus,
         selectedMenu: state.selectedMenu,
@@ -17,8 +17,8 @@ export const mapDispatchToProps = dispatch => {
         addToProviders(provider) {
             dispatch (addToProviders(provider))
         },
-        getProvider() {
-            dispatch (getProvider())
+        getProvider(email) {
+            dispatch (getProvider(email))
         },
         addUser(user) {
             dispatch(addUser(user))

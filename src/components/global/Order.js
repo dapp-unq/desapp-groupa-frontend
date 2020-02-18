@@ -14,10 +14,23 @@ import './css/Order.css';
 
 const Order = props => {
 
-  const [selectedDate, updateDate] = React.useState(new Date());
-  const [selectedHour, updateHour] = React.useState(new Date());
+  const [selectedDateOrder, updateDateOrder] = React.useState(new Date());
+  const [selectedHourOrder, updateHourOrder] = React.useState(new Date());
+  const [selectedDateDelivery, updateDateDelivery] = React.useState(new Date());
+  const [selectedHourDelivery, updateHourDelivery] = React.useState(new Date());
   const [selectedAmount, updateAmount] = React.useState(1);
   const [selectedDeliveryMethod, updateDeliveryMethod] = React.useState('');
+
+  const newOrder = {
+    "user":props.user.email,
+    "order":{
+      "menu":{
+        "name":props.selectedMenu.name,
+        "providerEmail":'FALTA ESTE DATO',
+      },
+    "deliveryDateAndHour":selectedDateDelivery+ " "+selectedHourDelivery,
+    }
+  }
   
     return (
         <div className= 'Order'>
@@ -42,7 +55,7 @@ const Order = props => {
                   <TextField
                     id="standard-number"
                     value={selectedAmount}
-                    onChange={(event) => updateAmount(event.target.value > 0? event.target.value : 0)}
+                    onChange={(event) => updateAmount(event.target.value > 0? event.target.value : 1)}
                     type="number"
                     InputLabelProps={{ shrink: true,}}
                   /> 
@@ -60,13 +73,38 @@ const Order = props => {
                     </NativeSelect>
                   </FormControl>
                 </p>
+                <p> <I18n t="dateOrder"/>:</p>
+                <p>  <KeyboardDatePicker
+                      margin="normal"
+                      id="dateOrder-picker-dialog"
+                      format="MM/dd/yyyy"
+                      value={selectedDateOrder}
+                      onChange={updateDateOrder}
+                      KeyboardButtonProps={{
+                        'aria-label': 'change date',
+                      }}
+                    />
+                </p>
+                <p> <I18n t="hourOrder"/>: </p>
+                <p> <Grid container>
+                <KeyboardTimePicker
+                      margin="normal"
+                      id="timeDelivery-picker"
+                      value={selectedHourOrder}
+                      onChange={updateHourOrder}
+                      KeyboardButtonProps={{
+                        'aria-label': 'change time',
+                      }}
+                    />
+                  </Grid></p>
+                  
                 <p> <I18n t="dateDelivery"/>: </p> 
                 <p>  <KeyboardDatePicker
                       margin="normal"
-                      id="date-picker-dialog"
+                      id="dateDelivery-picker-dialog"
                       format="MM/dd/yyyy"
-                      value={selectedDate}
-                      onChange={updateDate}
+                      value={selectedDateDelivery}
+                      onChange={updateDateDelivery}
                       KeyboardButtonProps={{
                         'aria-label': 'change date',
                       }}
@@ -76,9 +114,9 @@ const Order = props => {
                 <p> <Grid container>
                 <KeyboardTimePicker
                       margin="normal"
-                      id="time-picker"
-                      value={selectedHour}
-                      onChange={updateHour}
+                      id="timeDelivery-picker"
+                      value={selectedHourDelivery}
+                      onChange={updateHourDelivery}
                       KeyboardButtonProps={{
                         'aria-label': 'change time',
                       }}
@@ -118,7 +156,7 @@ const ButtonModal= () => {
     const [modalShow, setModalShow] = React.useState(false);
     return (
       <ButtonToolbar>
-        <Button variant="success" onClick={() => setModalShow(true)}>
+        <Button variant="success" onClick={() => { setModalShow(true)}}>
           <b><i><I18n t="orderNow"/></i></b>
         </Button>
   

@@ -44,7 +44,7 @@ const MenuCards = props => {
     // const minPrice = "65"
     // const maxPrice = "100"
     // Estados de la paginacion.
-    const elementsPerPage = 20;
+    const elementsPerPage = 4;
     const pageCount = Math.ceil(props.menues.length/elementsPerPage);
     const [currentPage, setCurrentPage] = React.useState(1);
     const lastIndex = currentPage * elementsPerPage;
@@ -59,7 +59,7 @@ const MenuCards = props => {
                         <Card.Body style={{ padding: '0.7rem' }}>
                             <Card.Title>{menu.name}</Card.Title>
                             <Card.Text> {menu.description}</Card.Text>
-                            <Button variant="warning" onClick={() => props.selectMenu(menu)}> <Link to='menuDescription'> Ver menú </Link></Button>
+                            <Button variant="warning" onClick={() => {props.selectMenu(menu); props.getProvider(menu.providerEmail)}}> <Link to='/menuDescription'> Ver menú </Link></Button>
                         </Card.Body>
                     </Card>)
                 }

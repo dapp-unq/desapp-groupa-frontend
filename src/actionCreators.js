@@ -14,9 +14,9 @@ const removeFromProviders = provider => {
 }
 
 const selectMenu = menu => {
-    return {
-		type: "SELECT_MENU",
-		selectedMenu: menu
+     return {
+        type:"SELECT_MENU",
+        selectedMenu: menu
     }
 }
 
@@ -24,7 +24,7 @@ const addUser = user => {
     console.log("JSON enviado:")
     console.log(user)
     return async (dispatch) => {
-        const res = axios.post('http://localhost:8080/rest/user', user)
+        const res = await axios.post('http://viandasya-c1a.herokuapp.com/rest/user', user)
         const responseData = res.data;
         // const responseStatus = res.status;// 201 si es correcto
         dispatch({
@@ -36,7 +36,7 @@ const addUser = user => {
 
 const getMenus = () => {
     return async (dispatch) => {
-        const res = await axios.get('http://localhost:8080/rest/menu/rank?minRank=0&maxRank=5')
+        const res = await axios.get('http://viandasya-c1a.herokuapp.com/rest/menu/rank?minRank=0&maxRank=5')
         const responseData = res.data;
         dispatch({
             type: "GET_MENUS",
@@ -47,7 +47,7 @@ const getMenus = () => {
 
 const getUser = email => {
     return async (dispatch) => {
-        const res = await axios.get('http://localhost:8080/rest/user/'+ email) // beniteznahueloscar@gmail.com
+        const res = await axios.get('http://viandasya-c1a.herokuapp.com/rest/user/'+ email) // beniteznahueloscar@gmail.com
         const responseData = res.data;
         dispatch({
             type: "GET_USER",
@@ -64,13 +64,13 @@ const getUser = email => {
     }
 }
 
-const getProvider = () => {
+const getProvider = email => {
     return async (dispatch) => {
-        const res = await axios.get('http://localhost:8080/rest/provider/liza.chambi@gmail.com')
+        const res = await axios.get('http://viandasya-c1a.herokuapp.com/rest/provider/'+email)
         const responseData = res.data
         dispatch({
             type: "GET_PROVIDER",
-                provider: [responseData]
+            provider: responseData
         })
         // fetch('http://viandasya-c1a.herokuapp.com/rest/provider/sarasa@gmail.com',
         //     {

@@ -273,7 +273,7 @@ const Search = props => {
                         </Col>
                         <Col sm={10}> 
                             <h3> <I18n t="searchTitle" /> </h3>
-                            <ListMenus menues={menusToShow} selectMenu={props.selectMenu}/>
+                            <ListMenus menues={menusToShow} selectMenu={props.selectMenu} getProvider={props.getProvider}/>
                         </Col>
                     </Row>
                 </Container>
