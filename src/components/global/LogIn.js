@@ -1,14 +1,11 @@
-import React, {useState, useContext } from 'react' // <-- updated
-import {Route,Switch} from 'react-router-dom'
-import { Link, NavLink, Redirect } from 'react-router-i18n';
-import { Auth0Context } from '../../contexts/auth0-context'; // <-- new
-import {Form, Button, ListGroup } from 'react-bootstrap';
+import React from 'react'; // <-- updated
+import { ListGroup } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { generate } from 'shortid';
+import { mapDispatchToProps, mapStateToProps } from '../../mapMethods';
+import I18n from '../I18n';
+import './css/LogIn.css';
 
-import I18n from '../I18n'
-import './css/LogIn.css'
-import { mapStateToProps, mapDispatchToProps} from '../../mapMethods';
 
 const LogIn = props => {
     return ( 

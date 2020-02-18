@@ -1,13 +1,12 @@
-import React, { useState, useContext } from 'react' // <-- updated
-import { Route, Switch } from 'react-router-dom'
-import { Link, NavLink, Redirect } from 'react-router-i18n';
-import { Auth0Context } from '../../contexts/auth0-context'; // <-- new
-import { Form, Button } from 'react-bootstrap';
+import React, { useContext } from 'react'; // <-- updated
+import { Button, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-i18n';
+import { Auth0Context } from '../../contexts/auth0-context'; // <-- new
+import { mapDispatchToProps, mapStateToProps } from '../../mapMethods';
+import I18n from '../I18n';
+import './css/Users.css';
 
-import I18n from '../I18n'
-import './css/Users.css'
-import { mapStateToProps, mapDispatchToProps } from '../../mapMethods';
 
 const Users = props => {
     const auth0 = useContext(Auth0Context); // <-- new

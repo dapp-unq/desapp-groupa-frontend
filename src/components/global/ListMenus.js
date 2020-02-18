@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
-import { Link, NavLink, Redirect } from 'react-router-i18n';
-import { generate } from 'shortid';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Card, Button } from 'react-bootstrap';
-import { connect } from 'react-redux';
 import Pagination from "@material-ui/lab/Pagination";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react';
+import { Button, Card } from 'react-bootstrap';
+import { Link } from 'react-router-i18n';
 import './css/ListMenus.css';
-import { mapStateToProps, mapDispatchToProps } from '../../mapMethods';
+
 
 const MenuCards = props => {
     // ESTA CONTANTE "" SOLO ES DE PRUEBA, LUEGO SE USARÁ LAS LLAMADAS AL SERVIDOR

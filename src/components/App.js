@@ -1,17 +1,14 @@
-import React from 'react'
-import { TranslatorProvider } from "react-translate"
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types'
-import {MuiPickersUtilsProvider} from '@material-ui/pickers'
 import DateFnsUtils from '@date-io/date-fns';
-
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { TranslatorProvider } from "react-translate";
+import Content2 from './global/Content2';
 // Components
-import './global/css/App.css'
-import ButtonTs from './global/ButtonTs'
-import Header from './global/Header'
-import Content from './global/Content'
-import Content2 from './global/Content2'
-import Footer from './global/Footer'
+import './global/css/App.css';
+import Footer from './global/Footer';
+import Header from './global/Header';
+
 
 let url  = window.location.href;
 
@@ -25,11 +22,6 @@ function getLayout(lang, child){
           {/*
           <Content header= "body-title" description= "descrip-text" provTitle = "prov-title" menuTitle = "menuC-title"/>
           */}
-          <hr/>
-          <div>
-            <ButtonTs name="login"/>
-            <ButtonTs name="create_account"/>
-          </div>
           <hr/>
           <Footer />
         </div>
