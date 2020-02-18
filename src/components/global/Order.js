@@ -10,14 +10,32 @@ import {
   KeyboardTimePicker,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import NativeSelect from '@material-ui/core/NativeSelect';
+import InputBase from '@material-ui/core/InputBase';
 
 import { mapStateToProps, mapDispatchToProps} from '../../mapMethods';
 import I18n from '../I18n'
 import './css/Order.css'
 
 const Order = props => {
+
   const [selectedDate, updateDate] = React.useState(new Date());
   const [selectedHour, updateHour] = React.useState(new Date());
+  const [selectedAmount, updateAmount] = React.useState(1);
+  const [selectedDeliveryMethod, updateDeliveryMethod] = React.useState('');
+  const handleDeliveryMethodChange = event => {
+    updateDeliveryMethod(event.target.value);
+  };
+
+  const handleAmountChange = amount => {
+    updateAmount(amount);
+  };
 
   const handleDateChange = date => {
     updateDate(date);
@@ -44,17 +62,30 @@ const Order = props => {
                 </Container>
             </div>
             <div>
-                <Form>
-                    <Form.Group controlId="exampleForm.ControlSelect1">
-                        <Form.Label><I18n t="typeDelivery"/>:</Form.Label>
-                        <Form.Control as="select">
-                        <option>Entrega a domicilio</option>
-                        <option>Retirar por sucursal</option>
-                        </Form.Control>
-                    </Form.Group>
-                </Form>
-                <p> <I18n t="orderAmount"/>: (Agregar selector numerico) </p>
-                <p> <I18n t="typeDelivery"/>: (Agregar selector ) </p>
+               
+                <p> <I18n t="orderAmount"/>:</p>
+                <p> 
+                  <TextField
+                    id="standard-number"
+                    value={selectedAmount}
+                    onChange={(event) => handleAmountChange(event.target.value > 0? event.target.value : 0)}
+                    type="number"
+                    InputLabelProps={{ shrink: true,}}
+                  /> 
+                </p>
+                <p> <I18n t="typeDelivery"/>:</p>
+                <p>
+                  <FormControl>
+                    <NativeSelect
+                      id="delivery-method-select-native"
+                      value={selectedDeliveryMethod}
+                      onChange={handleDeliveryMethodChange}
+                    >
+                      <option value={"HOME_DELIVERY"}> Entrega a domicilio </option>
+                      <option value={"BRANCH_OFFICE"}> Retiro en sucursal </option>
+                    </NativeSelect>
+                  </FormControl>
+                </p>
                 <p> <I18n t="dateDelivery"/>: </p> 
                 <p>  <KeyboardDatePicker
                       margin="normal"
@@ -79,8 +110,6 @@ const Order = props => {
                       }}
                     />
                   </Grid></p>
-                
-                <button variant="success"> <b><i> <I18n t="orderNow"/> </i></b> </button>
                 <ButtonModal/>
             </div>
         </div>)

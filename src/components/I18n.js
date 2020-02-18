@@ -52,6 +52,8 @@ const translations = {
     dateDelivery: 'Fecha de entrega',
     hourDelivery: 'Horario de entrega',
     orderNow: 'Pedir ya!',
+    orderDeliveryHome:'Entrega a domicilio',
+    orderDeliverySucursale:'Retirar en sucursal',
   },
   en: {
     userRegiter: 'User register',
@@ -99,6 +101,8 @@ const translations = {
     dateDelivery: 'Delivery date',
     timeDelivery: 'Delivery time',
     orderNow: 'Order now!',
+    orderDeliveryHome:'Home delivery',
+    orderDeliverySucursale:'Branch office',
   }
 }
 
