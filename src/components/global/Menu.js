@@ -1,12 +1,11 @@
-import React, {useState, useContext } from 'react' // <-- updated
-import { Image, Card, Form, Nav, Navbar, NavDropdown, FormControl, Button, Container, Row, Col} from 'react-bootstrap';
-import { Link, NavLink, Redirect } from 'react-router-i18n';
-import { generate } from 'shortid';
+import React from 'react'; // <-- updated
+import { Col, Container, Image, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-i18n';
+import { mapDispatchToProps, mapStateToProps } from '../../mapMethods';
+import I18n from '../I18n';
+import './css/Menu.css';
 
-import { mapStateToProps, mapDispatchToProps} from '../../mapMethods';
-import I18n from '../I18n'
-import './css/Menu.css'
 
 const Menu = props => {
     return (

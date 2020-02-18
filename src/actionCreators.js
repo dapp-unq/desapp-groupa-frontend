@@ -24,7 +24,7 @@ const addUser = user => {
     console.log("JSON enviado:")
     console.log(user)
     return async (dispatch) => {
-        const res = await axios.post('http://viandasya-c1a.herokuapp.com/rest/user', user)
+        const res = await axios.post('https://viandasya-c1a.herokuapp.com/rest/user', user)
         const responseData = res.data;
         // const responseStatus = res.status;// 201 si es correcto
         dispatch({
@@ -36,7 +36,7 @@ const addUser = user => {
 
 const getMenus = () => {
     return async (dispatch) => {
-        const res = await axios.get('http://viandasya-c1a.herokuapp.com/rest/menu/rank?minRank=0&maxRank=5')
+        const res = await axios.get('https://viandasya-c1a.herokuapp.com/rest/menu/rank?minRank=0&maxRank=5')
         const responseData = res.data;
         dispatch({
             type: "GET_MENUS",
@@ -47,7 +47,7 @@ const getMenus = () => {
 
 const getUser = email => {
     return async (dispatch) => {
-        const res = await axios.get('http://viandasya-c1a.herokuapp.com/rest/user/'+ email) // beniteznahueloscar@gmail.com
+        const res = await axios.get('https://viandasya-c1a.herokuapp.com/rest/user/'+ email) // beniteznahueloscar@gmail.com
         const responseData = res.data;
         dispatch({
             type: "GET_USER",
@@ -66,7 +66,7 @@ const getUser = email => {
 
 const getProvider = email => {
     return async (dispatch) => {
-        const res = await axios.get('http://viandasya-c1a.herokuapp.com/rest/provider/'+email)
+        const res = await axios.get('https://viandasya-c1a.herokuapp.com/rest/provider/'+email)
         const responseData = res.data
         dispatch({
             type: "GET_PROVIDER",

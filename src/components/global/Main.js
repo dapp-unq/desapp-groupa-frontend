@@ -1,15 +1,12 @@
-import React, {useState, useContext } from 'react' // <-- updated
-import { Auth0Context } from '../../contexts/auth0-context'; // <-- new
-
-import MenuCards from './ListMenus';
-import I18n from '../I18n'
-import './css/Main.css'
-import { datePickerDefaultProps } from '@material-ui/pickers/constants/prop-types';
-import { connect } from 'react-redux';
-import { mapStateToProps, mapDispatchToProps } from '../../mapMethods';
-import { Card, Button } from 'react-bootstrap';
 import Pagination from "@material-ui/lab/Pagination";
-import { Link, NavLink, Redirect } from 'react-router-i18n';
+import React from 'react'; // <-- updated
+import { Button, Card } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-i18n';
+import { mapDispatchToProps, mapStateToProps } from '../../mapMethods';
+import I18n from '../I18n';
+import './css/Main.css';
+
 
 
 const Main = props => {
