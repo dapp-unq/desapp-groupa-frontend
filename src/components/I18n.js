@@ -54,6 +54,7 @@ const translations = {
     orderNow: 'Pedir ya!',
     orderDeliveryHome:'Entrega a domicilio',
     orderDeliverySucursale:'Retirar en sucursal',
+    filter:'Filtrar',
   },
   en: {
     userRegiter: 'User register',
@@ -103,6 +104,7 @@ const translations = {
     orderNow: 'Order now!',
     orderDeliveryHome:'Home delivery',
     orderDeliverySucursale:'Branch office',
+    filter:'Filter',
   }
 }
 

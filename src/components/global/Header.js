@@ -1,15 +1,13 @@
 import React from 'react';
-import { Link, NavLink, Redirect } from 'react-router-i18n';
-import {Form, Button, Modal, ButtonToolbar } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-i18n';
 import { generate } from 'shortid';
-import { connect } from 'react-redux'
-
-import ResponsiveDialog from './LogInModal2'
-import ButtonModal from './LoginModalButton'
-import logo from './images/viandaya-logo.png';
-import './css/Header.css';
-import { mapStateToProps, mapDispatchToProps} from '../../mapMethods'
+import { mapDispatchToProps, mapStateToProps } from '../../mapMethods';
 import I18n from '../I18n';
+import './css/Header.css';
+import logo from './images/viandaya-logo.png';
+import ResponsiveDialog from './LogInModal2';
+
 
 const Header = props => {
   return (

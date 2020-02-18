@@ -1,27 +1,16 @@
-import React, {useState, useContext } from 'react' // <-- updated
-import { Image, ButtonToolbar, Form, View, Navbar, NavDropdown, Modal, Button, Container, Row, Col} from 'react-bootstrap';
-import { generate } from 'shortid';
-import { connect } from 'react-redux';
-import 'date-fns';
-import Grid from '@material-ui/core/Grid';
-import DateFnsUtils from '@date-io/date-fns';
-import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardDatePicker,
-} from '@material-ui/pickers';
-import TextField from '@material-ui/core/TextField';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
+import Grid from '@material-ui/core/Grid';
 import NativeSelect from '@material-ui/core/NativeSelect';
-import InputBase from '@material-ui/core/InputBase';
+import TextField from '@material-ui/core/TextField';
+import { KeyboardDatePicker, KeyboardTimePicker } from '@material-ui/pickers';
+import 'date-fns';
+import React from 'react'; // <-- updated
+import { Button, ButtonToolbar, Col, Container, Image, Modal, Row } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { mapDispatchToProps, mapStateToProps } from '../../mapMethods';
+import I18n from '../I18n';
+import './css/Order.css';
 
-import { mapStateToProps, mapDispatchToProps} from '../../mapMethods';
-import I18n from '../I18n'
-import './css/Order.css'
 
 const Order = props => {
 
@@ -29,22 +18,7 @@ const Order = props => {
   const [selectedHour, updateHour] = React.useState(new Date());
   const [selectedAmount, updateAmount] = React.useState(1);
   const [selectedDeliveryMethod, updateDeliveryMethod] = React.useState('');
-  const handleDeliveryMethodChange = event => {
-    updateDeliveryMethod(event.target.value);
-  };
-
-  const handleAmountChange = amount => {
-    updateAmount(amount);
-  };
-
-  const handleDateChange = date => {
-    updateDate(date);
-  };
-
-  const handleHourChange = hour => {
-    updateHour(hour);
-  };
-
+  
     return (
         <div className= 'Order'>
             <h1>Página de pedido: </h1>
@@ -68,7 +42,7 @@ const Order = props => {
                   <TextField
                     id="standard-number"
                     value={selectedAmount}
-                    onChange={(event) => handleAmountChange(event.target.value > 0? event.target.value : 0)}
+                    onChange={(event) => updateAmount(event.target.value > 0? event.target.value : 0)}
                     type="number"
                     InputLabelProps={{ shrink: true,}}
                   /> 
@@ -79,7 +53,7 @@ const Order = props => {
                     <NativeSelect
                       id="delivery-method-select-native"
                       value={selectedDeliveryMethod}
-                      onChange={handleDeliveryMethodChange}
+                      onChange={(event) => updateDeliveryMethod(event.target.value)}
                     >
                       <option value={"HOME_DELIVERY"}> Entrega a domicilio </option>
                       <option value={"BRANCH_OFFICE"}> Retiro en sucursal </option>
@@ -92,7 +66,7 @@ const Order = props => {
                       id="date-picker-dialog"
                       format="MM/dd/yyyy"
                       value={selectedDate}
-                      onChange={handleDateChange}
+                      onChange={updateDate}
                       KeyboardButtonProps={{
                         'aria-label': 'change date',
                       }}
@@ -104,7 +78,7 @@ const Order = props => {
                       margin="normal"
                       id="time-picker"
                       value={selectedHour}
-                      onChange={handleHourChange}
+                      onChange={updateHour}
                       KeyboardButtonProps={{
                         'aria-label': 'change time',
                       }}
