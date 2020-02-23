@@ -23,8 +23,8 @@ const Menu = props => {
                             <p> <I18n t="menuCantMin"/>1: {props.selectedMenu.offer1.quantity} <I18n t="searchPrice"/>: {props.selectedMenu.offer1.price} </p>
                             <p> <I18n t="menuCantMin"/>2: {props.selectedMenu.offer2.quantity} <I18n t="searchPrice"/>: {props.selectedMenu.offer2.price} </p>
                             <p> <I18n t="searchRank"/>: 0 </p>
-                            <p> <I18n t="userDirection"/>: {props.provider.city + ', ' + props.provider.location} </p>
-                            <p> <I18n t="provider"/>: {props.provider.name} </p>
+                            <p> <I18n t="userDirection"/>: {props.selectedProvider.city + ', ' + props.selectedProvider.location} </p>
+                            <p> <I18n t="provider"/>: {props.selectedProvider.name} </p>
                             {/* <p> <I18n t="menuMissingAmount"/>: Falta la cantidad necesaria para el próximo precio mínimo.</p> */}
                         </Col>
                     </Row>

@@ -1,15 +1,15 @@
 import axios from 'axios';
 
-const addToProviders = provider => {
+const addToProviders = selectedProvider => {
     return {
 		type: "ADD_TO_PROVIDERS",
-		provider
+		selectedProvider
     }
 }
-const removeFromProviders = provider => {
+const removeFromProviders = selectedProvider => {
     return {
         type: "REMOVE_FROM_PROVIDERS",
-        provider
+        selectedProvider
     }
 }
 
@@ -70,7 +70,7 @@ const getProvider = email => {
         const responseData = res.data
         dispatch({
             type: "GET_PROVIDER",
-            provider: responseData
+            selectedProvider: responseData
         })
         // fetch('http://viandasya-c1a.herokuapp.com/rest/provider/sarasa@gmail.com',
         //     {

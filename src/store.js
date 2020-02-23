@@ -8,7 +8,7 @@ const reducer = (state, action) => {
         case "ADD_TO_PROVIDERS":
             return {
                 ...state,
-                providers: state.providers.concat(action.provider)
+                selectedProvider: state.selectedProvider.concat(action.selectedProvider)
             }
 
         case "ADD_USER":
@@ -26,13 +26,13 @@ const reducer = (state, action) => {
         case "REMOVE_FROM_PROVIDERS":
             return {
                 ...state,
-                providers: state.providers.filter(provider => provider.name !== action.provider.name)
+                selectedProvider: state.selectedProvider.filter(selectedProvider => selectedProvider.name !== action.selectedProvider.name)
             }
 
         case "GET_PROVIDER":
             return {
                 ...state,
-                provider: action.provider
+                selectedProvider: action.selectedProvider
             }
 
         case "GET_MENUS":
@@ -60,4 +60,4 @@ const logger = store => next => action => {
     return result
 }
 
-export default createStore(reducer, {provider: "", menus:[], user:'', selectedMenu:"" }, applyMiddleware(logger, thunk));
+export default createStore(reducer, {selectedProvider: "", provider: "", menus:[], user:'', selectedMenu:"" }, applyMiddleware(logger, thunk));

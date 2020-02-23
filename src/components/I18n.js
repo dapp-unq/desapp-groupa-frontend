@@ -57,6 +57,7 @@ const translations = {
     orderDeliveryHome:'Entrega a domicilio',
     orderDeliverySucursale:'Retirar en sucursal',
     filter:'Filtrar',
+    providerTitle:'Registro de proveedores',
   },
   en: {
     userRegiter: 'User register',
@@ -109,6 +110,7 @@ const translations = {
     orderDeliveryHome:'Home delivery',
     orderDeliverySucursale:'Branch office',
     filter:'Filter',
+    providerTitle:'Provider register',
   }
 }
 
