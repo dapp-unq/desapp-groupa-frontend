@@ -2,12 +2,10 @@ import Pagination from "@material-ui/lab/Pagination";
 import React from 'react'; // <-- updated
 import { Button, Card } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-i18n';
+import { Link, NavLink } from 'react-router-i18n';
 import { mapDispatchToProps, mapStateToProps } from '../../mapMethods';
 import I18n from '../I18n';
 import './css/Main.css';
-
-
 
 const Main = props => {
     const elementsPerPage = 20;
@@ -34,7 +32,7 @@ const Main = props => {
                         <Card.Body style={{ padding: '0.7rem' }}>
                             <Card.Title>{menu.name}</Card.Title>
                             <Card.Text> {menu.description}</Card.Text>
-                            <Button variant="warning" onClick={() => {props.selectMenu(menu); props.getProvider(menu.providerEmail)}}> <Link to='menuDescription'> Ver menú </Link></Button>
+                            <Button variant="warning" onClick={() => {props.selectMenu(menu); props.getProvider(menu.providerEmail)}}> <NavLink ignoreLocale to='menuDescription'> Ver menú </NavLink></Button>
                         </Card.Body>
                     </Card>)
                 }

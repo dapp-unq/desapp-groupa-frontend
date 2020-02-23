@@ -31,7 +31,7 @@ const translations = {
     userEmailPlaceholder:'Ingrese su email...',
     userEmailNotification: 'Nunca compartiremos su correo electrónico con nadie más.',
     userPhone:'Teléfono:',
-    userDirection:'Dirección y altura',
+    userDirection:'Dirección',
     userCity:'Localidad:',
     userChooseCity:'Elegir localidad...',
     logInHello: '¡Hola!',

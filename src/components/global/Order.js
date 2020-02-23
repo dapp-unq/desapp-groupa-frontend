@@ -26,7 +26,7 @@ const Order = props => {
     "order":{
       "menu":{
         "name":props.selectedMenu.name,
-        "providerEmail":'FALTA ESTE DATO',
+        "providerEmail":props.provider.email,
       },
     "deliveryDateAndHour":selectedDateDelivery+ " "+selectedHourDelivery,
     }

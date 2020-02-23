@@ -8,7 +8,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-i18n';
+import { Link, NavLink } from 'react-router-i18n';
 import { mapDispatchToProps, mapStateToProps } from '../../mapMethods';
 import I18n from '../I18n';
 
@@ -73,7 +73,8 @@ const ResponsiveDialog = props => {
             </DialogContent>
             <DialogActions>
                 <Button variant="secondary" onClick={handleClose}>Close</Button>
-                <Button variant="success" onClick={()=> {console.log(userLogIn); props.getUser(userLogIn.email)}} > <Link to='login'> <I18n t="logIn"/> </Link></Button>
+                <Button variant="success" onClick={()=> {console.log(userLogIn); props.getUser(userLogIn.email)}} > 
+                    <NavLink ignoreLocale to='login'> <I18n t="logIn"/> </NavLink></Button>
             </DialogActions>
         </Dialog>
         </div>
