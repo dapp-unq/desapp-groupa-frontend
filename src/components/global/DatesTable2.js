@@ -39,7 +39,7 @@ const DatesTable2 = () => {
         ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />)
       };
 
-  const [state, setState] = React.useState({
+  const [listHours, setListHours] = React.useState({
     columns: [
       { title: <I18n t="day"/>, field: 'name' },
       { title: <I18n t="openingHours"/>, field: 'numeric' },
@@ -55,16 +55,16 @@ const DatesTable2 = () => {
 
   return (
     <MaterialTable
-    icons={tableIcons}
-      title="Horarios"
-      columns={state.columns}
-      data={state.data}
-      editable={{
+        icons={tableIcons}
+        title="Horarios"
+        columns={listHours.columns}
+        data={listHours.data}
+        editable={{
         onRowAdd: newData =>
           new Promise(resolve => {
             setTimeout(() => {
               resolve();
-              setState(prevState => {
+              setListHours(prevState => {
                 const data = [...prevState.data];
                 data.push(newData);
                 return { ...prevState, data };
@@ -76,7 +76,7 @@ const DatesTable2 = () => {
             setTimeout(() => {
               resolve();
               if (oldData) {
-                setState(prevState => {
+                setListHours(prevState => {
                   const data = [...prevState.data];
                   data[data.indexOf(oldData)] = newData;
                   return { ...prevState, data };
@@ -88,7 +88,7 @@ const DatesTable2 = () => {
           new Promise(resolve => {
             setTimeout(() => {
               resolve();
-              setState(prevState => {
+              setListHours(prevState => {
                 const data = [...prevState.data];
                 data.splice(data.indexOf(oldData), 1);
                 return { ...prevState, data };
