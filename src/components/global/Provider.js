@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../../mapMethods';
 import I18n from '../I18n';
 import './css/Provider.css';
+import DatesTable2 from './DatesTable2'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -13,7 +14,7 @@ const useStyles = makeStyles(theme => ({
         width: 300,
       },
     },
-  }));
+}));
 
 const Provider = props => {
     const classes = useStyles();
@@ -23,7 +24,7 @@ const Provider = props => {
     const handleChange = event => {
         setCurrency(event.target.value);
       };
-    
+
     return (
         <div className="Provider">
             <h2><I18n t="providerTitle"/></h2>
@@ -73,8 +74,10 @@ const Provider = props => {
                         <TextField required id="standard-required" label="Teléfono" defaultValue={props.provider} />
                     </div>
                     <div>
-                        <TextField required id="standard-required" label="Días de atención" defaultValue={props.provider} />
-                    </div>
+                        <p> Días de atención</p>
+                        <DatesTable2/>
+                   </div>
+
                     <div>
                         <TextField id="standard-required" label="Localidades de entrega" defaultValue={props.provider} />
                     </div>
