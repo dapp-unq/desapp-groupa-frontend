@@ -69,6 +69,7 @@ const translations = {
     openingHours: 'Horario de apertura',
     closingHours: 'Horario de cierre',
     day:'Día',
+    addProvider: 'Registrarse como proveedor',
   },
   en: {
     userRegiter: 'User register',
@@ -133,6 +134,7 @@ const translations = {
     openingHours: 'Opening hours',
     closingHours: 'Closing hours',
     day:'Day',
+    addProvider: 'Register',
   }
 }
 

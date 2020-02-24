@@ -1,4 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import { green } from '@material-ui/core/colors';
+import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import React from 'react';
@@ -12,21 +14,24 @@ const useStyles = makeStyles(theme => ({
     root: {
       '& .MuiTextField-root': {
         margin: theme.spacing(1),
-        width: 300,
+        width: 400,
       },
     },
 }));
 
+const theme = createMuiTheme({
+    palette: {
+      primary: green,
+    },
+  });
+
 const Provider = props => {
     const classes = useStyles();
-    const [currency, setCurrency] = React.useState("");
-    const currencies = ["BERNAL CENTRO", "BERNAL OESTE", "QUILMES CENTRO", "QUILMES OESTE", "BERAZATEGUI", "EZPELETA", "LUIS GUILLON", "9 DE JULIO", "MONTE GRANDE", "EL JAGÜEL", "CANNING" ]
 
-    const handleChange = event => {
-        setCurrency(event.target.value);
-      };
-    
-    const top100Films = [
+    const [name, updateName] = React.useState("");
+    const [urlLogo, updateUrlLogo] = React.useState("");
+    const [cityProvider, updateCityProvider] = React.useState("");
+    const cities = [
         { data: "BERNAL_CENTRO", city: "Bernal centro"},
         { data:"BERNAL_OESTE", city:"Bernal oeste"},
         { data: "QUILMES_CENTRO", city: "Quilmes centro"},
@@ -39,64 +44,84 @@ const Provider = props => {
         { data: "EL_JAGÜEL", city: "El Jagüel"},
         { data: "CANNING", city: "Canning"}
     ];
+    const [location, updateLocation] = React.useState("");
+    const [description, updateDescription] = React.useState("");
+    const [webSite, updateWebSite] = React.useState("");
+    const [email, updateEmail] = React.useState("");
+    const [phone, updatePhone] = React.useState("");
+    const newProvider = {
+        name: name,
+        logo: urlLogo,
+        city: cityProvider,
+        location: location,
+        description: description,
+        website: webSite,
+        email: email,
+        phoneNumber: phone,
+        openingHoursDays: [],
+        deliveryCities: null,
+        currentMenus: null,
+        orders: null,
+        balance: null,
+        menusRemoved: null
+    }
 
     return (
         <div className="Provider">
             <h2><I18n t="providerTitle"/></h2>
             <form className={classes.root} noValidate autoComplete="off">
-                <div>
                     <div>
-                        <TextField required id="standard-required" label="Nombre" defaultValue={props.provider} />
+                        <TextField required id="name-provider" label="Nombre" defaultValue={name} onChange={(event)=>updateName(event.target.value)}/>
                     </div>
                     <div>
-                        <TextField required id="standard-required" label="Logo" defaultValue={props.provider} />
+                        <TextField required id="url-logo-provider" label="URL Logo" defaultValue={urlLogo} onChange={(event)=>updateUrlLogo(event.target.value)}/>
                     </div>
                     <div>
-                        <TextField id="outlined-select-currency-native" select label="Localidad"
-                            value = {currency} onChange= {handleChange}
+                        <TextField id="city-provider" select label="Localidad"
+                            value = {cityProvider} onChange= {(event) => updateCityProvider(event.target.value)}
                             SelectProps={{
                                 native: false,
                             }}
                             helperText="Please select your city"
                             variant="outlined">
-                            {currencies.map(option => (
-                                <option key={option} value={option}>
-                                {option}
+                            {cities.map(option => (
+                                <option key={option.city} value={option.city}>
+                                {option.city}
                                 </option>
                             ))}
                             </TextField>
                     </div>
                     <div>
-                        <TextField required id="standard-required" label="Dirección" defaultValue={props.provider} />
+                        <TextField required id="direction-provider" label="Dirección" defaultValue={location} onChange={(event)=>updateLocation(event.target.value)}/>
                     </div>
                     <div>
                         <TextField
                             id="outlined-multiline-static"
-                            label="Descrición"
+                            label="Descripción"
                             multiline
                             rows="4"
-                            defaultValue=""
+                            defaultValue={description}
                             variant="outlined"
+                            onChange={(event)=>updateDescription(event.target.value)}
                         />
                     </div>
                     <div>
-                        <TextField id="standard-required" label="Sitio web" defaultValue={props.provider} />
+                        <TextField id="web-site-provider" label="Sitio web" defaultValue={webSite} onChange={(event)=>updateWebSite(event.target.value)}/>
                     </div>
                     <div>
-                        <TextField required id="standard-required" label="E-mail" defaultValue={props.provider} />
+                        <TextField required id="e-mail-provider" label="E-mail" defaultValue={email} onChange={(event)=>updateEmail(event.target.value)}/>
                     </div>
                     <div>
-                        <TextField required id="standard-required" label="Teléfono" defaultValue={props.provider} />
+                        <TextField required id="phone-provider" label="Teléfono" defaultValue={phone} onChange={(event)=>updatePhone(event.target.value)}/>
                     </div>
                     <div>
-                        <p> Días de atención</p>
                         <DatesTable2/>
                    </div>
                     <div>
                        <Autocomplete
                             multiple
                             id="tags-outlined"
-                            options={top100Films}
+                            options={cities}
                             getOptionLabel={option => option.city}
                             defaultValue={[]}
                             filterSelectedOptions
@@ -111,8 +136,13 @@ const Provider = props => {
                             )}
                         />
                     </div>
-                </div>
-                
+                    <div>
+                        <ThemeProvider theme={theme}>
+                            <Button variant="contained" color="primary" className={classes.margin}>
+                                <b><i><I18n t="addProvider" /></i></b>
+                            </Button>
+                        </ThemeProvider>
+                    </div>
             </form>
         </div>
   );

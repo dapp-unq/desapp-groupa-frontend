@@ -39,24 +39,27 @@ const DatesTable2 = () => {
         ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />)
       };
 
-  const [listHours, setListHours] = React.useState({
-    columns: [
-      { title: <I18n t="day"/>, field: 'name' },
-      { title: <I18n t="openingHours"/>, field: 'numeric' },
-      { title: <I18n t="closingHours"/>, field: 'birthYear', type: 'numeric' },
-      
-    ],
-    data: [
-      { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-      { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34,
-      },
-    ],
-  });
+    const [listHours, setListHours] = React.useState({
+        columns: [
+        { title: <I18n t="day"/>, field: 'name' },
+        { title: <I18n t="openingHours"/>, field: 'numeric' },
+        { title: <I18n t="closingHours"/>, field: 'birthYear', type: 'numeric' },
+        
+        ],
+        data: [
+        { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
+        { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34},
+        ],
+    });
+
+    const openingHoursDays = [
+      {day: "MONDAY", openingHours: "20:00:00.00", closingHours: "23:00:00.00"}
+    ]
 
   return (
     <MaterialTable
         icons={tableIcons}
-        title="Horarios"
+        title="Horarios de atención"
         columns={listHours.columns}
         data={listHours.data}
         editable={{
