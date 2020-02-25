@@ -17,7 +17,6 @@ import React, { forwardRef } from 'react';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../../mapMethods';
 import I18n from '../I18n';
-import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
 const DatesTable2 = props => {
@@ -44,32 +43,16 @@ const DatesTable2 = props => {
 
     const days = ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"];
 
-    // const [dayAvailable, updateDayAvailable] = React.useState("");
-
-    // , render: rowData => 
-    //     <TextField id="day-col" select label="Localidad"
-    //     value = {dayAvailable} onChange= {(event) => updateDayAvailable(event.target.value)}
-    //       SelectProps={{
-    //           native: false,
-    //       }}
-    //       helperText="Please select your city"
-    //       variant="outlined">
-    //         {days.map(day => (
-    //           <option key={day} value={dayAvailable}>
-    //             {<I18n t={day}/>}
-    //           </option>
-    //         ))}
-    //     </TextField> 
     const columns = [
-      { title: <I18n t="day"/>, field: 'day' },
-      { title: <I18n t="openingHours"/>, field: 'opening', type: 'numeric' },
-      { title: <I18n t="closingHours"/>, field: 'closing', type: 'numeric' },
+      { title: <I18n t="day"/>, field: 'day', lookup: { 0:<I18n t={days[0]}/>, 1: <I18n t={days[1]}/>,2:<I18n t={days[2]}/>, 3: <I18n t={days[3]}/>, 4:<I18n t={days[4]}/>, 5:<I18n t={days[5]}/>, 6:<I18n t={days[6]}/>} },
+      { title: <I18n t="openingHours"/>, field: 'opening', type: 'time' },
+      { title: <I18n t="closingHours"/>, field: 'closing', type: 'time' },
     ];
 
     const [listHours, updateListHours] = React.useState({
         data: [
-          { day: 'Mehmet', opening: 'Baran', closing: 1987},
-          { day: 'Zerya Betül', opening: 'Baran', closing: 2017},
+          { day: 0, opening: 'Baran', closing: 1987},
+          { day: 3, opening: 'Baran', closing: 2017},
         ],
     });
 
@@ -83,19 +66,6 @@ const DatesTable2 = props => {
         icons={tableIcons}
         title="Horarios de atención"
         columns={columns}
-        components={{
-          Action: props => (
-            <Button
-              onClick={(event) => props.action.onClick(event, props.data)}
-              color="primary"
-              variant="contained"
-              style={{textTransform: 'none'}}
-              size="small"
-            >
-              My Button
-            </Button>
-          ),
-        }}
         data={listHours.data}
         editable={{
         onRowAdd: newData =>
