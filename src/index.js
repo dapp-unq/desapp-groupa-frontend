@@ -9,12 +9,13 @@ import './index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import store from './store';
-import {getProvider, getMenus} from './actionCreators';
+import {getCities, getMenus} from './actionCreators';
 import AppRoutes from './routes'
 
 // DESCOMENTAR ESTA LINEA CUANDO QUIERA QUE AL INICIAR LA PAGINA YA ME CARGUE LOS PROVEEDORES
-store.dispatch (getProvider());
+
 store.dispatch (getMenus());
+store.dispatch (getCities());
 
 ReactDOM.render(
     <Provider store={store}>

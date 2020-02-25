@@ -13,6 +13,13 @@ const removeFromProviders = selectedProvider => {
     }
 }
 
+const setHoursProvider = hours => {
+    return {
+       type:"SET_HOURS_PROVIDER",
+       hoursProvider: hours
+   }
+}
+
 const selectMenu = menu => {
      return {
         type:"SELECT_MENU",
@@ -36,7 +43,7 @@ const addUser = user => {
 
 const getMenus = () => {
     return async (dispatch) => {
-        const res = await axios.get('https://viandasya-c1a.herokuapp.com/rest/menu/rank?minRank=0&maxRank=5')
+        const res = await axios.get('https://viandasya-c1a.herokuapp.com/rest/menu/rank?minRank=0&maxRank=5');
         const responseData = res.data;
         dispatch({
             type: "GET_MENUS",
@@ -44,6 +51,18 @@ const getMenus = () => {
         });
     }
 }
+
+const getCities = () => {
+    return async (dispatch) => {
+        const res = await axios.get('https://viandasya-c1a.herokuapp.com/rest/provider/cities')
+        const responseData = res.data;
+        dispatch({
+            type: "GET_CITIES",
+            cities: responseData
+        });
+    }
+}
+
 
 const getUser = email => {
     return async (dispatch) => {
@@ -87,4 +106,4 @@ const getProvider = email => {
     }
 }
 
-export {removeFromProviders, addToProviders, getProvider, addUser, getUser, selectMenu, getMenus};
+export {setHoursProvider, removeFromProviders, addToProviders, getProvider, addUser, getUser, selectMenu, getMenus, getCities, };

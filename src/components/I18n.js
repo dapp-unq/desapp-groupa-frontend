@@ -70,6 +70,13 @@ const translations = {
     closingHours: 'Horario de cierre',
     day:'Día',
     addProvider: 'Registrarse como proveedor',
+    MONDAY: 'Lunes',
+    TUESDAY: 'Martes',
+    WEDNESDAY: 'Miercoles',
+    THURSDAY: 'Jueves',
+    FRIDAY: 'Viernes',
+    SATURDAY: 'Sábado',
+    SUNDAY: 'Domingo',
   },
   en: {
     userRegiter: 'User register',
@@ -135,6 +142,13 @@ const translations = {
     closingHours: 'Closing hours',
     day:'Day',
     addProvider: 'Register',
+    MONDAY: 'Monday',
+    TUESDAY: 'Tuesday',
+    WEDNESDAY: 'Wednesday',
+    THURSDAY: 'Thursday',
+    FRIDAY: 'Friday',
+    SATURDAY: 'Saturday',
+    SUNDAY: 'Sunday',
   }
 }
 

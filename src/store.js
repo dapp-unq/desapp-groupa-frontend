@@ -47,6 +47,18 @@ const reducer = (state, action) => {
             selectedMenu: action.selectedMenu
         }
 
+        case "GET_CITIES":
+        return {
+            ...state,
+            cities: action.cities
+        }
+
+        case "SET_HOURS_PROVIDER":
+            return {
+                ...state,
+                hoursProvider: action.hoursProvider
+        }
+
         default: 
             return state
     }
@@ -60,4 +72,4 @@ const logger = store => next => action => {
     return result
 }
 
-export default createStore(reducer, {selectedProvider: "", provider: "", menus:[], user:'', selectedMenu:"" }, applyMiddleware(logger, thunk));
+export default createStore(reducer, {hoursProvider: [], cities: [], selectedProvider: "", provider: "", menus:[], user:'', selectedMenu:"" }, applyMiddleware(logger, thunk));

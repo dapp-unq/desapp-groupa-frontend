@@ -31,24 +31,13 @@ const Provider = props => {
     const [name, updateName] = React.useState("");
     const [urlLogo, updateUrlLogo] = React.useState("");
     const [cityProvider, updateCityProvider] = React.useState("");
-    const cities = [
-        { data: "BERNAL_CENTRO", city: "Bernal centro"},
-        { data:"BERNAL_OESTE", city:"Bernal oeste"},
-        { data: "QUILMES_CENTRO", city: "Quilmes centro"},
-        { data: "QUILMES_OESTE", city: "Quilmes oeste"},
-        { data:  "BERAZATEGUI", city:  "Berazategui"},
-        { data: "EZPELETA", city: "Ezpeleta"},
-        { data: "LUIS_GUILLON", city: "Luis Guillón"},
-        { data: "9_DE_JULIO", city: "9 de julio"},
-        { data: "MONTE_GRANDE", city: "Monte Grande" },
-        { data: "EL_JAGÜEL", city: "El Jagüel"},
-        { data: "CANNING", city: "Canning"}
-    ];
     const [location, updateLocation] = React.useState("");
     const [description, updateDescription] = React.useState("");
     const [webSite, updateWebSite] = React.useState("");
     const [email, updateEmail] = React.useState("");
     const [phone, updatePhone] = React.useState("");
+    const [deliveryCities, updateDeliveryCities] = React.useState([]);
+
     const newProvider = {
         name: name,
         logo: urlLogo,
@@ -84,12 +73,12 @@ const Provider = props => {
                             }}
                             helperText="Please select your city"
                             variant="outlined">
-                            {cities.map(option => (
-                                <option key={option.city} value={option.city}>
-                                {option.city}
+                            {props.cities.map(city => (
+                                <option key={city.title} value={city.name}>
+                                {city.title}
                                 </option>
                             ))}
-                            </TextField>
+                        </TextField>
                     </div>
                     <div>
                         <TextField required id="direction-provider" label="Dirección" defaultValue={location} onChange={(event)=>updateLocation(event.target.value)}/>
@@ -121,19 +110,19 @@ const Provider = props => {
                        <Autocomplete
                             multiple
                             id="tags-outlined"
-                            options={cities}
-                            getOptionLabel={option => option.city}
-                            defaultValue={[]}
+                            options={props.cities}
+                            getOptionLabel={option => option.title}
+                            defaultValue={deliveryCities}
                             filterSelectedOptions
-                            renderInput={params => (
-                            <TextField
-                                style={{ width: 700 }}
-                                {...params}
-                                variant="outlined"
-                                label="Localidades de entrega"
-                                placeholder="Favorites"
-                            />
-                            )}
+                            renderInput={city => (
+                                <TextField
+                                    style={{ width: 700 }}
+                                    {...city}
+                                    variant="outlined"
+                                    label="Localidades de entrega"
+                                    placeholder="Favorites"
+                                />)}
+                            onChange={ (event, value) => updateDeliveryCities(event.target.value) }
                         />
                     </div>
                     <div>
