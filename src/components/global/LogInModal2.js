@@ -11,22 +11,14 @@ import { connect } from 'react-redux';
 import { Link, NavLink } from 'react-router-i18n';
 import { mapDispatchToProps, mapStateToProps } from '../../mapMethods';
 import I18n from '../I18n';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 
 const ResponsiveDialog = props => {
 
-    const userLogIn = {
-        name: "",
-        email:""
-      }
+    const [name, updateName] = React.useState('');
+    const [email, updateEmail] = React.useState('');
     
-      const updateName = event => {
-        userLogIn.name = event.target.value
-      }
-    
-      const updateEmail = event => {
-        userLogIn.email = event.target.value
-      }
-
     const [open, setOpen] = React.useState(false);
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -39,6 +31,8 @@ const ResponsiveDialog = props => {
         setOpen(false);
     };
 
+    const [checkProvider, updateCheckProvider] = React.useState(false);
+    
     return (
         <div>
         <Button variant="link" onClick={handleClickOpen}>
@@ -55,26 +49,42 @@ const ResponsiveDialog = props => {
             <DialogContentText>
                 <Form>
                     <Form.Group controlId="formBasicName">
-                    <Form.Label> <I18n t="userNameUsurname"/> </Form.Label>
-                    <Form.Control type="text" placeholder= "First name" onChange={updateName.bind(this)}/>
-                    <Form.Text className="text-muted" >
-                    </Form.Text>
+                        <Form.Label> <I18n t="userNameUsurname"/> </Form.Label>
+                        <Form.Control type="text" placeholder= "First name" value={name} onChange={(event) => updateName(event.target.value)}/>
+                        <Form.Text className="text-muted" >
+                        </Form.Text>
                     </Form.Group>
     
                     <Form.Group controlId="formBasicEmail">
-                    <Form.Label> Email </Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" onChange= {updateEmail.bind(this)}/>
-                    <Form.Text className="text-muted">
-                        <I18n t="userEmailNotification"/>
-                    </Form.Text>
+                        <Form.Label> Email </Form.Label>
+                        <Form.Control type="email" placeholder="Enter email" value={email} onChange= {(event) => updateEmail(event.target.value)}/>
+                        <Form.Text className="text-muted">
+                            <I18n t="userEmailNotification"/>
+                        </Form.Text>
+                    </Form.Group>
+
+                    <Form.Group controlId="formBasicCheckbox">
+                    <FormControlLabel
+                        control={
+                            <Checkbox
+                                checked={checkProvider}
+                                onChange={(event) => updateCheckProvider(event.target.checked)}
+                                value={checkProvider}
+                                color="primary"
+                            />
+                        }
+                        label="Soy proveedor"
+                    />
                     </Form.Group>
                 </Form>
             </DialogContentText>
             </DialogContent>
             <DialogActions>
                 <Button variant="secondary" onClick={handleClose}>Close</Button>
-                <Button variant="success" onClick={()=> {console.log(userLogIn); props.getUser(userLogIn.email)}} > 
-                    <NavLink ignoreLocale to='login'> <I18n t="logIn"/> </NavLink></Button>
+                {!checkProvider && <Button variant="success" onClick={()=> {props.getUser(email)}} > 
+                    <NavLink ignoreLocale to='login'> <I18n t="logIn"/> </NavLink></Button>}
+                {checkProvider && <Button variant="success" onClick={()=> {props.loginProvider(email)}} > 
+                <NavLink ignoreLocale to='loginProvider'> <I18n t="logIn"/> </NavLink></Button>}
             </DialogActions>
         </Dialog>
         </div>

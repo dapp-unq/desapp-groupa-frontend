@@ -81,6 +81,10 @@ const translations = {
     balance:'Saldo',
     webSite:'Página web',
     provHello:'Hola ',
+    unsubscribe:'Quiero darme de baja',
+    removeProviderAlert:'Si elimina su cuenta de proveedor, todos su historial en ViandaYa será borrada sin posibilidad de recuperar su información. ViandaYa no se hace responzable si el usuario no retiró todo el saldo disponible en su cuenta antes de su eliminación.',
+    removeProviderAlertTitle:'¿Está seguro de eliminar su cuenta?',
+    removeProvider:'Sí, quiero borrar mi cuenta',
 
   },
   en: {
@@ -158,6 +162,10 @@ const translations = {
     balance:'Balance',
     webSite:'Web site',
     provHello:'Hello ',
+    unsubscribe:'I want to unsubscribe',
+    removeProviderAlert:'If you delete your provider account, all your history in ViandaYa will be deleted without the possibility of recovering your information. ViandaYa is not liable if the user did not withdraw all the available balance in his account before its elimination',
+    removeProviderAlertTitle:'Are you sure you want to delete your account?',
+    removeProviderAgree:'Yes, I want to delete my account',
 
   }
 }

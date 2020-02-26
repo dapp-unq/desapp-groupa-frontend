@@ -78,6 +78,8 @@ const getCities = () => {
 }
 
 const loginProvider = email => {
+    console.log('Mail enviado:')
+    console.log(email)
     return async (dispatch) => {
         const res = await axios.get('https://viandasya-c1a.herokuapp.com/rest/provider/'+email)
         const responseData = res.data
