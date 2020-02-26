@@ -10,6 +10,7 @@ import { mapDispatchToProps, mapStateToProps } from '../../mapMethods';
 import I18n from '../I18n';
 import './css/Provider.css';
 import DatesTable2 from './DatesTable2';
+import ValidationTextFields from './EjemploValidacion';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -39,16 +40,24 @@ const Provider = props => {
     const [phone, updatePhone] = React.useState("");
     const [deliveryCities, updateDeliveryCities] = React.useState([]);
 
-    const [descriptionError, updateDescriptionError] = React.useState(false);
-    const [canRegister, updateCanRegister] = React.useState(true);
+    const [descriptionError, updateDescriptionError] = React.useState(true);
+    const [nameError, updateNameError] = React.useState(true);
+    const [logoError, updateLogoError] = React.useState(true);
+    const [cityError, updateCityError] = React.useState(true);
+    const [locationError, updateLocationError] = React.useState(true);
+    const [emailError, updateEmailError] = React.useState(true);
+    const [phoneError, updatePhoneError] = React.useState(true);
+    // const [hoursDaysError, updateHoursDaysError] = React.useState(true);
 
+    const [canRegister, updateCanRegister] = React.useState(true);
+   
     React.useEffect(() => {
-        if (descriptionError) {
+        if (descriptionError || nameError || logoError || cityError || locationError || emailError || phoneError) {
             updateCanRegister(true);
         } else {
             updateCanRegister(false);
         }
-      }, [descriptionError, updateCanRegister]);
+      }, [descriptionError, nameError, logoError, cityError, locationError, emailError, phoneError, updateCanRegister]);
 
     const registerProvider = () => {
         const openingHD = [];
@@ -70,7 +79,7 @@ const Provider = props => {
             city: cityProvider,
             location: location,
             description: description,
-            website: webSite,
+            website: webSite, 
             email: email,
             phoneNumber: phone,
             openingHoursDays: openingHD,
@@ -81,7 +90,6 @@ const Provider = props => {
             menusRemoved: 0
         }
 
-        console.log(newProvider);
         props.addProvider(newProvider)
         props.loginProvider(newProvider.email);
     }
@@ -91,19 +99,26 @@ const Provider = props => {
             <h2><I18n t="providerTitle" /></h2>
             <form className={classes.root} noValidate autoComplete="off">
                 <div>
-                    <TextField required id="name-provider" label="Nombre" defaultValue={name} onChange={(event) => updateName(event.target.value) } />
+                    <TextField required id="name-provider" label="Nombre" defaultValue={name} 
+                    onChange={(event) => {updateName(event.target.value); updateNameError(name == '')} } 
+                    error={nameError} 
+                    helperText={nameError ? "Este campo es obligatorio" : null}/>
                 </div>
                 <div>
-                    <TextField required id="url-logo-provider" label="URL Logo" defaultValue={urlLogo} onChange={(event) => updateUrlLogo(event.target.value)} />
+                    <TextField required id="url-logo-provider" label="URL Logo" defaultValue={urlLogo} 
+                    onChange={(event) => {updateUrlLogo(event.target.value); updateLogoError(urlLogo == '')}} 
+                    error={logoError} 
+                    helperText={logoError ? "Este campo es obligatorio" : null}/>
                 </div>
                 <div>
-                    <TextField id="city-provider" select label="Localidad"
+                    <TextField required id="city-provider" select label="Localidad"
                         defaultValue={cityProvider} 
-                        onChange={(event) => updateCityProvider(event.target.value)}
+                        onChange={(event) => {updateCityProvider(event.target.value); updateCityError(cityProvider == '')}}
                         SelectProps={{
                             native: false,
                         }}
-                        helperText="Please select your city"
+                        error={cityError} 
+                        helperText={cityError ? "Este campo es obligatorio" : "Please select your city"}
                         variant="outlined">
                         {props.cities.map(city => (
                              <option key={city.title} value={city.name} >
@@ -113,10 +128,14 @@ const Provider = props => {
                     </TextField>
                 </div>
                 <div>
-                    <TextField required id="direction-provider" label="Dirección" defaultValue={location} onChange={(event) => updateLocation(event.target.value)} />
+                    <TextField required id="direction-provider" label="Dirección" defaultValue={location} 
+                    onChange={(event) => {updateLocation(event.target.value); updateLocationError(location == '')}} 
+                    error={locationError} 
+                    helperText={locationError ? "Este campo es obligatorio" : null}/>
                 </div>
                 <div>
                     <TextField
+                        required
                         id="outlined-multiline-static"
                         label="Descripción"
                         multiline
@@ -132,17 +151,23 @@ const Provider = props => {
                     <TextField id="web-site-provider" label="Sitio web" defaultValue={webSite} onChange={(event) => updateWebSite(event.target.value)} />
                 </div>
                 <div>
-                    <TextField required id="e-mail-provider" label="E-mail" defaultValue={email} onChange={(event) => updateEmail(event.target.value)} />
+                    <TextField required id="e-mail-provider" label="E-mail" defaultValue={email} 
+                    onChange={(event) => {updateEmail(event.target.value); updateEmailError(email == '')}} 
+                    error={emailError} 
+                    helperText={emailError ? "Este campo es obligatorio" : null}/>
                 </div>
                 <div>
-                    <TextField required id="phone-provider" label="Teléfono" defaultValue={phone} onChange={(event) => updatePhone(event.target.value)} />
+                    <TextField required id="phone-provider" label="Teléfono" defaultValue={phone} 
+                    onChange={(event) => {updatePhone(event.target.value); updatePhoneError(phone == '')}} 
+                    error={phoneError} 
+                    helperText={phoneError ? "Este campo es obligatorio" : null}/>
                 </div>
                 <div>
                     <DatesTable2 />
                 </div>
                 <div>
                     <Autocomplete
-                        multiple
+                        multiple required
                         id="tags-outlined"
                         options={props.cities}
                         getOptionLabel={option => option.title}
@@ -156,7 +181,9 @@ const Provider = props => {
                                 label="Localidades de entrega"
                                 placeholder="Favorites"
                             />)}
-                        onChange={(event, value) => updateDeliveryCities(value)}
+                        onChange={(event, value) =>updateDeliveryCities(value)}
+                        // error={hoursDaysError}
+                        // helperText={hoursDaysError ? "Debe ingresarse al menos un día de disponibilidad." : null}
                     />
                 </div>
                 <div>
