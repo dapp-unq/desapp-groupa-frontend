@@ -71,8 +71,8 @@ const Provider = props => {
         }
 
         console.log(newProvider);
-        // props.addProvider(newProvider);
-        // props.loginProvider(newProvider.email);
+        props.addProvider(newProvider)
+        props.loginProvider(newProvider.email);
     }
 
     return (
@@ -149,8 +149,7 @@ const Provider = props => {
                 <div>
                     <ThemeProvider theme={theme}>
                         <Button variant="contained" color="primary" className={classes.margin} onClick={() => registerProvider()}>
-                            <b><i><I18n t="addProvider" /></i></b>
-                            {/* <NavLink ignoreLocale to='loginProvider'><b><i><I18n t="addProvider" /></i></b></NavLink> */}
+                            <NavLink ignoreLocale to='loginProvider'><b><i><I18n t="addProvider" /></i></b></NavLink>
                         </Button>
                     </ThemeProvider>
                 </div>

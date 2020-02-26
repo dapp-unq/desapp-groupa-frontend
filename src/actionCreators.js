@@ -83,7 +83,7 @@ const loginProvider = email => {
         const responseData = res.data
         dispatch({
             type: "LOGIN_PROVIDER",
-            selectedProvider: responseData
+            provider: responseData
         })
     }
 }

@@ -79,6 +79,8 @@ const translations = {
     SUNDAY: 'Domingo',
     deliveryCities: 'Entrega a domicilio en las zonas de:',
     balance:'Saldo',
+    webSite:'Página web',
+    provHello:'Hola ',
 
   },
   en: {
@@ -154,6 +156,9 @@ const translations = {
     SUNDAY: 'Sunday',
     deliveryCities: 'Home delivery in the areas of:',
     balance:'Balance',
+    webSite:'Web site',
+    provHello:'Hello ',
+
   }
 }
 
