@@ -122,6 +122,7 @@ const getUser = email => {
     }
 }
 
+
 const getProvider = email => {
     return async (dispatch) => {
         const res = await axios.get('https://viandasya-c1a.herokuapp.com/rest/provider/'+email)

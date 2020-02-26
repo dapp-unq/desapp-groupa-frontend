@@ -86,6 +86,7 @@ const translations = {
     removeProviderAlertTitle:'¿Está seguro de eliminar su cuenta?',
     removeProvider:'Sí, quiero borrar mi cuenta',
     edit:'Editar ',
+    editProviderTitle:'Editar proveedor',
 
   },
   en: {
@@ -168,7 +169,7 @@ const translations = {
     removeProviderAlertTitle:'Are you sure you want to delete your account?',
     removeProviderAgree:'Yes, I want to delete my account',
     edit:'Edit ',
-
+    editProviderTitle:'Edit provider',
   }
 }
 
