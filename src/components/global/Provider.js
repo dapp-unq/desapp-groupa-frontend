@@ -90,8 +90,7 @@ const Provider = props => {
                         helperText="Please select your city"
                         variant="outlined">
                         {props.cities.map(city => (
-                             <option key={city.title} value={city.title} >
-                             {/* onChange={(event) => updateCityProvider(event.target.value)}> */}
+                             <option key={city.title} value={city.name} >
                                 {city.title}
                             </option>
                         ))}
