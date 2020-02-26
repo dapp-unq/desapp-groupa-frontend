@@ -48,6 +48,11 @@ const Provider = props => {
             })
         });
 
+        const deliveryC = [];
+        deliveryCities.map(city => {
+            deliveryC.push(city.name)
+        });
+
         const newProvider = {
             name: name,
             logo: urlLogo,
@@ -58,7 +63,7 @@ const Provider = props => {
             email: email,
             phoneNumber: phone,
             openingHoursDays: openingHD,
-            deliveryCities: deliveryCities,
+            deliveryCities: deliveryC,
             currentMenus: [],
             orders: [],
             balance: 0,
@@ -138,7 +143,7 @@ const Provider = props => {
                                 label="Localidades de entrega"
                                 placeholder="Favorites"
                             />)}
-                        onChange={(event, value) => updateDeliveryCities(event.target.value)}
+                        onChange={(event, value) => updateDeliveryCities(value)}
                     />
                 </div>
                 <div>
