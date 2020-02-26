@@ -13,6 +13,7 @@ import Menu from './components/global/Menu'
 import Order from './components/global/Order'
 import LogIn from './components/global/LogIn.js'
 import Provider from './components/global/Provider.js'
+import EditProvider from './components/global/EditProvider.js'
 import LoginProvider from './components/global/LoginProvider.js'
 
 import './components/I18n';
@@ -29,6 +30,7 @@ const AppRoutes = props => {
                 <Route exact path={`${base}/login`} component = {LogIn} />
                 <Route exact path= {`${base}/main`} component = {Main}/>
                 <Route exact path= {`${base}/provider`} component = {Provider}/>
+                <Route exact path= {`${base}/editProvider`} component = {EditProvider}/>
                 <Route exact path= {`${base}/loginProvider`} component = {LoginProvider}/>
                 <Route exact path={`${base}/searchMenus`} component = {Search}/>
                 <Route exact path= {`${base}/menuDescription`} component = {Menu}/>

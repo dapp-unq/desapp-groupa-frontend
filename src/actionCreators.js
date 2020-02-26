@@ -90,6 +90,19 @@ const loginProvider = email => {
     }
 }
 
+const removeProvider = email => {
+    console.log('Mail enviado para eliminar:')
+    console.log(email)
+    return async (dispatch) => {
+        const res = await axios.delete('https://viandasya-c1a.herokuapp.com/rest/provider/'+email)
+        const responseData = res.data
+        dispatch({
+            type: "REMOVE_PROVIDER",
+            provider: ""
+        })
+    }
+}
+
 const getUser = email => {
     return async (dispatch) => {
         const res = await axios.get('https://viandasya-c1a.herokuapp.com/rest/user/'+ email) // beniteznahueloscar@gmail.com
@@ -132,4 +145,4 @@ const getProvider = email => {
     }
 }
 
-export {setHoursProvider, removeFromProviders, addToProviders, loginProvider, getProvider, addUser, addProvider, getUser, selectMenu, getMenus, getCities, };
+export {setHoursProvider, removeFromProviders, addToProviders, removeProvider, loginProvider, getProvider, addUser, addProvider, getUser, selectMenu, getMenus, getCities, };

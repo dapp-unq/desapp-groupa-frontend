@@ -71,6 +71,12 @@ const reducer = (state, action) => {
                 provider: action.provider
         }
 
+        case "REMOVE_PROVIDER":
+            return {
+                ...state,
+                provider: action.provider
+        }
+
         default: 
             return state
     }

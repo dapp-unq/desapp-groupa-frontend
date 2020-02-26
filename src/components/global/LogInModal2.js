@@ -32,7 +32,7 @@ const ResponsiveDialog = props => {
     };
 
     const [checkProvider, updateCheckProvider] = React.useState(false);
-    
+
     return (
         <div>
         <Button variant="link" onClick={handleClickOpen}>

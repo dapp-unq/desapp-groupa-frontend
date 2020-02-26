@@ -10,6 +10,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { NavLink } from 'react-router-i18n';
 
 const LoginProvider = props => {
 
@@ -22,6 +23,11 @@ const LoginProvider = props => {
         setOpen(false);
     };
 
+    const removeProvider = () => {
+        props.removeProvider(props.provider.email);
+        setOpen(false);
+    };
+
     return ( 
         <div className= 'LoginProvider'>
             <Container fluid>
@@ -30,7 +36,7 @@ const LoginProvider = props => {
                         <Image src={props.provider.logo} fluid />
                     </Col>
                     <Col sm={10}>
-                        <h2> <I18n t="provHello"/> {props.provider.name} </h2>
+                        <h2> {props.provider.name} </h2>
                         <h4> {props.provider.description} </h4>
                     </Col>
                 </Row>
@@ -52,6 +58,7 @@ const LoginProvider = props => {
             <h5> <I18n t="balance"/>: {props.provider.balance} </h5>
             <hr/>
             <div>
+                <NavLink ignoreLocale to='editProvider'><I18n t="edit"/> </NavLink>
                 <Button variant="outlined" color="secondary" onClick={handleClickOpen}>
                     <I18n t="unsubscribe"/>
                 </Button>
@@ -71,8 +78,8 @@ const LoginProvider = props => {
                     <Button onClick={handleClose} color="primary">
                         No
                     </Button>
-                    <Button onClick={handleClose} color="primary" autoFocus>
-                        OK
+                    <Button color="primary" autoFocus onClick={() => removeProvider()}>
+                        <NavLink ignoreLocale to='main'> OK </NavLink>
                     </Button>
                     </DialogActions>
                 </Dialog>
