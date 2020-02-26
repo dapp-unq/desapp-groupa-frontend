@@ -59,6 +59,8 @@ const LoginProvider = props => {
             <hr/>
             <div>
                 <NavLink ignoreLocale to='editProvider'><I18n t="edit"/> </NavLink>
+            </div>
+            <div className='RemoveProvider'>
                 <Button variant="outlined" color="secondary" onClick={handleClickOpen}>
                     <I18n t="unsubscribe"/>
                 </Button>

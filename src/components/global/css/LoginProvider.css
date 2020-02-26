@@ -1,3 +1,8 @@
 .LoginProvider {
     margin: 20px 20px;
 }
+
+.RemoveProvider {
+    align-content: right;
+    text-align: right;
+}

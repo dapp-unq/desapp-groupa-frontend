@@ -39,6 +39,17 @@ const Provider = props => {
     const [phone, updatePhone] = React.useState("");
     const [deliveryCities, updateDeliveryCities] = React.useState([]);
 
+    const [descriptionError, updateDescriptionError] = React.useState(false);
+    const [canRegister, updateCanRegister] = React.useState(true);
+
+    React.useEffect(() => {
+        if (descriptionError) {
+            updateCanRegister(true);
+        } else {
+            updateCanRegister(false);
+        }
+      }, [descriptionError, updateCanRegister]);
+
     const registerProvider = () => {
         const openingHD = [];
         props.hoursProvider.map(time => {
@@ -80,7 +91,7 @@ const Provider = props => {
             <h2><I18n t="providerTitle" /></h2>
             <form className={classes.root} noValidate autoComplete="off">
                 <div>
-                    <TextField required id="name-provider" label="Nombre" defaultValue={name} onChange={(event) => updateName(event.target.value)} />
+                    <TextField required id="name-provider" label="Nombre" defaultValue={name} onChange={(event) => updateName(event.target.value) } />
                 </div>
                 <div>
                     <TextField required id="url-logo-provider" label="URL Logo" defaultValue={urlLogo} onChange={(event) => updateUrlLogo(event.target.value)} />
@@ -112,7 +123,9 @@ const Provider = props => {
                         rows="4"
                         defaultValue={description}
                         variant="outlined"
-                        onChange={(event) => updateDescription(event.target.value)}
+                        onChange={(event) => {updateDescription(event.target.value); updateDescriptionError((description.length < 30 ) || (description.length > 200) ) }}
+                        error={descriptionError} 
+                        helperText={descriptionError ? "La descripcion debe tener entre 30 y 200 letras." : null}
                     />
                 </div>
                 <div>
@@ -148,7 +161,7 @@ const Provider = props => {
                 </div>
                 <div>
                     <ThemeProvider theme={theme}>
-                        <Button variant="contained" color="primary" className={classes.margin} onClick={() => registerProvider()}>
+                        <Button disabled={canRegister} variant="contained" color="primary" className={classes.margin} onClick={() => registerProvider()}>
                             <NavLink ignoreLocale to='loginProvider'><b><i><I18n t="addProvider" /></i></b></NavLink>
                         </Button>
                     </ThemeProvider>
