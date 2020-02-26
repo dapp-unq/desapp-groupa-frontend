@@ -29,7 +29,7 @@ const translations = {
     userNamePlaceholder: 'Ingrese su nombre...',
     userSurnamePlaceholder: 'Ingrese su apellido...',
     userEmailPlaceholder: 'Ingrese su email...',
-    userEmailNotification: 'Nunca compartiremos su correo electrónico con nadie más.',
+    userEmailNotification: 'Nunca compartiremos su correo electrónico con nadie.',
     userPhone: 'Teléfono:',
     userDirection: 'Dirección',
     userCity: 'Localidad:',
@@ -77,6 +77,9 @@ const translations = {
     FRIDAY: 'Viernes',
     SATURDAY: 'Sábado',
     SUNDAY: 'Domingo',
+    deliveryCities: 'Entrega a domicilio en las zonas de:',
+    balance:'Saldo',
+
   },
   en: {
     userRegiter: 'User register',
@@ -149,6 +152,8 @@ const translations = {
     FRIDAY: 'Friday',
     SATURDAY: 'Saturday',
     SUNDAY: 'Sunday',
+    deliveryCities: 'Home delivery in the areas of:',
+    balance:'Balance',
   }
 }
 

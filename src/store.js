@@ -17,6 +17,12 @@ const reducer = (state, action) => {
                 user: action.user
             }
 
+        case "ADD_PROVIDER":
+            return {
+                ...state,
+                provider: action.provider
+            }
+
         case "GET_USER":
             return {
                 ...state,
@@ -57,6 +63,12 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 hoursProvider: action.hoursProvider
+        }
+
+        case "LOGIN_PROVIDER":
+            return {
+                ...state,
+                provider: action.provider
         }
 
         default: 

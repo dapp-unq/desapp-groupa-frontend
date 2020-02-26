@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'; // <-- updated
 import { Button, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { Link, NavLink } from 'react-router-i18n';
+import { NavLink } from 'react-router-i18n';
 import { Auth0Context } from '../../contexts/auth0-context'; // <-- new
 import { mapDispatchToProps, mapStateToProps } from '../../mapMethods';
 import I18n from '../I18n';

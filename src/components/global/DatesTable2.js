@@ -44,7 +44,7 @@ const DatesTable2 = props => {
     const days = ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"];
 
     const columns = [
-      { title: <I18n t="day"/>, field: 'day', lookup: { 0:<I18n t={days[0]}/>, 1: <I18n t={days[1]}/>,2:<I18n t={days[2]}/>, 3: <I18n t={days[3]}/>, 4:<I18n t={days[4]}/>, 5:<I18n t={days[5]}/>, 6:<I18n t={days[6]}/>} },
+      { title: <I18n t="day"/>, field: 'day', lookup: { "MONDAY":<I18n t={days[0]}/>, "TUESDAY": <I18n t={days[1]}/>,"WEDNESDAY":<I18n t={days[2]}/>, "THURSDAY": <I18n t={days[3]}/>, "FRIDAY":<I18n t={days[4]}/>, "SATURDAY":<I18n t={days[5]}/>, "SUNDAY":<I18n t={days[6]}/>} },
       { title: <I18n t="openingHours"/>, field: 'opening', type: 'time' },
       { title: <I18n t="closingHours"/>, field: 'closing', type: 'time' },
     ];
@@ -75,6 +75,7 @@ const DatesTable2 = props => {
               updateListHours(prevState => {
                 const data = [...prevState.data];
                 data.push(newData);
+                props.setHoursProvider(data);
                 return { ...prevState, data };
               });
             }, 600);
@@ -87,6 +88,7 @@ const DatesTable2 = props => {
                 updateListHours(prevState => {
                   const data = [...prevState.data];
                   data[data.indexOf(oldData)] = newData;
+                  props.setHoursProvider(data);
                   return { ...prevState, data };
                 });
               }
@@ -99,6 +101,7 @@ const DatesTable2 = props => {
               updateListHours(prevState => {
                 const data = [...prevState.data];
                 data.splice(data.indexOf(oldData), 1);
+                props.setHoursProvider(data);
                 return { ...prevState, data };
               });
             }, 600);
