@@ -36,7 +36,11 @@ const Order = props => {
   const [selectedDeliveryMethod, updateDeliveryMethod] = React.useState('');
 
   const dayAndHour = (dateSelected, hourSelected) => {
-    const date = dateSelected.getDate()+'-'+selectedDateDelivery.getMonth()+'-'+selectedDateDelivery.getFullYear();
+    var month = dateSelected.getMonth();
+    if (month < 10)
+    { month = '0'+month }
+
+    const date = dateSelected.getDate()+'-'+month+'-'+dateSelected.getFullYear();
     const hour = hourSelected.toTimeString().slice(0,8)+'.00';
     return ( date + ' '+ hour)
   }
@@ -189,6 +193,7 @@ const ButtonModal= props => {
     //   setModalShow(true)
     // }
     setModalShow(true);
+    props.getUser(props.user.email);
   } 
 
     return (
