@@ -55,6 +55,20 @@ const addProvider = provider => {
     }
 }
 
+const editProvider = provider => {
+    console.log("JSON enviado para editar:")
+    console.log(provider)
+    return async (dispatch) => {
+        const res = await axios.put('https://viandasya-c1a.herokuapp.com/rest/provider', provider)
+        const responseData = res.data;
+        // const responseStatus = res.status;// 201 si es correcto
+        dispatch({
+            type: "EDIT_PROVIDER",
+            provider
+        })
+    }
+}
+
 const getMenus = () => {
     return async (dispatch) => {
         const res = await axios.get('https://viandasya-c1a.herokuapp.com/rest/menu/rank?minRank=0&maxRank=5');
@@ -146,4 +160,4 @@ const getProvider = email => {
     }
 }
 
-export {setHoursProvider, removeFromProviders, addToProviders, removeProvider, loginProvider, getProvider, addUser, addProvider, getUser, selectMenu, getMenus, getCities, };
+export {setHoursProvider, removeFromProviders, editProvider, addToProviders, removeProvider, loginProvider, getProvider, addUser, addProvider, getUser, selectMenu, getMenus, getCities, };

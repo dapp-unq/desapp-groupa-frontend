@@ -1,4 +1,4 @@
-import {getCities, removeFromProviders, loginProvider, removeProvider, setHoursProvider, addToProviders, addProvider, getProvider, getUser, selectMenu, getMenus, addUser} from './actionCreators';
+import {getCities, removeFromProviders, loginProvider, editProvider, removeProvider, setHoursProvider, addToProviders, addProvider, getProvider, getUser, selectMenu, getMenus, addUser} from './actionCreators';
 
 export const mapStateToProps = state => {
     return {
@@ -43,6 +43,9 @@ export const mapDispatchToProps = dispatch => {
         },
         loginProvider(email) {
             dispatch(loginProvider(email))
+        },
+        editProvider(provider) {
+            dispatch(editProvider(provider))
         },
         getMenus() {
             dispatch(getMenus())

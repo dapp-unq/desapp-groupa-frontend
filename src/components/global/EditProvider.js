@@ -58,7 +58,7 @@ const EditProvider = props => {
         }
       }, [descriptionError, nameError, logoError, cityError, locationError, emailError, phoneError, updateCanRegister]);
 
-    const registerProvider = () => {
+    const updateProvider = () => {
         const openingHD = [];
         props.hoursProvider.map(time => {
             openingHD.push({day:time.day, 
@@ -89,10 +89,8 @@ const EditProvider = props => {
             menusRemoved: 0
         }
 
-        // DESCOMENTAR Y COMUNICAR CON EL SERVIDOR PARA EDITTARLO.
-        // HABILITAR Y CAMBIAR EL BOTON PARA EDITAR
-        // props.editProvider(newProvider)
-        // props.loginProvider(newProvider.email);
+        props.editProvider(newProvider)
+        props.loginProvider(newProvider.email);
     }
 
     return (
@@ -189,8 +187,8 @@ const EditProvider = props => {
                 </div>
                 <div>
                     <ThemeProvider theme={theme}>
-                        <Button disabled={true} variant="contained" color="primary" className={classes.margin} onClick={() => registerProvider()}>
-                            <NavLink ignoreLocale to='loginProvider'><b><i><I18n t="addProvider" /></i></b></NavLink>
+                        <Button disabled={canRegister} variant="contained" color="primary" className={classes.margin} onClick={() => updateProvider()}>
+                            <NavLink ignoreLocale to='loginProvider'><b><i><I18n t="editProviderTitle" /></i></b></NavLink>
                         </Button>
                     </ThemeProvider>
                 </div>
