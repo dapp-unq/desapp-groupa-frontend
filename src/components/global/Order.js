@@ -46,7 +46,7 @@ const Order = props => {
   }
 
   const newOrder = {
-    user:props.user.email,
+    userEmail:props.user.email,
     order:{
       menu:{
         name:props.selectedMenu.name,
