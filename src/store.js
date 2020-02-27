@@ -83,6 +83,12 @@ const reducer = (state, action) => {
                 provider: action.provider
         }
 
+        case "PURCHASE":
+            return {
+                ...state,
+                order: action.order
+        }
+
         default: 
             return state
     }
@@ -96,4 +102,4 @@ const logger = store => next => action => {
     return result
 }
 
-export default createStore(reducer, {hoursProvider: [], cities: [], selectedProvider: "", provider: "", menus:[], user:'', selectedMenu:"" }, applyMiddleware(logger, thunk));
+export default createStore(reducer, {hoursProvider: [], cities: [], order:'', selectedProvider: "", provider: "", menus:[], user:'', selectedMenu:"" }, applyMiddleware(logger, thunk));

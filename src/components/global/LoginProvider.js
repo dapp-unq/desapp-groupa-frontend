@@ -53,7 +53,6 @@ const LoginProvider = props => {
             {props.provider.deliveryCities && props.provider.deliveryCities.map(city => (
                 <li> {city}</li>
             ) )}
-            <h5> <I18n t="userPhone"/>: {props.provider.phoneNumber} </h5>
             <hr/>
             <h5> <I18n t="balance"/>: {props.provider.balance} </h5>
             <hr/>
