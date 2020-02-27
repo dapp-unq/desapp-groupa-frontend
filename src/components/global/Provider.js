@@ -27,6 +27,7 @@ const theme = createMuiTheme({
     },
 });
 
+
 const Provider = props => {
     const classes = useStyles();
 
@@ -47,6 +48,8 @@ const Provider = props => {
     const [locationError, updateLocationError] = React.useState(true);
     const [emailError, updateEmailError] = React.useState(true);
     const [phoneError, updatePhoneError] = React.useState(true);
+    const [emailVal, updateEmailVal] = React.useState(true);
+    const [phoneVal, updatePhoneVal] = React.useState(true);
     // const [hoursDaysError, updateHoursDaysError] = React.useState(true);
 
     const [canRegister, updateCanRegister] = React.useState(true);
@@ -92,6 +95,21 @@ const Provider = props => {
 
         props.addProvider(newProvider)
         props.loginProvider(newProvider.email);
+    }
+
+    const phonenumber = (inputtxt) => {
+        var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+        if(inputtxt.match(phoneno)) {
+          return true;
+        }  
+        else {  
+          return false;
+        }
+      }
+    
+    const validateEmail = (email) => {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
     }
 
     return (
@@ -152,15 +170,15 @@ const Provider = props => {
                 </div>
                 <div>
                     <TextField required id="e-mail-provider" label="E-mail" defaultValue={email} 
-                    onChange={(event) => {updateEmail(event.target.value); updateEmailError(email == '')}} 
+                    onChange={(event) => {updateEmail(event.target.value); updateEmailError(!validateEmail(email))} } 
                     error={emailError} 
-                    helperText={emailError ? "Este campo es obligatorio" : null}/>
+                    helperText={emailError ? "Debe ingresar un mail válido" : null}/>
                 </div>
                 <div>
                     <TextField required id="phone-provider" label="Teléfono" defaultValue={phone} 
-                    onChange={(event) => {updatePhone(event.target.value); updatePhoneError(phone == '')}} 
+                    onChange={(event) => {updatePhone(event.target.value); updatePhoneError(!phonenumber(phone))}} 
                     error={phoneError} 
-                    helperText={phoneError ? "Este campo es obligatorio" : null}/>
+                    helperText={phoneError ? "Debe ingresar un teléfono válido" : null}/>
                 </div>
                 <div>
                     <DatesTable2 />
