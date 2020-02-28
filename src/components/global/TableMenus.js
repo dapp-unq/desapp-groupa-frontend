@@ -1,7 +1,6 @@
 import React from 'react';
-import './css/TableMenus.css';
 import { generate } from 'shortid';
-import { mapStateToProps, mapDispatchToProps} from '../../mapMethods';
+import './css/TableMenus.css';
 
 const TableHeader = () => 
 {

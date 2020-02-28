@@ -8,13 +8,19 @@ const reducer = (state, action) => {
         case "ADD_TO_PROVIDERS":
             return {
                 ...state,
-                providers: state.providers.concat(action.provider)
+                selectedProvider: state.selectedProvider.concat(action.selectedProvider)
             }
 
         case "ADD_USER":
             return {
                 ...state,
                 user: action.user
+            }
+
+        case "ADD_PROVIDER":
+            return {
+                ...state,
+                provider: action.provider
             }
 
         case "GET_USER":
@@ -26,13 +32,13 @@ const reducer = (state, action) => {
         case "REMOVE_FROM_PROVIDERS":
             return {
                 ...state,
-                providers: state.providers.filter(provider => provider.name !== action.provider.name)
+                selectedProvider: state.selectedProvider.filter(selectedProvider => selectedProvider.name !== action.selectedProvider.name)
             }
 
         case "GET_PROVIDER":
             return {
                 ...state,
-                provider: action.provider
+                selectedProvider: action.selectedProvider
             }
 
         case "GET_MENUS":
@@ -45,6 +51,42 @@ const reducer = (state, action) => {
         return {
             ...state,
             selectedMenu: action.selectedMenu
+        }
+
+        case "GET_CITIES":
+        return {
+            ...state,
+            cities: action.cities
+        }
+
+        case "SET_HOURS_PROVIDER":
+            return {
+                ...state,
+                hoursProvider: action.hoursProvider
+        }
+
+        case "LOGIN_PROVIDER":
+            return {
+                ...state,
+                provider: action.provider
+        }
+
+        case "EDIT_PROVIDER":
+            return {
+                ...state,
+                provider: action.provider
+        }
+
+        case "REMOVE_PROVIDER":
+            return {
+                ...state,
+                provider: action.provider
+        }
+
+        case "PURCHASE":
+            return {
+                ...state,
+                order: action.order
         }
 
         default: 
@@ -60,4 +102,4 @@ const logger = store => next => action => {
     return result
 }
 
-export default createStore(reducer, {provider: "", menus:[], user:'', selectedMenu:"" }, applyMiddleware(logger, thunk));
+export default createStore(reducer, {hoursProvider: [], cities: [], order:'', selectedProvider: "", provider: "", menus:[], user:'', selectedMenu:"" }, applyMiddleware(logger, thunk));

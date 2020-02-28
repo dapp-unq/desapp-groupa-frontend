@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'; // <-- updated
 import { Button, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-i18n';
+import { NavLink } from 'react-router-i18n';
 import { Auth0Context } from '../../contexts/auth0-context'; // <-- new
 import { mapDispatchToProps, mapStateToProps } from '../../mapMethods';
 import I18n from '../I18n';
@@ -87,9 +87,10 @@ const Users = props => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" />
                 </Form.Group>
-                <Button variant="primary" type="submit" onClick={() => register()}>
-                    <Link to='login'> Sign in </Link>
+                <Button variant="primary" onClick={() => register()}>
+                    <NavLink ignoreLocale to='login'> Sign in </NavLink>
                 </Button>
+
             </Form>
             <p>
                 Intento de Auth0:

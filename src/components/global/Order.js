@@ -1,6 +1,8 @@
 import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
-import NativeSelect from '@material-ui/core/NativeSelect';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import { KeyboardDatePicker, KeyboardTimePicker } from '@material-ui/pickers';
 import 'date-fns';
@@ -10,9 +12,21 @@ import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../../mapMethods';
 import I18n from '../I18n';
 import './css/Order.css';
+import { makeStyles } from '@material-ui/core/styles';
 
+const useStyles = makeStyles(theme => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 250,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+}));
 
 const Order = props => {
+
+  const classes = useStyles();
 
   const [selectedDateOrder, updateDateOrder] = React.useState(new Date());
   const [selectedHourOrder, updateHourOrder] = React.useState(new Date());
@@ -21,14 +35,29 @@ const Order = props => {
   const [selectedAmount, updateAmount] = React.useState(1);
   const [selectedDeliveryMethod, updateDeliveryMethod] = React.useState('');
 
+  const dayAndHour = (dateSelected, hourSelected) => {
+    var month = dateSelected.getMonth()+1;
+    if (month < 10)
+    { month = '0'+month }
+
+    const date = dateSelected.getDate()+'-'+month+'-'+dateSelected.getFullYear();
+    const hour = hourSelected.toTimeString().slice(0,8);
+    return ( date + ' '+ hour)
+  }
+
   const newOrder = {
-    "user":props.user.email,
-    "order":{
-      "menu":{
-        "name":props.selectedMenu.name,
-        "providerEmail":'FALTA ESTE DATO',
+    userEmail:props.user.email,
+    order:{
+      menu:{
+        name:props.selectedMenu.name,
+        providerEmail:props.selectedProvider.email,
       },
-    "deliveryDateAndHour":selectedDateDelivery+ " "+selectedHourDelivery,
+      deliveryDateAndHour:dayAndHour(selectedDateDelivery, selectedHourDelivery),
+      orderDateAndHour: dayAndHour(selectedDateOrder, selectedHourOrder),
+      quantity:selectedAmount,
+      typeDelivery:selectedDeliveryMethod,
+      ranking:0,
+      value:200
     }
   }
   
@@ -62,22 +91,23 @@ const Order = props => {
                 </p>
                 <p> <I18n t="typeDelivery"/>:</p>
                 <p>
-                  <FormControl>
-                    <NativeSelect
-                      id="delivery-method-select-native"
+                  <FormControl className={classes.formControl}>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="delivery-method-select"
                       value={selectedDeliveryMethod}
-                      onChange={(event) => updateDeliveryMethod(event.target.value)}
+                      onChange={ (event) => updateDeliveryMethod(event.target.value)}
                     >
-                      <option value={"HOME_DELIVERY"}> Entrega a domicilio </option>
-                      <option value={"BRANCH_OFFICE"}> Retiro en sucursal </option>
-                    </NativeSelect>
-                  </FormControl>
+                    <MenuItem value={"HOME_DELIVERY"}> <I18n t="orderDeliveryHome"/> </MenuItem>
+                    <MenuItem value={"BRANCH_OFFICE"}> <I18n t="orderDeliverySucursale"/> </MenuItem>
+                  </Select>
+                </FormControl>
                 </p>
                 <p> <I18n t="dateOrder"/>:</p>
                 <p>  <KeyboardDatePicker
                       margin="normal"
                       id="dateOrder-picker-dialog"
-                      format="MM/dd/yyyy"
+                      format="MM-dd-yyyy"
                       value={selectedDateOrder}
                       onChange={updateDateOrder}
                       KeyboardButtonProps={{
@@ -85,11 +115,11 @@ const Order = props => {
                       }}
                     />
                 </p>
-                <p> <I18n t="hourOrder"/>: </p>
+                <p> <I18n t="timeOrder"/>: </p>
                 <p> <Grid container>
                 <KeyboardTimePicker
                       margin="normal"
-                      id="timeDelivery-picker"
+                      id="timeOrder-picker"
                       value={selectedHourOrder}
                       onChange={updateHourOrder}
                       KeyboardButtonProps={{
@@ -102,7 +132,7 @@ const Order = props => {
                 <p>  <KeyboardDatePicker
                       margin="normal"
                       id="dateDelivery-picker-dialog"
-                      format="MM/dd/yyyy"
+                      format="MM-dd-yyyy"
                       value={selectedDateDelivery}
                       onChange={updateDateDelivery}
                       KeyboardButtonProps={{
@@ -122,7 +152,7 @@ const Order = props => {
                       }}
                     />
                   </Grid></p>
-                <ButtonModal/>
+                <ButtonModal order={newOrder} purchase={props.purchase}/>
             </div>
         </div>)
 }
@@ -152,11 +182,22 @@ const MyVerticallyCenteredModal = props => {
       );
 }
 
-const ButtonModal= () => {
-    const [modalShow, setModalShow] = React.useState(false);
+const ButtonModal= props => {
+  const [modalShow, setModalShow] = React.useState(false);
+
+  const purchaseMenu = () => {
+    console.log(props.order)
+    props.purchase(props.order);
+    // if(props.order = 200)
+    // {
+    //   setModalShow(true)
+    // }
+    setModalShow(true);
+  } 
+
     return (
       <ButtonToolbar>
-        <Button variant="success" onClick={() => { setModalShow(true)}}>
+        <Button variant="success" onClick={() => { purchaseMenu() }}>
           <b><i><I18n t="orderNow"/></i></b>
         </Button>
   
