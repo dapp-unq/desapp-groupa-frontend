@@ -1,0 +1,17 @@
+sudo: required
+language: node_js
+node_js:
+  - "10"
+before_install:
+    - npm install -g create-react-app
+install:
+    - npm install
+script: 
+    # - npm test
+    - npm run build
+deploy:
+    provider: heroku
+    api_key: $HEROKU_API_KEY
+    app: $HEROKU_APP_NAME
+    on:
+        repo: $HEROKU_REPOSITORY_NAME

@@ -17,8 +17,6 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Toolbar from '@material-ui/core/Toolbar';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
-import DeleteIcon from '@material-ui/icons/Delete';
-import AddIcon from '@material-ui/icons/AddCircleOutline';
 import clsx from 'clsx';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../../mapMethods';
@@ -45,7 +43,7 @@ const descendingComparator = (a, b, orderBy) => {
   return 0;
 }
 
-const getComparator=(order, orderBy) =>{
+const getComparator = (order, orderBy) => {
   return order === 'desc'
     ? (a, b) => descendingComparator(a, b, orderBy)
     : (a, b) => -descendingComparator(a, b, orderBy);
@@ -68,9 +66,9 @@ const headCells = [
 ];
 
 const EnhancedTableHead = (props) => {
-  
+
   const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
-  
+
   const createSortHandler = property => event => {
     onRequestSort(event, property);
   };
@@ -130,13 +128,13 @@ const useToolbarStyles = makeStyles(theme => ({
   highlight:
     theme.palette.type === 'light'
       ? {
-          color: theme.palette.secondary.main,
-          backgroundColor: lighten(theme.palette.secondary.light, 0.85),
-        }
+        color: theme.palette.secondary.main,
+        backgroundColor: lighten(theme.palette.secondary.light, 0.85),
+      }
       : {
-          color: theme.palette.text.primary,
-          backgroundColor: theme.palette.secondary.dark,
-        },
+        color: theme.palette.text.primary,
+        backgroundColor: theme.palette.secondary.dark,
+      },
   title: {
     flex: '1 1 100%',
   },
@@ -157,24 +155,26 @@ const EnhancedTableToolbar = props => {
           {numSelected} selected
         </Typography>
       ) : (
-        <Typography className={classes.title} variant="h6" id="tableTitle">
-          <I18n t="schedule"/>
-        </Typography>
-      )}
+          <Typography className={classes.title} variant="h6" id="tableTitle">
+            <I18n t="schedule" />
+          </Typography>
+        )}
 
       {numSelected > 0 ? (
         <Tooltip title="Delete">
           <IconButton aria-label="delete">
-            <DeleteIcon />
+            {/* <DeleteIcon /> */}
+            -
           </IconButton>
         </Tooltip>
       ) : (
-        <Tooltip title="Agregar horario">
-          <IconButton aria-label="filter list">
-            <AddIcon style={{ fontSize: 30 }} />
+          <Tooltip title="Agregar horario">
+            <IconButton aria-label="filter list">
+              {/* <AddIcon style={{ fontSize: 30 }} /> */}
+              +
           </IconButton>
-        </Tooltip>
-      )}
+          </Tooltip>
+        )}
     </Toolbar>
   );
 };
@@ -347,4 +347,4 @@ const DatesTable = () => {
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps) (DatesTable);
+export default connect(mapStateToProps, mapDispatchToProps)(DatesTable);
