@@ -46,7 +46,6 @@ const EditProvider = props => {
     const [locationError, updateLocationError] = React.useState(true);
     const [emailError, updateEmailError] = React.useState(true);
     const [phoneError, updatePhoneError] = React.useState(true);
-    // const [hoursDaysError, updateHoursDaysError] = React.useState(true);
 
     const [canRegister, updateCanRegister] = React.useState(true);
    
@@ -60,7 +59,7 @@ const EditProvider = props => {
 
     const updateProvider = () => {
         const openingHD = [];
-        props.hoursProvider.map(time => {
+        props.hoursProvider.forEach(time => {
             openingHD.push({day:time.day, 
                 openingHours: time.opening.toTimeString().slice(0,8)+'.00',
                 closingHours:time.closing.toTimeString().slice(0,8)+'.00'
@@ -68,7 +67,7 @@ const EditProvider = props => {
         });
 
         const deliveryC = [];
-        deliveryCities.map(city => {
+        deliveryCities.forEach(city => {
             deliveryC.push(city.name)
         });
 
@@ -99,20 +98,20 @@ const EditProvider = props => {
             <form className={classes.root} noValidate autoComplete="off">
                 <div>
                     <TextField required id="name-provider" label="Nombre" defaultValue={name} 
-                    onChange={(event) => {updateName(event.target.value); updateNameError(name == '')} } 
+                    onChange={(event) => {updateName(event.target.value); updateNameError(name === '')} } 
                     error={nameError} 
                     helperText={nameError ? "Este campo es obligatorio" : null}/>
                 </div>
                 <div>
                     <TextField required id="url-logo-provider" label="URL Logo" defaultValue={urlLogo} 
-                    onChange={(event) => {updateUrlLogo(event.target.value); updateLogoError(urlLogo == '')}} 
+                    onChange={(event) => {updateUrlLogo(event.target.value); updateLogoError(urlLogo === '')}} 
                     error={logoError} 
                     helperText={logoError ? "Este campo es obligatorio" : null}/>
                 </div>
                 <div>
                     <TextField required id="city-provider" select label="Localidad"
                         defaultValue={cityProvider} 
-                        onChange={(event) => {updateCityProvider(event.target.value); updateCityError(cityProvider == '')}}
+                        onChange={(event) => {updateCityProvider(event.target.value); updateCityError(cityProvider === '')}}
                         SelectProps={{
                             native: false,
                         }}
@@ -128,7 +127,7 @@ const EditProvider = props => {
                 </div>
                 <div>
                     <TextField required id="direction-provider" label="Dirección" defaultValue={location} 
-                    onChange={(event) => {updateLocation(event.target.value); updateLocationError(location == '')}} 
+                    onChange={(event) => {updateLocation(event.target.value); updateLocationError(location === '')}} 
                     error={locationError} 
                     helperText={locationError ? "Este campo es obligatorio" : null}/>
                 </div>
@@ -151,13 +150,13 @@ const EditProvider = props => {
                 </div>
                 <div>
                     <TextField required id="e-mail-provider" label="E-mail" defaultValue={email} 
-                    onChange={(event) => {updateEmail(event.target.value); updateEmailError(email == '')}} 
+                    onChange={(event) => {updateEmail(event.target.value); updateEmailError(email === '')}} 
                     error={emailError} 
                     helperText={emailError ? "Este campo es obligatorio" : null}/>
                 </div>
                 <div>
                     <TextField required id="phone-provider" label="Teléfono" defaultValue={phone} 
-                    onChange={(event) => {updatePhone(event.target.value); updatePhoneError(phone == '')}} 
+                    onChange={(event) => {updatePhone(event.target.value); updatePhoneError(phone === '')}} 
                     error={phoneError} 
                     helperText={phoneError ? "Este campo es obligatorio" : null}/>
                 </div>

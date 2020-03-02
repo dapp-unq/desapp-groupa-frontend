@@ -1,13 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
 
 const Content2 = props => {
-    const propTypes = {
-        body: PropTypes.object.isRequired
-    }
-    const {body} = props
+
+    const { body } = props
     return (
-        <div className= 'Content2'>
+        <div className='Content2'>
             {body}
         </div>
     )

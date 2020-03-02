@@ -10,7 +10,6 @@ import { mapDispatchToProps, mapStateToProps } from '../../mapMethods';
 import I18n from '../I18n';
 import './css/Provider.css';
 import DatesTable2 from './DatesTable2';
-import ValidationTextFields from './EjemploValidacion';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -48,31 +47,29 @@ const Provider = props => {
     const [locationError, updateLocationError] = React.useState(true);
     const [emailError, updateEmailError] = React.useState(true);
     const [phoneError, updatePhoneError] = React.useState(true);
-    const [emailVal, updateEmailVal] = React.useState(true);
-    const [phoneVal, updatePhoneVal] = React.useState(true);
-    // const [hoursDaysError, updateHoursDaysError] = React.useState(true);
 
     const [canRegister, updateCanRegister] = React.useState(true);
-   
+
     React.useEffect(() => {
         if (descriptionError || nameError || logoError || cityError || locationError || emailError || phoneError) {
             updateCanRegister(true);
         } else {
             updateCanRegister(false);
         }
-      }, [descriptionError, nameError, logoError, cityError, locationError, emailError, phoneError, updateCanRegister]);
+    }, [descriptionError, nameError, logoError, cityError, locationError, emailError, phoneError, updateCanRegister]);
 
     const registerProvider = () => {
         const openingHD = [];
-        props.hoursProvider.map(time => {
-            openingHD.push({day:time.day, 
-                openingHours: time.opening.toTimeString().slice(0,8)+'.00',
-                closingHours:time.closing.toTimeString().slice(0,8)+'.00'
+        props.hoursProvider.forEach(time => {
+            openingHD.push({
+                day: time.day,
+                openingHours: time.opening.toTimeString().slice(0, 8) + '.00',
+                closingHours: time.closing.toTimeString().slice(0, 8) + '.00'
             })
         });
 
         const deliveryC = [];
-        deliveryCities.map(city => {
+        deliveryCities.forEach(city => {
             deliveryC.push(city.name)
         });
 
@@ -82,7 +79,7 @@ const Provider = props => {
             city: cityProvider,
             location: location,
             description: description,
-            website: webSite, 
+            website: webSite,
             email: email,
             phoneNumber: phone,
             openingHoursDays: openingHD,
@@ -99,16 +96,16 @@ const Provider = props => {
 
     const phonenumber = (inputtxt) => {
         var phoneno = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
-        if(inputtxt.match(phoneno)) {
-          return true;
-        }  
-        else {  
-          return false;
+        if (inputtxt.match(phoneno)) {
+            return true;
         }
-      }
-    
+        else {
+            return false;
+        }
+    }
+
     const validateEmail = (email) => {
-        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(email).toLowerCase());
     }
 
@@ -117,39 +114,39 @@ const Provider = props => {
             <h2><I18n t="providerTitle" /></h2>
             <form className={classes.root} noValidate autoComplete="off">
                 <div>
-                    <TextField required id="name-provider" label="Nombre" defaultValue={name} 
-                    onChange={(event) => {updateName(event.target.value); updateNameError(name == '')} } 
-                    error={nameError} 
-                    helperText={nameError ? "Este campo es obligatorio" : null}/>
+                    <TextField required id="name-provider" label="Nombre" defaultValue={name}
+                        onChange={(event) => { updateName(event.target.value); updateNameError(name === '') }}
+                        error={nameError}
+                        helperText={nameError ? "Este campo es obligatorio" : null} />
                 </div>
                 <div>
-                    <TextField required id="url-logo-provider" label="URL Logo" defaultValue={urlLogo} 
-                    onChange={(event) => {updateUrlLogo(event.target.value); updateLogoError(urlLogo == '')}} 
-                    error={logoError} 
-                    helperText={logoError ? "Este campo es obligatorio" : null}/>
+                    <TextField required id="url-logo-provider" label="URL Logo" defaultValue={urlLogo}
+                        onChange={(event) => { updateUrlLogo(event.target.value); updateLogoError(urlLogo === '') }}
+                        error={logoError}
+                        helperText={logoError ? "Este campo es obligatorio" : null} />
                 </div>
                 <div>
                     <TextField required id="city-provider" select label="Localidad"
-                        defaultValue={cityProvider} 
-                        onChange={(event) => {updateCityProvider(event.target.value); updateCityError(cityProvider == '')}}
+                        defaultValue={cityProvider}
+                        onChange={(event) => { updateCityProvider(event.target.value); updateCityError(cityProvider === '') }}
                         SelectProps={{
                             native: false,
                         }}
-                        error={cityError} 
+                        error={cityError}
                         helperText={cityError ? "Este campo es obligatorio" : "Please select your city"}
                         variant="outlined">
                         {props.cities.map(city => (
-                             <option key={city.title} value={city.name} >
+                            <option key={city.title} value={city.name} >
                                 {city.title}
                             </option>
                         ))}
                     </TextField>
                 </div>
                 <div>
-                    <TextField required id="direction-provider" label="Dirección" defaultValue={location} 
-                    onChange={(event) => {updateLocation(event.target.value); updateLocationError(location == '')}} 
-                    error={locationError} 
-                    helperText={locationError ? "Este campo es obligatorio" : null}/>
+                    <TextField required id="direction-provider" label="Dirección" defaultValue={location}
+                        onChange={(event) => { updateLocation(event.target.value); updateLocationError(location === '') }}
+                        error={locationError}
+                        helperText={locationError ? "Este campo es obligatorio" : null} />
                 </div>
                 <div>
                     <TextField
@@ -160,8 +157,8 @@ const Provider = props => {
                         rows="4"
                         defaultValue={description}
                         variant="outlined"
-                        onChange={(event) => {updateDescription(event.target.value); updateDescriptionError((description.length < 30 ) || (description.length > 200) ) }}
-                        error={descriptionError} 
+                        onChange={(event) => { updateDescription(event.target.value); updateDescriptionError((description.length < 30) || (description.length > 200)) }}
+                        error={descriptionError}
                         helperText={descriptionError ? "La descripcion debe tener entre 30 y 200 letras." : null}
                     />
                 </div>
@@ -169,16 +166,16 @@ const Provider = props => {
                     <TextField id="web-site-provider" label="Sitio web" defaultValue={webSite} onChange={(event) => updateWebSite(event.target.value)} />
                 </div>
                 <div>
-                    <TextField required id="e-mail-provider" label="E-mail" defaultValue={email} 
-                    onChange={(event) => {updateEmail(event.target.value); updateEmailError(!validateEmail(email))} } 
-                    error={emailError} 
-                    helperText={emailError ? "Debe ingresar un mail válido" : null}/>
+                    <TextField required id="e-mail-provider" label="E-mail" defaultValue={email}
+                        onChange={(event) => { updateEmail(event.target.value); updateEmailError(!validateEmail(email)) }}
+                        error={emailError}
+                        helperText={emailError ? "Debe ingresar un mail válido" : null} />
                 </div>
                 <div>
-                    <TextField required id="phone-provider" label="Teléfono" defaultValue={phone} 
-                    onChange={(event) => {updatePhone(event.target.value); updatePhoneError(!phonenumber(phone))}} 
-                    error={phoneError} 
-                    helperText={phoneError ? "Debe ingresar un teléfono válido" : null}/>
+                    <TextField required id="phone-provider" label="Teléfono" defaultValue={phone}
+                        onChange={(event) => { updatePhone(event.target.value); updatePhoneError(!phonenumber(phone)) }}
+                        error={phoneError}
+                        helperText={phoneError ? "Debe ingresar un teléfono válido" : null} />
                 </div>
                 <div>
                     <DatesTable2 />
@@ -199,9 +196,9 @@ const Provider = props => {
                                 label="Localidades de entrega"
                                 placeholder="Favorites"
                             />)}
-                        onChange={(event, value) =>updateDeliveryCities(value)}
-                        // error={hoursDaysError}
-                        // helperText={hoursDaysError ? "Debe ingresarse al menos un día de disponibilidad." : null}
+                        onChange={(event, value) => updateDeliveryCities(value)}
+                    // error={hoursDaysError}
+                    // helperText={hoursDaysError ? "Debe ingresarse al menos un día de disponibilidad." : null}
                     />
                 </div>
                 <div>

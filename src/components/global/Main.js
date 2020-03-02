@@ -2,7 +2,7 @@ import Pagination from "@material-ui/lab/Pagination";
 import React from 'react'; // <-- updated
 import { Button, Card } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { Link, NavLink } from 'react-router-i18n';
+import { NavLink } from 'react-router-i18n';
 import { mapDispatchToProps, mapStateToProps } from '../../mapMethods';
 import I18n from '../I18n';
 import './css/Main.css';

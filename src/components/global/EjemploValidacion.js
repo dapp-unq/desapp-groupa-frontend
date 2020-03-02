@@ -19,7 +19,6 @@ export default function ValidationTextFields() {
   const [canRegister, setCanRegister] = React.useState(true);
 
   const rejectWorld = () => value.includes("world");
-  // Si es un valor de retorno, no es necesario los corchetes
   React.useEffect(() => {
     if (rejectWorld()) {
       setCanRegister(true);
