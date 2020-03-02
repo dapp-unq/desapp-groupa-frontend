@@ -2,7 +2,7 @@ import Pagination from "@material-ui/lab/Pagination";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
-import { Link, NavLink } from 'react-router-i18n';
+import { NavLink } from 'react-router-i18n';
 import './css/ListMenus.css';
 
 

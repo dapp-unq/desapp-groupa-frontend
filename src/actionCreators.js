@@ -31,9 +31,7 @@ const addUser = user => {
     console.log("JSON enviado:")
     console.log(user)
     return async (dispatch) => {
-        const res = await axios.post('https://viandasya-c1a.herokuapp.com/rest/user', user)
-        const responseData = res.data;
-        // const responseStatus = res.status;// 201 si es correcto
+        await axios.post('https://viandasya-c1a.herokuapp.com/rest/user', user)
         dispatch({
             type: "ADD_USER",
             user
@@ -45,9 +43,7 @@ const addProvider = provider => {
     console.log("JSON enviado:")
     console.log(provider)
     return async (dispatch) => {
-        const res = await axios.post('https://viandasya-c1a.herokuapp.com/rest/provider', provider)
-        const responseData = res.data;
-        // const responseStatus = res.status;// 201 si es correcto
+        await axios.post('https://viandasya-c1a.herokuapp.com/rest/provider', provider)
         dispatch({
             type: "ADD_PROVIDER",
             provider
@@ -59,9 +55,7 @@ const editProvider = provider => {
     console.log("JSON enviado para editar:")
     console.log(provider)
     return async (dispatch) => {
-        const res = await axios.put('https://viandasya-c1a.herokuapp.com/rest/provider', provider)
-        const responseData = res.data;
-        // const responseStatus = res.status;// 201 si es correcto
+        await axios.put('https://viandasya-c1a.herokuapp.com/rest/provider', provider)
         dispatch({
             type: "EDIT_PROVIDER",
             provider
@@ -121,8 +115,7 @@ const removeProvider = email => {
     console.log('Mail enviado para eliminar:')
     console.log(email)
     return async (dispatch) => {
-        const res = await axios.delete('https://viandasya-c1a.herokuapp.com/rest/provider/'+email)
-        const responseData = res.data
+        await axios.delete('https://viandasya-c1a.herokuapp.com/rest/provider/'+email)
         dispatch({
             type: "REMOVE_PROVIDER",
             provider: ""
